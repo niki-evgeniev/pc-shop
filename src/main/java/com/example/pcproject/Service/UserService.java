@@ -6,5 +6,5 @@ import com.example.pcproject.models.bindingModels.RegisterUserBindingModel;
 public interface UserService {
     boolean registerUser(RegisterUserBindingModel registerUserBindingModel);
 
-    boolean login(LoginUserBindingModel loginUserBindingModel);
+//    boolean login(LoginUserBindingModel loginUserBindingModel);
 }

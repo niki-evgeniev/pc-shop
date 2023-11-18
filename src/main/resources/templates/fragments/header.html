@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -27,6 +28,18 @@
                 niki.evgeniev@gmail.com
               </span>
                 </a>
+                <a href="" class="contact_link3">
+                    <i sec:authorize="!isAuthenticated()" class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>
+                    Welcome,
+                        <th:block sec:authorize="isAuthenticated()">
+                            <th:block sec:authentication="name"></th:block>
+                         </th:block>
+                         <th:block sec:authorize="!isAuthenticated()">
+                             Anonymous!
+                        </th:block>
+              </span>
+                </a>
             </div>
         </div>
     </div>
@@ -49,20 +62,36 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html"> About</a>
-                        </li>
+                        <th:block sec:authorize="!isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/users/login}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/users/register}">Register</a>
+                            </li>
+                        </th:block>
+
                         <li class="nav-item">
                             <a class="nav-link" href="service.html"> Services </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact us</a>
 
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/users/login}">Login</a>
+                            <a class="nav-link" href="contact.html">Contact us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/users/register}">Register</a>
+                            <a class="nav-link" href="about.html"> About</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <div>
+                                <div class="logged-user">
+                                    Welcome,
+                                    <th:block sec:authentication="name"></th:block>
+                                </div>
+                                <form th:method="POST"
+                                      th:action="@{/users/logout}">
+                                    <input type="submit" class="btn btn-dark " value="Logout"></input>
+                                </form>
+                            </div>
                         </li>
 
 

@@ -2,7 +2,6 @@ package com.example.pcproject.models.entity;
 
 import com.example.pcproject.models.eunums.RoleType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -18,11 +17,12 @@ public class User extends BaseEntity {
     private String email;
     @Column(name = "password")
     private String password;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private RoleType role;
+
     @Column(name = "create_on")
     private LocalDate createOn;
+
+    @ManyToOne
+    private UserRole role;
 
     public User() {
     }
@@ -59,19 +59,19 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public RoleType getRole() {
-        return role;
-    }
-
-    public void setRole(RoleType role) {
-        this.role = role;
-    }
-
     public LocalDate getCreateOn() {
         return createOn;
     }
 
     public void setCreateOn(LocalDate createOn) {
         this.createOn = createOn;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }

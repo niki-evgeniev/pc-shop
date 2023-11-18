@@ -33,32 +33,37 @@
                         <form
                                 th:method="POST"
                                 th:action="@{/users/login}"
-                                th:object="${loginUserBindingModel}"
                                 class="register-form" id="login-form">
 
-                            <div th:if="${isLoginError}" class="text-danger font-weight-bold">Error messages</div>
-                            <div th:if="${isLoginError}" class="text-danger font-weight-bold">Incorrect username or password!</div>
+<!--                            <div th:if="${isLoginError}" class="text-danger font-weight-bold">Error messages</div>-->
+<!--                            <div th:if="${isLoginError}" class="text-danger font-weight-bold">Incorrect username or password!</div>-->
 
-                            <div th:if="${#fields.hasErrors('username')}"
-                                 th:errors="*{username}" class="text-danger"></div>
-                            <div th:if="${#fields.hasErrors('password')}"
-                                 th:errors="*{password}" class="text-danger"></div>
+<!--                            <div th:if="${#fields.hasErrors('username')}"-->
+<!--                                 th:errors="*{username}" class="text-danger"></div>-->
+<!--                            <div th:if="${#fields.hasErrors('password')}"-->
+<!--                                 th:errors="*{password}" class="text-danger"></div>-->
+                            <p th:if="${bad_credentials}" class="errors alert alert-danger">
+                                Invalid username or password.
+                            </p>
 
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input
-                                        th:field="*{username}"
-                                        th:errorclass="bg-danger"
-                                        class="text-right"
-                                        type="text" name="username" id="username" placeholder="Your Nickname"/>
+                                        class="text-left"
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        th:value="${username}"
+                                        placeholder="Your Nickname"/>
                             </div>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
                                 <input
-                                        th:field="*{password}"
-                                        th:errorclass="bg-danger"
-                                        class="text-right"
-                                        type="password" name="password" id="password" placeholder="Password"/>
+                                        class="text-left"
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />

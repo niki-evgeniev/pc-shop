@@ -46,18 +46,11 @@ public class UserController {
         return new ModelAndView("login");
     }
 
-    @RequestMapping("/login")
-    public ModelAndView login(@Valid LoginUserBindingModel loginUserBindingModel, BindingResult bindingResult){
+    @RequestMapping("/login-error")
+    public ModelAndView errorLogin(){
 
-        if (!bindingResult.hasErrors()){
-
-            boolean isLoginUser = userService.login(loginUserBindingModel);
-            if (isLoginUser){
-                return new ModelAndView("redirect:/");
-            }
-        }
         ModelAndView modelAndView = new ModelAndView("login");
-        modelAndView.addObject("isLoginError", true);
+        modelAndView.addObject("bad_credentials", true);
 
         return modelAndView;
     }
