@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @RequestMapping("/login-error")
-    public ModelAndView errorLogin(){
+    public ModelAndView errorLogin() {
 
         ModelAndView modelAndView = new ModelAndView("login");
         modelAndView.addObject("bad_credentials", true);
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     @ModelAttribute
-    LoginUserBindingModel loginUserBindingModel(){
+    LoginUserBindingModel loginUserBindingModel() {
         return new LoginUserBindingModel();
     }
 }

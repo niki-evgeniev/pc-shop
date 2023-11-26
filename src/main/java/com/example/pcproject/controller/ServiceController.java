@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ServiceController {
 
     @GetMapping("service")
-    public ModelAndView service(){
+    public ModelAndView service() {
         return new ModelAndView("service");
     }
 

@@ -23,7 +23,7 @@ public class pcShopUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
                 .map(pcShopUserService::map)
-                .orElseThrow(()-> new UsernameNotFoundException("User " + username + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
     }
 
     private static UserDetails map(User user) {

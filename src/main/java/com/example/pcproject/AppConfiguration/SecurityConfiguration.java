@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 authorizeRequest -> authorizeRequest
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
-                        .requestMatchers( "/service/service").permitAll()
+                        .requestMatchers("/service/service").permitAll()
                         .anyRequest().authenticated()
 
         ).formLogin(
@@ -37,7 +37,7 @@ public class SecurityConfiguration {
                             .loginPage("/users/login")
                             .usernameParameter("username")
                             .passwordParameter("password")
-                            .defaultSuccessUrl("/" , true)
+                            .defaultSuccessUrl("/", true)
                             .failureForwardUrl("/users/login-error");
                 }
         ).logout(

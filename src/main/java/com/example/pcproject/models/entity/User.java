@@ -11,10 +11,13 @@ public class User extends BaseEntity {
 
     @Column(name = "name")
     private String name;
+
     @Column(name = "username")
     private String username;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "password")
     private String password;
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "roles")
-public class UserRole extends BaseEntity{
+public class UserRole extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private RoleType roles;

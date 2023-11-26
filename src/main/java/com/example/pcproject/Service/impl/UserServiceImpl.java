@@ -45,17 +45,17 @@ public class UserServiceImpl implements UserService {
 
 
             if (userRepository.count() == 0) {
-                Optional<UserRole> byId = userRoleRepository.findById(1L);
+                Optional<UserRole> roleAdmin = userRoleRepository.findById(1L);
 
-                if (byId.isPresent()){
-                    userRegistration.setRole(byId.get());
+                if (roleAdmin.isPresent()) {
+                    userRegistration.setRole(roleAdmin.get());
                 }
 
             } else {
-                Optional<UserRole> byId = userRoleRepository.findById(3L);
+                Optional<UserRole> roleUser = userRoleRepository.findById(3L);
 
-                if (byId.isPresent()){
-                    userRegistration.setRole(byId.get());
+                if (roleUser.isPresent()) {
+                    userRegistration.setRole(roleUser.get());
                 }
             }
 
@@ -67,17 +67,4 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-//    @Override
-//    public boolean login(LoginUserBindingModel loginUserBindingModel) {
-//        User user = userRepository.findByUsername(loginUserBindingModel.getUsername());
-//
-//        if (user != null && passwordEncoder.matches(loginUserBindingModel.getPassword(), user.getPassword())){
-//            loggedUser.setId(user.getId());
-//            loggedUser.setName(user.getName());
-//            loggedUser.setUsername(user.getUsername());
-//            return true;
-//        }
-//
-//        return false;
-//    }
 }
