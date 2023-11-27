@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/service")
 public class ServiceController {
 
-    @GetMapping("service")
+    @GetMapping("/service")
     public ModelAndView service() {
         return new ModelAndView("service");
     }
