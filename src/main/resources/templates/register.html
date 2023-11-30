@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SoftUni Project Register</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/css/stylelr.css">
+
+    <div th:replace="~{fragments/head}"></div>
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Register</h2>
+                <form
+                        th:method="POST"
+                        th:action="@{/users/register}"
+                        th:object="${registerUserBindingModel}"
+                        class="register-form" id="register-form">
+                    <div class="form-group">
+                        <label for="name">
+                            <i th:unless="${#fields.hasErrors('name')}"
+                               class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input
+                                th:field="*{name}"
+                                th:errorclass="bg-danger"
+                                class="text-left"
+                                type="text"
+                                name="firstName"
+                                id="name"
+                                placeholder="Your Name"/>
+                        <small
+                                th:if="${#fields.hasErrors('name')}"
+                                th:errors="*{name}"
+                                class="text-danger font-weight-bold">Name error message</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">
+                            <i th:unless="${#fields.hasErrors('username')}"
+                               class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input
+                                th:field="*{username}"
+                                th:errorclass="bg-danger"
+                                class="text-left"
+                                type="username"
+                                name="username"
+                                id="username"
+                                placeholder="Your Nickname"/>
+                        <small
+                                th:if="${#fields.hasErrors('username')}"
+                                th:errors="*{username}"
+                                class="text-danger font-weight-bold">Username error message</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <i th:unless="${#fields.hasErrors('email')}"
+                               class="zmdi zmdi-email"></i></label>
+                        <input
+                                th:field="*{email}"
+                                th:errorclass="bg-danger"
+                                class="text-left"
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Your Email"/>
+                        <small
+                                th:if="${#fields.hasErrors('email')}"
+                                th:errors="*{email}"
+                                class="text-danger font-weight-bold">Email error message</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">
+                            <i th:unless="${#fields.hasErrors('password')}"
+                                    class="zmdi zmdi-lock"></i></label>
+                        <input
+                                th:field="*{password}"
+                                th:errorclass="bg-danger"
+                                type="password"
+                                name="password"
+                                id="pass"
+                                placeholder="Password"/>
+                        <small
+                                th:if="${#fields.hasErrors('password')}"
+                                th:errors="*{password}"
+                                class="text-danger font-weight-bold">Password error message</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">
+                            <i th:unless="${#fields.hasErrors('confirmPassword')}"
+                               class="zmdi zmdi-lock"></i></label>
+                        <input
+                                th:field="*{confirmPassword}"
+                                th:errorclass="bg-danger"
+                                type="password"
+                                name="confirmPassword"
+                                id="confirmPassword"
+                                placeholder="Repeat password"/>
+                        <small
+                                th:if="${#fields.hasErrors('password')}"
+                                th:errors="*{password}"
+                                class="text-danger font-weight-bold">Password error message</small>
+                    </div>
+
+                    <!--                    <div class="form-group">-->
+                    <!--                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>-->
+                    <!--                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all-->
+                    <!--                            statements in <a href="#" class="term-service">Terms of service</a></label>-->
+                    <!--                    </div>-->
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="/images/signup-image.jpg" alt="sing up image"></figure>
+                <a th:href="@{/users/login}" class="signup-image-link font-weight-bold">I am already member</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="~{fragments/footer}"></footer>
+<!-- JS -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
