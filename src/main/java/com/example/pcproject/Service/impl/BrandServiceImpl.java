@@ -29,7 +29,7 @@ public class BrandServiceImpl implements BrandService {
                                 .sorted(Comparator.comparing(ModelDTO::name))
                                 .collect(Collectors.toList())
                 ))
-                .sorted(Comparator.comparing(BrandDTO::name))
+                .sorted(Comparator.comparing(BrandDTO::getName))
                 .collect(Collectors.toList());
     }
 }

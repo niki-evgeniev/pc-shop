@@ -2,14 +2,15 @@ package com.example.pcproject.controller;
 
 import com.example.pcproject.Service.BrandService;
 import com.example.pcproject.Service.ProductService;
+import com.example.pcproject.Service.exception.ObjectNotFoundException;
 import com.example.pcproject.models.bindingModels.ProductBindingModel;
+import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -35,20 +36,35 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public ModelAndView add(@Valid ProductBindingModel productBindingModel, BindingResult bindingResult){
+    public ModelAndView add(@Valid ProductBindingModel productBindingModel, BindingResult bindingResult
+    , @AuthenticationPrincipal UserDetails user) {
 
-        if (!bindingResult.hasErrors()){
-            boolean productIsAdded = productService.addProduct(productBindingModel);
-            if (productIsAdded){
-            return new ModelAndView("redirect:/");
+        if (!bindingResult.hasErrors()) {
+            boolean productIsAdded = productService.addProduct(productBindingModel, user);
+            if (productIsAdded) {
+                return new ModelAndView("redirect:/");
             }
         }
         return new ModelAndView("productAdd");
     }
 
     @ModelAttribute
-    ProductBindingModel productBindingModel(){
+    ProductBindingModel productBindingModel() {
         return new ProductBindingModel();
+    }
+
+
+    @GetMapping("/{id}")
+
+    public ModelAndView details(@PathVariable Long id) {
+
+        ProductDetailsDTO productDetailsDTO = productService.getDetails(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Offer details not found"));
+
+        ModelAndView modelAndView = new ModelAndView("details");
+        modelAndView.addObject("productDetails", productDetailsDTO);
+
+        return modelAndView;
     }
 
 }

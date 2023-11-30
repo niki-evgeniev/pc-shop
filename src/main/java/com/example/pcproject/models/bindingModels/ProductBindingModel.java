@@ -26,6 +26,9 @@ public class ProductBindingModel {
     private String imageUrl;
 
     @NotNull
+    private String phoneNumber;
+
+    @NotNull
     @Min(value = 2020 , message = "Year must be bigger then 2020")
     private Integer year;
 
@@ -70,6 +73,14 @@ public class ProductBindingModel {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setImageUrl(String imageUrl) {

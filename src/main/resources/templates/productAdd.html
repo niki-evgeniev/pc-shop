@@ -32,9 +32,9 @@
                     <option value="">Select Brand & Model</option>
                     <optgroup
                             th:each="brand : ${brands}"
-                            th:label="${brand.name()}">
+                            th:label="${brand.getName()}">
                         <option
-                                th:each="model : ${brand.models()}"
+                                th:each="model : ${brand.getModels()}"
                                 th:text="${model.name()}"
                                 th:value="${model.id()}"
                                 th:selected="*{modelId} == ${model.id}">
@@ -116,17 +116,20 @@
                     Manufacturing year is required.
                 </p>
             </div>
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--                <label for="mileage" class="text-white font-weight-bold">Mileage</label>-->
-<!--                <input id="mileage"-->
-
-<!--                       type="number"-->
-<!--                       class="form-control"-->
-<!--                       placeholder="Mileage in kilometers"/>-->
-<!--                <p class="invalid-feedback errors alert alert-danger">-->
-<!--                    Mileage in kilometers is required.-->
-<!--                </p>-->
-<!--            </div>-->
+            <div class="form-group col-md-6 mb-3">
+                <label for="phoneNumber" class="text-white font-weight-bold">Phone Number</label>
+                <input id="phoneNumber"
+                       th:field="*{phoneNumber}"
+                       th:errorclass="is-invalid"
+                       type="number"
+                       class="form-control"
+                       placeholder="Enter your phone number"/>
+                <p th:if="${#fields.hasErrors('phoneNumber')}"
+                   th:errors="*{phoneNumber}"
+                        class="invalid-feedback errors alert alert-danger">
+                    Mileage in kilometers is required.
+                </p>
+            </div>
         </div>
 
         <div class="form-group">

@@ -21,6 +21,9 @@ public class Product extends BaseEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "price")
     private BigDecimal price;
 
@@ -67,6 +70,14 @@ public class Product extends BaseEntity {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public BigDecimal getPrice() {
