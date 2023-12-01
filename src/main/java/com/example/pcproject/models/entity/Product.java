@@ -35,6 +35,7 @@ public class Product extends BaseEntity {
 
     @Column(name = "modified")
     private LocalDateTime modified;
+
     @ManyToOne
     private Model model;
 

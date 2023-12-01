@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class Model extends BaseEntity{
     @Column(name = "name")
     private String name;
+
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
     private ComputerType computerType;

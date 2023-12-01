@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>SoftUni Project Details</title>
@@ -35,6 +36,12 @@
             <div class="project-info-box">
                 <p><b>Seller Username:</b> <th:block th:text="*{seller}">123</th:block></p>
                 <p><b>Contact Number:</b> <th:block th:text="*{phoneNumber}">123</th:block></p>
+                <div class="card-body" >
+                    <form sec:authorize="isAuthenticated()" th:method="DELETE"
+                          th:action="@{/product/{id}(id = *{id})}">
+                        <input type="submit"  value="SOLD" class="btn btn-light" />
+                    </form>
+                </div>
             </div><!-- / project-info-box -->
         </div><!-- / column -->
     </div>

@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, ModelMapper modelMapper,
-                           PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository,
+                           ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.modelMapper = modelMapper;
@@ -43,14 +43,12 @@ public class UserServiceImpl implements UserService {
             userRegistration.setCreateOn(LocalDate.now());
             userRegistration.setPassword(passwordEncoder.encode(registerUserBindingModel.getPassword()));
 
-
             if (userRepository.count() == 0) {
                 Optional<UserRole> roleAdmin = userRoleRepository.findById(1L);
 
                 if (roleAdmin.isPresent()) {
                     userRegistration.setRole(roleAdmin.get());
                 }
-
             } else {
                 Optional<UserRole> roleUser = userRoleRepository.findById(3L);
 
@@ -58,11 +56,8 @@ public class UserServiceImpl implements UserService {
                     userRegistration.setRole(roleUser.get());
                 }
             }
-
-            System.out.println();
             userRepository.save(userRegistration);
             return true;
-
         }
         return false;
     }

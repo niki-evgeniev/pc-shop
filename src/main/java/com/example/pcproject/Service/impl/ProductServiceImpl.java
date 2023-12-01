@@ -4,6 +4,7 @@ import com.example.pcproject.Repository.ModelRepository;
 import com.example.pcproject.Repository.ProductRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Service.ProductService;
+import com.example.pcproject.Service.aop.ExecutionTime;
 import com.example.pcproject.models.bindingModels.ProductAllBindingModel;
 import com.example.pcproject.models.bindingModels.ProductBindingModel;
 import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
@@ -16,7 +17,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,22 +47,48 @@ public class ProductServiceImpl implements ProductService {
         newProduct.setModel(model);
         newProduct.setCreated(LocalDateTime.now());
         User user = userRepository.findByUsername(userDetails.getUsername())
-                .orElseThrow( ()-> new IllegalArgumentException("User not found"));
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
         newProduct.setSeller(user);
-
         productRepository.save(newProduct);
+
         return true;
     }
 
+    @ExecutionTime(
+            time = 2000L
+    )
     @Override
     public Page<ProductAllBindingModel> getAllProduct(Pageable pageable) {
         return productRepository.findAll(pageable)
                 .map(ProductServiceImpl::mapAsSummary);
     }
 
+
+    @ExecutionTime(
+            time = 1000L
+    )
     @Override
     public Optional<ProductDetailsDTO> getDetails(Long id) {
         return productRepository.findById(id).map(ProductServiceImpl::mapAsDetails);
+    }
+
+    @Override
+    public void cleanExpiredProduct() {
+//        List<Product> allProduct = productRepository.findAll();
+//
+//        for (Product product : allProduct) {
+//            LocalDateTime created = product.getCreated();
+//            LocalDateTime afterDays = created.plusDays(30);
+//            if (LocalDateTime.now() > afterDays){
+//
+//            }
+        //TODO FINISH
+//        }
+    }
+
+    @Override
+    public void soldProduct(Long id) {
+        productRepository.deleteById(id);
     }
 
     private static ProductDetailsDTO mapAsDetails(Product product) {

@@ -17,4 +17,7 @@ public interface ProductService {
 
     Optional<ProductDetailsDTO> getDetails(Long id);
 
+    void cleanExpiredProduct();
+
+    void soldProduct(Long id);
 }

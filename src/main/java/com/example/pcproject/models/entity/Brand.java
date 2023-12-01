@@ -10,8 +10,10 @@ import java.util.List;
 public class Brand extends BaseEntity{
     @Column(name = "name", unique = true)
     private String name;
+
     @Column(name = "created")
     private LocalDateTime created;
+
     @Column(name = "modified")
     private LocalDateTime modified;
 

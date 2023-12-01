@@ -38,6 +38,7 @@ public class UserController {
                 return new ModelAndView("login");
             }
         }
+
         return new ModelAndView("register");
     }
 

@@ -31,13 +31,12 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("productAdd");
         modelAndView.addObject("brands", brandService.getAllBrand());
 
-
         return modelAndView;
     }
 
     @PostMapping("/add")
     public ModelAndView add(@Valid ProductBindingModel productBindingModel, BindingResult bindingResult
-    , @AuthenticationPrincipal UserDetails user) {
+            , @AuthenticationPrincipal UserDetails user) {
 
         if (!bindingResult.hasErrors()) {
             boolean productIsAdded = productService.addProduct(productBindingModel, user);
@@ -45,6 +44,7 @@ public class ProductController {
                 return new ModelAndView("redirect:/");
             }
         }
+
         return new ModelAndView("productAdd");
     }
 
@@ -55,16 +55,21 @@ public class ProductController {
 
 
     @GetMapping("/{id}")
-
     public ModelAndView details(@PathVariable Long id) {
 
-        ProductDetailsDTO productDetailsDTO = productService.getDetails(id)
+        ProductDetailsDTO productDetails = productService.getDetails(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Offer details not found"));
-
         ModelAndView modelAndView = new ModelAndView("details");
-        modelAndView.addObject("productDetails", productDetailsDTO);
+        modelAndView.addObject("productDetails", productDetails);
 
         return modelAndView;
     }
 
+    @DeleteMapping("{id}")
+    public ModelAndView delete(@PathVariable Long id) {
+
+        productService.soldProduct(id);
+
+        return new ModelAndView("redirect:/product/all");
+    }
 }
