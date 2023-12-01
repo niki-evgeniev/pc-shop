@@ -13,14 +13,19 @@ VALUES
 INSERT INTO `brands` (`id`, `name`)
 VALUES (1, 'Asus'),
        (2, 'Gigabyte '),
-       (3, 'Apple');
+       (3, 'Apple'),
+       (4, 'Dell');
 
 INSERT INTO `models` (`id`, `category`, `brand_id`, `name`)
-VALUES (1, 'LAPTOP', 1, 'model1'),
-       (2, 'COMPUTER', 1, 'ModelPc'),
-       (3, 'COMPUTER', 2, 'ModelPcGiga'),
-       (4, 'LAPTOP', 2, 'ModelLPGiga'),
-       (5, 'LAPTOP', 3, 'AppleLapTop');
+VALUES (1, 'LAPTOP', 1, 'TUF'),
+       (2, 'LAPTOP', 1, 'ROG'),
+       (3, 'COMPUTER', 1, 'ROG-PC'),
+       (4, 'COMPUTER', 2, 'AORUS-PC'),
+       (5, 'LAPTOP', 2, 'AORUS'),
+       (6, 'LAPTOP', 3, 'MacBook'),
+       (7, 'COMPUTER', 3, 'iMac-PC'),
+       (8, 'LAPTOP', 4, 'Inspiron'),
+       (9, 'COMPUTER', 4, 'Vostro-PC');
 INSERT INTO `products` (id, created, description, computer_type, image_url, phone_number, price, type_to_use, year, model_id, seller_id)
 VALUES (1, '2023-11-22 20:23:12.209579', 'asus pc1', 'COMPUTER',
         'https://desktop.bg/system/images/383033/normal/asus_rog_strix_g15cfwb7636.jpg',

@@ -11,26 +11,26 @@ import java.time.LocalDateTime;
 @Table(name = "products")
 public class Product extends BaseEntity {
 
-    @Column(name = "description", columnDefinition = "text")
+    @Column(name = "description", columnDefinition = "text", nullable = false)
     private String description;
 
     @Column(name = "computer_type")
     @Enumerated(EnumType.STRING)
     private ComputerType computerType;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private BigDecimal price;
 
     @Column(name = "year")
     private Integer year;
 
-    @Column(name = "created")
+    @Column(name = "created", nullable = false)
     private LocalDateTime created;
 
     @Column(name = "modified")

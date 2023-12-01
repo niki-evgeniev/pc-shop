@@ -61,7 +61,7 @@
                                         sed do eiusmod magna aliqua. Ut enim ad minim veniam
                                     </p>
                                     <div  class="btn-box">
-                                        <a th:href="@{/users/register}" class="btn-1"> Register </a>
+                                        <a th:href="@{/users/register}" class="btn-1">Register</a>
                                         <a th:href="@{/users/login}" class="btn-2">Login</a>
                                     </div>
                                 </div>
@@ -75,9 +75,9 @@
                             <div class="col-md-7">
                                 <div class="detail-box">
                                     <h1>
-                                        Your Saftey <br>
+                                        See Product <br>
                                         <span>
-                        Our Responsibility
+                        Or Add Product
                       </span>
                                     </h1>
                                     <p>
@@ -85,8 +85,8 @@
                                         sed do eiusmod magna aliqua. Ut enim ad minim veniam
                                     </p>
                                     <div class="btn-box">
-                                        <a href="" class="btn-1"> Read more </a>
-                                        <a href="" class="btn-2">Get A Quote</a>
+                                        <a th:href="@{/product/all}" class="btn-1"> All product </a>
+                                        <a sec:authorize="isAuthenticated()" th:href="@{/product/add}" class="btn-2">Add product</a>
                                     </div>
                                 </div>
                             </div>

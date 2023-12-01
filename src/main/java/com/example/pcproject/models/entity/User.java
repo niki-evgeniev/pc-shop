@@ -9,19 +9,19 @@ import java.time.LocalDate;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String name;
 
-    @Column(name = "username")
+    @Column(name = "username",unique = true, nullable = false)
     private String username;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password",nullable = false)
     private String password;
 
-    @Column(name = "create_on")
+    @Column(name = "create_on",nullable = false)
     private LocalDate createOn;
 
     @ManyToOne
