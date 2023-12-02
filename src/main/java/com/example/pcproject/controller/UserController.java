@@ -1,15 +1,14 @@
 package com.example.pcproject.controller;
 
+import com.example.pcproject.Service.ReCaptchaService;
 import com.example.pcproject.Service.UserService;
 import com.example.pcproject.models.bindingModels.LoginUserBindingModel;
+import com.example.pcproject.models.bindingModels.ReCaptchaResponseDTO;
 import com.example.pcproject.models.bindingModels.RegisterUserBindingModel;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
     private final UserService userService;
+    private final ReCaptchaService reCaptchaService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ReCaptchaService reCaptchaService) {
         this.userService = userService;
+        this.reCaptchaService = reCaptchaService;
     }
 
 
@@ -30,7 +31,15 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ModelAndView register(@Valid RegisterUserBindingModel registerUserBindingModel, BindingResult bindingResult) {
+    public ModelAndView register(@Valid RegisterUserBindingModel registerUserBindingModel, BindingResult bindingResult,
+                                 @RequestParam("g-recaptcha-response") String reCaptchaResponse) {
+
+        boolean isRecaptchaCommit = !reCaptchaService.verify(reCaptchaResponse).map(ReCaptchaResponseDTO::isSuccess)
+                .orElse(false);
+
+        if (isRecaptchaCommit){
+            return new ModelAndView("redirect:/");
+        }
 
         if (!bindingResult.hasErrors()) {
             boolean isRegisterSuccess = userService.registerUser(registerUserBindingModel);

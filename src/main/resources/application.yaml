@@ -36,11 +36,16 @@ spring:
   #cloud-name:
 pcproject:
   remember.me.key: ${REMEMBER_ME_KEY:12345}
+
+google.recaptcha:
+  site: ${RECAPTCHA_SITE_KEY:6LdQiCMpAAAAAPK9RNNseb-zstNpm5WQw1P-QUWq}
+  secret: ${RECAPTCHA_SITE_SECRET:6LdQiCMpAAAAAMryrHhQB-wpFMwaVxjU0lCq3XLG}
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 #    org.springframework.security: TRACE
+
 
 
 
