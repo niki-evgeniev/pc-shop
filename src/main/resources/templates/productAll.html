@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -33,7 +34,8 @@
                                 <figure class="itemside align-items-center">
                                     <div class="aside"><img th:src="*{imageUrl}" class="img-sm" alt="Product img"></div>
                                     <figcaption class="info">
-                                        <a href="#" class="title text-dark" data-abc="true" th:text="*{summary()}">Tshirt with round nect</a>
+                                        <a href="#" class="title text-dark" data-abc="true" th:text="*{summary()}">Tshirt
+                                            with round nect</a>
                                         <p class="text-muted small"></p>
                                         <p class="text-muted small" th:text="*{computer}">SIZE: L</p>
                                         <p class="text-muted small" th:text="*{typeToUse}">SIZE: L</p>
@@ -46,8 +48,13 @@
                                 </var>
                                 </div>
                             </td>
-                            <td class="text-right d-none d-md-block">
-                                <a href="" class="btn btn-light" data-abc="true" th:href="@{/product/{id}(id = *{id})}"> Details</a></td>
+                            <td class="text-right d-none d-md-block" sec:authorize="isAuthenticated()">
+                                    <a href="" class="btn btn-light" data-abc="true"
+                                       th:href="@{/product/{id}(id = *{id})}"> Details</a></td>
+                            <td class="text-right d-none d-md-block" sec:authorize="!isAuthenticated()">
+                                <a href="" class="btn btn-light" data-abc="true"
+                                   th:href="@{/users/login}"> LoginToSeeDetails</a></td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -59,15 +66,18 @@
     <nav aria-label="Page navigation" class="d-flex justify-content-center">
         <ul class="pagination">
             <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:if="${productAll.hasPrevious()}" th:href="@{/product/all(page=${productAll.previousPageable().pageNumber})}">Previous</a>
+                <a class="page-link" th:if="${productAll.hasPrevious()}"
+                   th:href="@{/product/all(page=${productAll.previousPageable().pageNumber})}">Previous</a>
             </li>
 
-            <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}" th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
+            <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"
+                th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
                 <a class="page-link" th:href="@{/product/all(page=${i})}" th:text="${i + 1}"></a>
             </li>
 
             <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:if="${productAll.hasNext()}" th:href="@{/product/all(page=${productAll.nextPageable().pageNumber})}">Next</a>
+                <a class="page-link" th:if="${productAll.hasNext()}"
+                   th:href="@{/product/all(page=${productAll.nextPageable().pageNumber})}">Next</a>
             </li>
         </ul>
     </nav>
@@ -76,4 +86,5 @@
 <div>
     <footer th:replace="~{fragments/footer}"></footer>
 </div>
+<div th:replace="~{fragments/headerJs}"></div>
 </html>

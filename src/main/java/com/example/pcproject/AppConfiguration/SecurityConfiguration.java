@@ -2,17 +2,22 @@ package com.example.pcproject.AppConfiguration;
 
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Service.impl.pcShopUserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationDetailsSource;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfiguration {
     private final String rememberMeKey;
 
@@ -38,6 +43,7 @@ public class SecurityConfiguration {
                             .loginPage("/users/login")
                             .usernameParameter("username")
                             .passwordParameter("password")
+                            .authenticationDetailsSource(authenticationDetailsSource())
                             .defaultSuccessUrl("/", true)
                             .failureForwardUrl("/users/login-error");
                 }
@@ -73,5 +79,10 @@ public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
+    }
+
+    @Bean
+    public AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> authenticationDetailsSource() {
+        return WebAuthenticationDetails::new;
     }
 }
