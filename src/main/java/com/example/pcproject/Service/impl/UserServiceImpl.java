@@ -1,13 +1,15 @@
 package com.example.pcproject.Service.impl;
 
 
+import com.example.pcproject.Repository.IpUserRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Repository.UserRoleRepository;
+import com.example.pcproject.Service.IpAddressService;
 import com.example.pcproject.Service.UserService;
-import com.example.pcproject.models.bindingModels.RegisterUserBindingModel;
+import com.example.pcproject.models.bindingModels.RegisterUserDTO;
+import com.example.pcproject.models.entity.IpUser;
 import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.entity.UserRole;
-import com.example.pcproject.models.eunums.RoleType;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,43 +25,63 @@ public class UserServiceImpl implements UserService {
     private final UserRoleRepository userRoleRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final IpAddressService ipAddressService;
+    private final IpUserRepository ipUserRepository;
 
 
     public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository,
-                           ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+                           ModelMapper modelMapper, PasswordEncoder passwordEncoder,
+                           IpAddressService ipAddressService, IpUserRepository ipUserRepository) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
-
+        this.ipAddressService = ipAddressService;
+        this.ipUserRepository = ipUserRepository;
     }
 
     @Override
-    public boolean registerUser(RegisterUserBindingModel registerUserBindingModel) {
-        User user = userRepository.findByUsername(registerUserBindingModel.getUsername()).orElse(null);
+    public boolean registerUser(RegisterUserDTO registerUserDTO) {
+        User user = userRepository.findByUsername(registerUserDTO.getUsername()).orElse(null);
 
-        if (user == null && registerUserBindingModel.getPassword().equals(registerUserBindingModel.getConfirmPassword())) {
-            User userRegistration = modelMapper.map(registerUserBindingModel, User.class);
+        if (user == null && registerUserDTO.getPassword().equals(registerUserDTO.getConfirmPassword())) {
+
+            User userRegistration = modelMapper.map(registerUserDTO, User.class);
             userRegistration.setCreateOn(LocalDate.now());
-            userRegistration.setPassword(passwordEncoder.encode(registerUserBindingModel.getPassword()));
+            userRegistration.setPassword(passwordEncoder.encode(registerUserDTO.getPassword()));
+
+            List<UserRole> all = userRoleRepository.findAll();
 
             if (userRepository.count() == 0) {
-                Optional<UserRole> roleAdmin = userRoleRepository.findById(1L);
+                userRegistration.setRoles(all);
 
-                if (roleAdmin.isPresent()) {
-                    userRegistration.setRole(roleAdmin.get());
-                }
             } else {
-                Optional<UserRole> roleUser = userRoleRepository.findById(3L);
+                userRegistration.setRoles(List.of(all.get(1), all.get(2)));
 
-                if (roleUser.isPresent()) {
-                    userRegistration.setRole(roleUser.get());
-                }
             }
+
+            IpUser ipUser = new IpUser();
+            getIp(ipUser);
+            userRegistration.setIpUser(List.of(ipUser));
+
             userRepository.save(userRegistration);
             return true;
+
         }
         return false;
     }
 
+    private void getIp(IpUser ipUser) {
+        Optional<IpUser> byIp = ipUserRepository.findByIp(ipAddressService.getIp());
+
+
+        if (byIp.isEmpty()) {
+            ipUser.setIp(ipAddressService.getIp());
+            ipUserRepository.save(ipUser);
+        } else {
+            ipUser.setId(byIp.get().getId());
+            ipUser.setIp(byIp.get().getIp());
+
+        }
+    }
 }

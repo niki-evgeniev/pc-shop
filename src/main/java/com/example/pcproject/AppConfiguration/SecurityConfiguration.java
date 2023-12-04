@@ -2,6 +2,7 @@ package com.example.pcproject.AppConfiguration;
 
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Service.impl.pcShopUserService;
+import com.example.pcproject.models.eunums.RoleType;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -39,6 +40,7 @@ public class SecurityConfiguration {
                         .requestMatchers( "/product/all").permitAll()
                         .requestMatchers( "/contact").permitAll()
                         .requestMatchers( "/api/send").permitAll()
+                        .requestMatchers( "/admin/user").hasRole(RoleType.ADMIN.name())
                         .anyRequest().authenticated()
 
 

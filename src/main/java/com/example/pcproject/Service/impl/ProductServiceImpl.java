@@ -5,8 +5,8 @@ import com.example.pcproject.Repository.ProductRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Service.ProductService;
 import com.example.pcproject.Service.aop.ExecutionTime;
-import com.example.pcproject.models.bindingModels.ProductAllBindingModel;
-import com.example.pcproject.models.bindingModels.ProductBindingModel;
+import com.example.pcproject.models.bindingModels.ProductAllDTO;
+import com.example.pcproject.models.bindingModels.ProductDTO;
 import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
 import com.example.pcproject.models.entity.Model;
 import com.example.pcproject.models.entity.Product;
@@ -17,9 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,10 +37,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean addProduct(ProductBindingModel productBindingModel, UserDetails userDetails) {
+    public boolean addProduct(ProductDTO productDTO, UserDetails userDetails) {
 
-        Product newProduct = modelMapper.map(productBindingModel, Product.class);
-        Model model = modelRepository.findById(productBindingModel.getModelId())
+        Product newProduct = modelMapper.map(productDTO, Product.class);
+        Model model = modelRepository.findById(productDTO.getModelId())
                 .orElseThrow(() -> new IllegalArgumentException("Model not found"));
         newProduct.setModel(model);
         newProduct.setCreated(LocalDateTime.now());
@@ -58,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
             time = 2000L
     )
     @Override
-    public Page<ProductAllBindingModel> getAllProduct(Pageable pageable) {
+    public Page<ProductAllDTO> getAllProduct(Pageable pageable) {
         return productRepository.findAll(pageable)
                 .map(ProductServiceImpl::mapAsSummary);
     }
@@ -109,8 +107,8 @@ public class ProductServiceImpl implements ProductService {
         return productDetailsDTO;
     }
 
-    private static ProductAllBindingModel mapAsSummary(Product product) {
-        return new ProductAllBindingModel(
+    private static ProductAllDTO mapAsSummary(Product product) {
+        return new ProductAllDTO(
                 product.getId().toString(),
                 product.getModel().getBrand().getName(),
                 product.getModel().getName(),

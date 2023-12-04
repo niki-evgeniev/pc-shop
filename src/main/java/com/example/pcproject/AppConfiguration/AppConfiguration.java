@@ -1,6 +1,6 @@
 package com.example.pcproject.AppConfiguration;
 
-import com.example.pcproject.models.bindingModels.ProductBindingModel;
+import com.example.pcproject.models.bindingModels.ProductDTO;
 import com.example.pcproject.models.entity.Product;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -25,7 +25,7 @@ public class AppConfiguration {
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
 
-        modelMapper.addMappings(new PropertyMap<ProductBindingModel, Product>() {
+        modelMapper.addMappings(new PropertyMap<ProductDTO, Product>() {
             @Override
             protected void configure() {
                 skip(destination.getId());

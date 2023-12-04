@@ -1,7 +1,7 @@
 package com.example.pcproject.Service;
 
-import com.example.pcproject.models.bindingModels.ProductAllBindingModel;
-import com.example.pcproject.models.bindingModels.ProductBindingModel;
+import com.example.pcproject.models.bindingModels.ProductAllDTO;
+import com.example.pcproject.models.bindingModels.ProductDTO;
 import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,9 +11,9 @@ import java.util.Optional;
 
 public interface ProductService {
 
-    boolean addProduct(ProductBindingModel productBindingModel, UserDetails user);
+    boolean addProduct(ProductDTO productDTO, UserDetails user);
 
-    Page<ProductAllBindingModel> getAllProduct(Pageable pageable);
+    Page<ProductAllDTO> getAllProduct(Pageable pageable);
 
     Optional<ProductDetailsDTO> getDetails(Long id);
 

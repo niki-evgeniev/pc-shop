@@ -1,7 +1,7 @@
 package com.example.pcproject.controller;
 
 import com.example.pcproject.Service.ProductService;
-import com.example.pcproject.models.bindingModels.ProductAllBindingModel;
+import com.example.pcproject.models.bindingModels.ProductAllDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -27,7 +27,7 @@ public class ProductsController {
             Pageable pageable){
 
         ModelAndView modelAndView = new ModelAndView("productAll");
-        Page<ProductAllBindingModel> allProduct = productService.getAllProduct(pageable);
+        Page<ProductAllDTO> allProduct = productService.getAllProduct(pageable);
         modelAndView.addObject("productAll", allProduct);
 
         return modelAndView;

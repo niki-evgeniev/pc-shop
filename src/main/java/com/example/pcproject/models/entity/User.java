@@ -4,6 +4,8 @@ import com.example.pcproject.models.eunums.RoleType;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,8 +26,20 @@ public class User extends BaseEntity {
     @Column(name = "create_on",nullable = false)
     private LocalDate createOn;
 
-    @ManyToOne
-    private UserRole role;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<UserRole> roles = new ArrayList<>();
+
+    @ManyToMany()
+    @JoinTable(
+            name = "users_ip",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "ip_id"))
+    private List<IpUser> ipUser = new ArrayList<>();
 
     public User() {
     }
@@ -70,11 +84,19 @@ public class User extends BaseEntity {
         this.createOn = createOn;
     }
 
-    public UserRole getRole() {
-        return role;
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setRole(UserRole role) {
-        this.role = role;
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
+    }
+
+    public List<IpUser> getIpUser() {
+        return ipUser;
+    }
+
+    public void setIpUser(List<IpUser> ipUser) {
+        this.ipUser = ipUser;
     }
 }

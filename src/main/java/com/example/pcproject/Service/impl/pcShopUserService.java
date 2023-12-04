@@ -2,7 +2,7 @@ package com.example.pcproject.Service.impl;
 
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.models.entity.User;
-import com.example.pcproject.models.eunums.RoleType;
+import com.example.pcproject.models.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,12 +30,12 @@ public class pcShopUserService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
-                .authorities(Arrays.stream(RoleType.values()).map(pcShopUserService::map).toList())
+                .authorities(user.getRoles().stream().map(pcShopUserService::map).toList())
                 .build();
     }
 
-    private static GrantedAuthority map(RoleType roleType) {
-        return new SimpleGrantedAuthority("ROLE_" + roleType.name());
+    private static GrantedAuthority map(UserRole userRole) {
+        return new SimpleGrantedAuthority("ROLE_" + userRole.getRoles().name());
 
     }
 }

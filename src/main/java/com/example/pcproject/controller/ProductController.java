@@ -3,7 +3,7 @@ package com.example.pcproject.controller;
 import com.example.pcproject.Service.BrandService;
 import com.example.pcproject.Service.ProductService;
 import com.example.pcproject.Service.exception.ObjectNotFoundException;
-import com.example.pcproject.models.bindingModels.ProductBindingModel;
+import com.example.pcproject.models.bindingModels.ProductDTO;
 import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -35,11 +35,11 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public ModelAndView add(@Valid ProductBindingModel productBindingModel, BindingResult bindingResult
+    public ModelAndView add(@Valid ProductDTO productDTO, BindingResult bindingResult
             , @AuthenticationPrincipal UserDetails user) {
 
         if (!bindingResult.hasErrors()) {
-            boolean productIsAdded = productService.addProduct(productBindingModel, user);
+            boolean productIsAdded = productService.addProduct(productDTO, user);
             if (productIsAdded) {
                 return new ModelAndView("redirect:/");
             }
@@ -49,8 +49,8 @@ public class ProductController {
     }
 
     @ModelAttribute
-    ProductBindingModel productBindingModel() {
-        return new ProductBindingModel();
+    ProductDTO productDTO() {
+        return new ProductDTO();
     }
 
 

@@ -12,8 +12,6 @@ public class UserRole extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private RoleType roles;
 
-    @OneToMany(mappedBy = "role")
-    private List<User> user;
 
     public UserRole() {
     }
@@ -26,11 +24,5 @@ public class UserRole extends BaseEntity {
         this.roles = roles;
     }
 
-    public List<User> getUser() {
-        return user;
-    }
 
-    public void setUser(List<User> user) {
-        this.user = user;
-    }
 }

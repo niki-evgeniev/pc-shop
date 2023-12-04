@@ -2,9 +2,9 @@ package com.example.pcproject.controller;
 
 import com.example.pcproject.Service.ReCaptchaService;
 import com.example.pcproject.Service.UserService;
-import com.example.pcproject.models.bindingModels.LoginUserBindingModel;
+import com.example.pcproject.models.bindingModels.LoginUserDTO;
 import com.example.pcproject.models.bindingModels.ReCaptchaResponseDTO;
-import com.example.pcproject.models.bindingModels.RegisterUserBindingModel;
+import com.example.pcproject.models.bindingModels.RegisterUserDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -31,7 +31,7 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ModelAndView register(@Valid RegisterUserBindingModel registerUserBindingModel, BindingResult bindingResult,
+    public ModelAndView register(@Valid RegisterUserDTO registerUserDTO, BindingResult bindingResult,
                                  @RequestParam("g-recaptcha-response") String reCaptchaResponse) {
 
         boolean isRecaptchaCommit = !reCaptchaService.verify(reCaptchaResponse).map(ReCaptchaResponseDTO::isSuccess)
@@ -42,7 +42,7 @@ public class UserController {
         }
 
         if (!bindingResult.hasErrors()) {
-            boolean isRegisterSuccess = userService.registerUser(registerUserBindingModel);
+            boolean isRegisterSuccess = userService.registerUser(registerUserDTO);
             if (isRegisterSuccess) {
                 return new ModelAndView("login");
             }
@@ -66,12 +66,12 @@ public class UserController {
     }
 
     @ModelAttribute
-    RegisterUserBindingModel registerUserBindingModel() {
-        return new RegisterUserBindingModel();
+    RegisterUserDTO registerUserDTO() {
+        return new RegisterUserDTO();
     }
 
     @ModelAttribute
-    LoginUserBindingModel loginUserBindingModel() {
-        return new LoginUserBindingModel();
+    LoginUserDTO loginUserDTO() {
+        return new LoginUserDTO();
     }
 }

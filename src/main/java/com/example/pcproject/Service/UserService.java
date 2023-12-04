@@ -1,10 +1,9 @@
 package com.example.pcproject.Service;
 
-import com.example.pcproject.models.bindingModels.LoginUserBindingModel;
-import com.example.pcproject.models.bindingModels.RegisterUserBindingModel;
+import com.example.pcproject.models.bindingModels.RegisterUserDTO;
 
 public interface UserService {
 
-    boolean registerUser(RegisterUserBindingModel registerUserBindingModel);
+    boolean registerUser(RegisterUserDTO registerUserDTO);
 
 }

@@ -3,8 +3,7 @@ function sendMessage() {
     const email = document.getElementById('email').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const message = document.getElementById('message').value;
-    // const csrfToken = document.querySelector("meta[name='_csrf']").getAttribute("content");
-    // const csrfHeader = document.querySelector("meta[name='_csrf_header']").getAttribute("content");
+    debugger;
 
     const data = {
         fullName: fullName,
