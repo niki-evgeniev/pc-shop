@@ -22,4 +22,10 @@ public class HomeController {
         return new ModelAndView("index");
     }
 
+    @GetMapping("/contact")
+    public String contact() {
+
+        return "contact";
+    }
+
 }

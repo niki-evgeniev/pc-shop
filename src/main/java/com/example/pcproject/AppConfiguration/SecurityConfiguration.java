@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableMethodSecurity
@@ -35,7 +37,10 @@ public class SecurityConfiguration {
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
                         .requestMatchers("/service/service").permitAll()
                         .requestMatchers( "/product/all").permitAll()
+                        .requestMatchers( "/contact").permitAll()
+                        .requestMatchers( "/api/send").permitAll()
                         .anyRequest().authenticated()
+
 
         ).formLogin(
                 formLogin -> {
@@ -64,8 +69,10 @@ public class SecurityConfiguration {
         ).csrf(
                 csfr -> {
                     csfr.ignoringRequestMatchers("/fonts/poppins/poppins-v5-latin-italic.ttf");
+                    csfr.ignoringRequestMatchers(new AntPathRequestMatcher("/api/send/**"));
                 }
         );
+
 
 
         return httpSecurity.build();
