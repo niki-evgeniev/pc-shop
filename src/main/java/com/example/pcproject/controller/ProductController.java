@@ -55,9 +55,10 @@ public class ProductController {
 
 
     @GetMapping("/{id}")
-    public ModelAndView details(@PathVariable Long id) {
+    public ModelAndView details(@PathVariable("id") Long id,
+                                @AuthenticationPrincipal UserDetails userDetails) {
 
-        ProductDetailsDTO productDetails = productService.getDetails(id)
+        ProductDetailsDTO productDetails = productService.getDetails(id , userDetails)
                 .orElseThrow(() -> new ObjectNotFoundException("Offer details not found"));
         ModelAndView modelAndView = new ModelAndView("details");
         modelAndView.addObject("productDetails", productDetails);
@@ -66,7 +67,7 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public ModelAndView delete(@PathVariable Long id) {
+    public ModelAndView delete(@PathVariable("id") Long id) {
 
         productService.soldProduct(id);
 

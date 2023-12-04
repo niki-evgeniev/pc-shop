@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SoftUni Project Details</title>
-    <link rel='stylesheet' href='/css/bootstrapDetails.css'>
+<!--    <link rel='stylesheet' href='/css/bootstrapDetails.css'>-->
     <link rel="stylesheet" type="text/css" href="/css/StyleDetails.css"/>
     <div th:replace="~{fragments/head}"></div>
 </head>
@@ -22,9 +22,9 @@
 
             <div class="project-info-box">
                 <p><b>Type:</b>  <th:block th:text="*{computerType}">123</th:block></p>
-                <p><b>Designer:</b> <th:block th:text="*{typeToUse}">123</th:block></p>
-                <p><b>Date:</b> <th:block th:text="*{year}">123</th:block></p>
-                <p><b>Tools:</b> Illustrator</p>
+                <p><b>Best for:</b> <th:block th:text="*{typeToUse}">123</th:block></p>
+                <p><b>Year:</b> <th:block th:text="*{year}">123</th:block></p>
+                <p><b>Created:</b>  <th:block th:text="*{created}"> date </th:block> </p>
                 <p class="mb-0"><b>Price:</b> <th:block th:text="*{price} + ' $' ">123</th:block></p>
             </div><!-- / project-info-box -->
 
@@ -37,7 +37,8 @@
                 <p><b>Seller Username:</b> <th:block th:text="*{seller}">123</th:block></p>
                 <p><b>Contact Number:</b> <th:block th:text="*{phoneNumber}">123</th:block></p>
                 <div class="card-body" >
-                    <form sec:authorize="isAuthenticated()" th:method="DELETE"
+                    <form th:if="*{isOwner()}"
+                          th:method="DELETE"
                           th:action="@{/product/{id}(id = *{id})}">
                         <input type="submit"  value="SOLD" class="btn btn-light" />
                     </form>

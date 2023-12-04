@@ -136,4 +136,6 @@ public class Product extends BaseEntity {
     public void setTypeToUse(TypeToUse typeToUse) {
         this.typeToUse = typeToUse;
     }
+
+
 }

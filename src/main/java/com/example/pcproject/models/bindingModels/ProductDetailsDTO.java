@@ -4,6 +4,8 @@ import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.TypeToUse;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ProductDetailsDTO {
 
@@ -25,9 +27,13 @@ public class ProductDetailsDTO {
 
     private String seller;
 
+    private LocalDateTime created;
+
     private ComputerType computerType;
 
     private TypeToUse typeToUse;
+
+    private boolean isOwner;
 
 
 
@@ -120,6 +126,22 @@ public class ProductDetailsDTO {
 
     public void setSeller(String seller) {
         this.seller = seller;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public boolean isOwner() {
+        return isOwner;
+    }
+
+    public void setOwner(boolean owner) {
+        isOwner = owner;
     }
 
     public String summary() {

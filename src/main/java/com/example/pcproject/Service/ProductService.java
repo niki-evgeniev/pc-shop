@@ -15,7 +15,7 @@ public interface ProductService {
 
     Page<ProductAllDTO> getAllProduct(Pageable pageable);
 
-    Optional<ProductDetailsDTO> getDetails(Long id);
+    Optional<ProductDetailsDTO> getDetails(Long id, UserDetails userDetails);
 
     void cleanExpiredProduct();
 

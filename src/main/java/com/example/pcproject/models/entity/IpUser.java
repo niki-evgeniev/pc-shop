@@ -22,4 +22,5 @@ public class IpUser extends BaseEntity{
     public void setIp(String ip) {
         this.ip = ip;
     }
+
 }

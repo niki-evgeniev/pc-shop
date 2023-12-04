@@ -8,9 +8,8 @@ import com.example.pcproject.Service.aop.ExecutionTime;
 import com.example.pcproject.models.bindingModels.ProductAllDTO;
 import com.example.pcproject.models.bindingModels.ProductDTO;
 import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
-import com.example.pcproject.models.entity.Model;
-import com.example.pcproject.models.entity.Product;
-import com.example.pcproject.models.entity.User;
+import com.example.pcproject.models.entity.*;
+import com.example.pcproject.models.eunums.RoleType;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -66,8 +66,9 @@ public class ProductServiceImpl implements ProductService {
             time = 1000L
     )
     @Override
-    public Optional<ProductDetailsDTO> getDetails(Long id) {
-        return productRepository.findById(id).map(ProductServiceImpl::mapAsDetails);
+    public Optional<ProductDetailsDTO> getDetails(Long id, UserDetails userDetails) {
+        return productRepository.findById(id)
+                .map(p -> this.mapAsDetails(p, userDetails));
     }
 
     @Override
@@ -89,7 +90,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-    private static ProductDetailsDTO mapAsDetails(Product product) {
+    private  ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
 
         ProductDetailsDTO productDetailsDTO = new ProductDetailsDTO();
         productDetailsDTO.setId(product.getId());
@@ -103,8 +104,31 @@ public class ProductServiceImpl implements ProductService {
         productDetailsDTO.setComputerType(product.getComputerType());
         productDetailsDTO.setTypeToUse(product.getTypeToUse());
         productDetailsDTO.setSeller(product.getSeller().getUsername());
-
+        productDetailsDTO.setCreated(product.getCreated());
+        productDetailsDTO.setOwner(isOwner(product, userDetails));
         return productDetailsDTO;
+    }
+
+
+    private boolean isOwner(Product product, UserDetails userDetails) {
+        if (userDetails == null) {
+            return false;
+        }
+        User users = userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(() -> new IllegalArgumentException("User dont exist"));
+
+        if (isAdmin(users)){
+            return true;
+        }
+        return Objects.equals(product.getSeller().getId(), users.getId());
+    }
+
+
+    private boolean isAdmin(User user) {
+        return user.getRoles()
+                .stream()
+                .map(UserRole::getRoles)
+                .anyMatch(r -> RoleType.ADMIN == r);
     }
 
     private static ProductAllDTO mapAsSummary(Product product) {

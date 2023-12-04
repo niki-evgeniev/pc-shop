@@ -99,4 +99,6 @@ public class User extends BaseEntity {
     public void setIpUser(List<IpUser> ipUser) {
         this.ipUser = ipUser;
     }
+
+
 }
