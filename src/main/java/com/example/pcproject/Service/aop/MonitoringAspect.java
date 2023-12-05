@@ -21,7 +21,7 @@ public class MonitoringAspect {
     @Around("PointCuts.executionTime()")
     public Object logTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         ExecutionTime executionTime = getAnnotation(proceedingJoinPoint);
-        Long time = executionTime.time();
+        long time = executionTime.time();
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();

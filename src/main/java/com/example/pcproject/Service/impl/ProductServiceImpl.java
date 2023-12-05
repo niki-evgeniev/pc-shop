@@ -47,14 +47,13 @@ public class ProductServiceImpl implements ProductService {
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         newProduct.setSeller(user);
+
         productRepository.save(newProduct);
 
         return true;
     }
 
-    @ExecutionTime(
-            time = 2000L
-    )
+    @ExecutionTime(time = 2000L)
     @Override
     public Page<ProductAllDTO> getAllProduct(Pageable pageable) {
         return productRepository.findAll(pageable)
@@ -62,9 +61,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-    @ExecutionTime(
-            time = 1000L
-    )
+    @ExecutionTime(time = 1000L)
     @Override
     public Optional<ProductDetailsDTO> getDetails(Long id, UserDetails userDetails) {
         return productRepository.findById(id)
@@ -90,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-    private  ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
+    private ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
 
         ProductDetailsDTO productDetailsDTO = new ProductDetailsDTO();
         productDetailsDTO.setId(product.getId());
@@ -117,7 +114,7 @@ public class ProductServiceImpl implements ProductService {
         User users = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("User dont exist"));
 
-        if (isAdmin(users)){
+        if (isAdmin(users)) {
             return true;
         }
         return Objects.equals(product.getSeller().getId(), users.getId());

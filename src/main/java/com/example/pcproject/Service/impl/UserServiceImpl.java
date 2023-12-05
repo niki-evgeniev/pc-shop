@@ -50,15 +50,7 @@ public class UserServiceImpl implements UserService {
             userRegistration.setCreateOn(LocalDate.now());
             userRegistration.setPassword(passwordEncoder.encode(registerUserDTO.getPassword()));
 
-            List<UserRole> all = userRoleRepository.findAll();
-
-            if (userRepository.count() == 0) {
-                userRegistration.setRoles(all);
-
-            } else {
-                userRegistration.setRoles(List.of(all.get(1), all.get(2)));
-
-            }
+            getRoles(userRegistration);
 
             IpUser ipUser = new IpUser();
             getIp(ipUser);
@@ -71,9 +63,20 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    private void getRoles(User user) {
+        List<UserRole> all = userRoleRepository.findAll();
+
+        if (userRepository.count() == 0) {
+            user.setRoles(all);
+
+        } else {
+            user.setRoles(List.of(all.get(1), all.get(2)));
+
+        }
+    }
+
     private void getIp(IpUser ipUser) {
         Optional<IpUser> byIp = ipUserRepository.findByIp(ipAddressService.getIp());
-
 
         if (byIp.isEmpty()) {
             ipUser.setIp(ipAddressService.getIp());
