@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>SoftUni Project Details</title>
+<!--    <link rel='stylesheet' href='/css/bootstrapDetails.css'>-->
+    <link rel="stylesheet" type="text/css" href="/css/StyleDetails.css"/>
+    <div th:replace="~{fragments/head}"></div>
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container">
+    <div class="row" th:object="${adminDetails}" >
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5 >Admin details</h5>
+                <p class="mb-0" th:text="'Username: ' + *{username}" >Vivamus</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p><b>Register on:</b>  <th:block th:text="*{createOn}">123</th:block></p>
+                <p><b>Email:</b> <th:block th:text="*{email}">123</th:block></p>
+                <p th:each="role : ${adminDetails.roles}"><b>Role:</b> <th:block  th:text="${role.getRoles().name()}">123</th:block></p>
+                <p th:each="ip : ${adminDetails.ip}"><b>IP:</b>  <th:block th:text="${ip.ip}"> date </th:block> </p>
+            </div><!-- / project-info-box -->
+
+
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="" alt="project-image" class="rounded">
+            <div class="project-info-box">
+                <p><b>Seller Username:</b> >123</p>
+                <div class="card-body" th:if="${adminDetails.getRoles().size() == 2}">
+                    <form
+                            th:method="POST"
+                            th:action="@{/admin/addAdmin/{id}(id = *{id})}">
+                        <input type="submit"  value="ADD ADMIN" class="btn btn-warning" />
+                    </form>
+                </div>
+                <div class="card-body" th:if="${adminDetails.getRoles().size() == 3}">
+                    <form
+                            th:method="POST"
+                            th:action="@{/admin/removeAdmin/{id}(id = *{id})}">
+                        <input type="submit"  value="REMOVE ADMIN" class="btn btn-warning" />
+                    </form>
+                </div>
+                <p><b>DELETE USER:</b> <th:block  th:text="${adminDetails.username}"></th:block> </p>
+                <div class="card-body">
+                    <form
+                            th:method="DELETE"
+                            th:action="@{/product/{id}(id = *{id})}">
+                        <input type="submit"  value="DELETE USER" class="btn btn-danger" />
+                    </form>
+                </div>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+    </div>
+</div>
+</body>
+</html>

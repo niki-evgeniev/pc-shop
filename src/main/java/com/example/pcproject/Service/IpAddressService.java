@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface IpAddressService {
 
    String getIp();
+
    List<IpUser> getRegistrationIp();
 }

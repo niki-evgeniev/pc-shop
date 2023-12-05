@@ -42,7 +42,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean registerUser(RegisterUserDTO registerUserDTO) {
-        User user = userRepository.findByUsername(registerUserDTO.getUsername()).orElse(null);
+        User user = userRepository.findByUsername(registerUserDTO.getUsername())
+                .orElse(null);
 
         if (user == null && registerUserDTO.getPassword().equals(registerUserDTO.getConfirmPassword())) {
 
@@ -84,7 +85,6 @@ public class UserServiceImpl implements UserService {
         } else {
             ipUser.setId(byIp.get().getId());
             ipUser.setIp(byIp.get().getIp());
-
         }
     }
 }
