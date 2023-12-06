@@ -4,12 +4,11 @@ import com.example.pcproject.Repository.IpUserRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Repository.UserRoleRepository;
 import com.example.pcproject.Service.AdminService;
-import com.example.pcproject.models.bindingModels.AdminDetailsDTO;
-import com.example.pcproject.models.bindingModels.AdminsAllInfoDTO;
+import com.example.pcproject.models.DTO.AdminDetailsDTO;
+import com.example.pcproject.models.DTO.AdminsAllInfoDTO;
 import com.example.pcproject.models.entity.IpUser;
 import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.entity.UserRole;
-import com.example.pcproject.models.eunums.RoleType;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

@@ -2,17 +2,13 @@ package com.example.pcproject.controller;
 
 import com.example.pcproject.Service.AdminService;
 import com.example.pcproject.Service.exception.ObjectNotFoundException;
-import com.example.pcproject.models.bindingModels.AdminDetailsDTO;
-import com.example.pcproject.models.bindingModels.AdminsAllInfoDTO;
+import com.example.pcproject.models.DTO.AdminDetailsDTO;
+import com.example.pcproject.models.DTO.AdminsAllInfoDTO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,6 +19,12 @@ public class AdminController {
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
+
+    @GetMapping("/admin-panel")
+    public ModelAndView adminPanel() {
+        return new ModelAndView("adminPanel");
+    }
+
 
     @GetMapping("/user")
     public ModelAndView users() {
@@ -47,19 +49,20 @@ public class AdminController {
         return modelAndView;
     }
 
-    @PostMapping("/addAdmin/{id}")
-    public ModelAndView addAdmin(@PathVariable("id") Long id) {
+    @PutMapping("/addAdmin/{id}")
+    public ModelAndView addAdminRole(@PathVariable("id") Long id) {
 
         adminService.addRoleAdmin(id);
 
         return new ModelAndView("redirect:/admin/user");
     }
 
-    @PostMapping("/removeAdmin/{id}")
-    public ModelAndView removeAdmin(@PathVariable("id") Long id) {
+    @PutMapping("/removeAdmin/{id}")
+    public ModelAndView removeAdminRole(@PathVariable("id") Long id) {
 
         adminService.removeRoleAdmin(id);
 
         return new ModelAndView("redirect:/admin/user");
     }
+
 }

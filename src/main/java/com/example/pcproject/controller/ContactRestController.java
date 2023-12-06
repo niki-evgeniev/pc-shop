@@ -1,6 +1,6 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.models.bindingModels.MessageDTO;
+import com.example.pcproject.models.DTO.MessageDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,7 @@ public class ContactRestController {
     public ResponseEntity<String> sendMessage(@RequestBody MessageDTO messageDTO) {
 
         System.out.println("HEREEEEEEEEEEEEEEEEEE");
+
         return ResponseEntity.status(HttpStatus.FOUND)
                 .location(URI.create("https://www.abv.bg/"))
                 .build();

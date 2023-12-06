@@ -5,9 +5,9 @@ import com.example.pcproject.Repository.ProductRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Service.ProductService;
 import com.example.pcproject.Service.aop.ExecutionTime;
-import com.example.pcproject.models.bindingModels.ProductAllDTO;
-import com.example.pcproject.models.bindingModels.ProductDTO;
-import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
+import com.example.pcproject.models.DTO.ProductAllDTO;
+import com.example.pcproject.models.DTO.ProductDTO;
+import com.example.pcproject.models.DTO.ProductDetailsDTO;
 import com.example.pcproject.models.entity.*;
 import com.example.pcproject.models.eunums.RoleType;
 import org.modelmapper.ModelMapper;
@@ -42,8 +42,14 @@ public class ProductServiceImpl implements ProductService {
         Product newProduct = modelMapper.map(productDTO, Product.class);
         Model model = modelRepository.findById(productDTO.getModelId())
                 .orElseThrow(() -> new IllegalArgumentException("Model not found"));
+
         newProduct.setModel(model);
+        if (newProduct.getImageUrl().isBlank()) {
+            newProduct.setImageUrl(model.getImageUrl());
+        }
+        newProduct.setComputerType(model.getComputerType());
         newProduct.setCreated(LocalDateTime.now());
+        newProduct.setComputerType(model.getComputerType());
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         newProduct.setSeller(user);
@@ -101,6 +107,7 @@ public class ProductServiceImpl implements ProductService {
         productDetailsDTO.setComputerType(product.getComputerType());
         productDetailsDTO.setTypeToUse(product.getTypeToUse());
         productDetailsDTO.setSeller(product.getSeller().getUsername());
+        productDetailsDTO.setTracesOfUse(product.getTracesOfUse());
         productDetailsDTO.setCreated(product.getCreated());
         productDetailsDTO.setOwner(isOwner(product, userDetails));
         return productDetailsDTO;

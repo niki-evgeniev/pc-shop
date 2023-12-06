@@ -6,7 +6,7 @@ import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Repository.UserRoleRepository;
 import com.example.pcproject.Service.IpAddressService;
 import com.example.pcproject.Service.UserService;
-import com.example.pcproject.models.bindingModels.RegisterUserDTO;
+import com.example.pcproject.models.DTO.RegisterUserDTO;
 import com.example.pcproject.models.entity.IpUser;
 import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.entity.UserRole;

@@ -11,7 +11,7 @@ public class ServiceController {
 
     @GetMapping("/service")
     public ModelAndView service() {
-        return new ModelAndView("service");
+        return new ModelAndView("adminPanel");
     }
 
 }

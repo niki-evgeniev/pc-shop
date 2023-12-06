@@ -2,9 +2,9 @@ package com.example.pcproject.controller;
 
 import com.example.pcproject.Service.ReCaptchaService;
 import com.example.pcproject.Service.UserService;
-import com.example.pcproject.models.bindingModels.LoginUserDTO;
-import com.example.pcproject.models.bindingModels.ReCaptchaResponseDTO;
-import com.example.pcproject.models.bindingModels.RegisterUserDTO;
+import com.example.pcproject.models.DTO.LoginUserDTO;
+import com.example.pcproject.models.DTO.ReCaptchaResponseDTO;
+import com.example.pcproject.models.DTO.RegisterUserDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

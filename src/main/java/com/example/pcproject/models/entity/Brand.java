@@ -11,7 +11,7 @@ public class Brand extends BaseEntity{
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "created")
+    @Column(name = "created", nullable = false)
     private LocalDateTime created;
 
     @Column(name = "modified")

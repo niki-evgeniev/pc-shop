@@ -1,6 +1,7 @@
 package com.example.pcproject.models.entity;
 
 import com.example.pcproject.models.eunums.ComputerType;
+import com.example.pcproject.models.eunums.TracesOfUse;
 import com.example.pcproject.models.eunums.TypeToUse;
 import jakarta.persistence.*;
 
@@ -14,7 +15,7 @@ public class Product extends BaseEntity {
     @Column(name = "description", columnDefinition = "text", nullable = false)
     private String description;
 
-    @Column(name = "computer_type")
+    @Column(name = "computer_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private ComputerType computerType;
 
@@ -42,9 +43,13 @@ public class Product extends BaseEntity {
     @ManyToOne
     private User seller;
 
-    @Column(name = "type_to_use")
+    @Column(name = "type_to_use", nullable = false)
     @Enumerated(EnumType.STRING)
     private TypeToUse typeToUse;
+
+    @Column(name = "traces_to_use", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TracesOfUse tracesOfUse;
 
     public Product() {
     }
@@ -137,5 +142,11 @@ public class Product extends BaseEntity {
         this.typeToUse = typeToUse;
     }
 
+    public TracesOfUse getTracesOfUse() {
+        return tracesOfUse;
+    }
 
+    public void setTracesOfUse(TracesOfUse tracesOfUse) {
+        this.tracesOfUse = tracesOfUse;
+    }
 }

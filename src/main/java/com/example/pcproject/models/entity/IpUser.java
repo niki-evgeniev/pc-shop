@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "ip_users")
 public class IpUser extends BaseEntity{
-    @Column(name = "ip")
+    @Column(name = "ip", nullable = false)
     private String ip;
 
 

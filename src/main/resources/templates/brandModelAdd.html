@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>SoftUni Project Product Add</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+
+    <div th:replace="~{fragments/head}"></div>
+</head>
+
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+
+<div class="container">
+    <h2 class="text-center text-white">Add Brand and Model</h2>
+    <form th:method="POST"
+          th:action="@{/admin/brandsAdd}"
+          th:object="${addBrandAndModelDTO}"
+          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="brand" class="text-white font-weight-bold">Brand Name</label>
+                <input id="brand"
+                       th:field="*{brand}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       placeholder="Enter Brand name"/>
+                <p th:if="${#fields.hasErrors('brand')}"
+                   th:errors="*{brand}"
+                   class="invalid-feedback errors alert alert-danger">
+                    Mileage in kilometers is required.
+                </p>
+            </div>
+
+            <div class="form-group col-md-6 mb-3">
+                <label for="name" class="text-white font-weight-bold">Model Name</label>
+                <input id="name"
+                       th:field="*{name}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       placeholder="Enter Model name"/>
+                <p th:if="${#fields.hasErrors('name')}"
+                   th:errors="*{name}"
+                   class="invalid-feedback errors alert alert-danger">
+                    Mileage in kilometers is required.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="startYear" class="text-white font-weight-bold">Start Year</label>
+                <input id="startYear"
+                       th:field="*{startYear}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       placeholder="Enter when model is start"/>
+                <p th:if="${#fields.hasErrors('startYear')}"
+                   th:errors="*{startYear}"
+                   class="invalid-feedback errors alert alert-danger">
+                    Mileage in kilometers is required.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="computerType">Computer Type</label>
+                <select id="computerType"
+                        name="computerType"
+                        th:field="*{computerType}"
+                        th:errorclass="is-invalid"
+                        class="form-control">
+                    <option value="">Select type</option>
+                    <option th:each="type : ${T(com.example.pcproject.models.eunums.ComputerType).values()}"
+                            th:text="${type}"
+                            th:value="${type}">
+                        Engine type
+                    </option>
+                </select>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Engine type is required.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="text-white font-weight-bold" for="imageUrl">Image URL</label>
+            <input id="imageUrl"
+                   th:field="*{imageUrl}"
+                   th:errorclass="is-invalid"
+                   type="url"
+                   class="form-control"
+                   placeholder="Put product image URL here">
+            <p class="invalid-feedback errors alert alert-danger">
+                Vehicle image URL is required.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Submit Product"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer th:replace="~{fragments/footer}"></footer>
+</div>
+<div th:replace="~{fragments/headerJs}"></div>
+
+</body>
+</html>

@@ -7,24 +7,21 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "models")
-public class Model extends BaseEntity{
-    @Column(name = "name")
+public class Model extends BaseEntity {
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "category")
+    @Column(name = "category", nullable = false)
     @Enumerated(EnumType.STRING)
     private ComputerType computerType;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
-    @Column(name = "start_year")
+    @Column(name = "start_year", nullable = false)
     private Integer startYear;
 
-    @Column(name = "end_year")
-    private Integer endYear;
-
-    @Column(name = "created")
+    @Column(name = "created", nullable = false)
     private LocalDateTime created;
 
     @Column(name = "modified")
@@ -66,14 +63,6 @@ public class Model extends BaseEntity{
 
     public void setStartYear(Integer startYear) {
         this.startYear = startYear;
-    }
-
-    public Integer getEndYear() {
-        return endYear;
-    }
-
-    public void setEndYear(Integer endYear) {
-        this.endYear = endYear;
     }
 
     public LocalDateTime getCreated() {

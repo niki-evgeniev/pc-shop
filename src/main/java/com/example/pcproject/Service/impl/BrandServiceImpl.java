@@ -1,11 +1,17 @@
 package com.example.pcproject.Service.impl;
 
 import com.example.pcproject.Repository.BrandRepository;
+import com.example.pcproject.Repository.ModelRepository;
 import com.example.pcproject.Service.BrandService;
-import com.example.pcproject.models.bindingModels.BrandDTO;
-import com.example.pcproject.models.bindingModels.ModelDTO;
+import com.example.pcproject.models.DTO.AddBrandAndModelDTO;
+import com.example.pcproject.models.DTO.BrandDTO;
+import com.example.pcproject.models.DTO.ModelDTO;
+import com.example.pcproject.models.entity.Brand;
+import com.example.pcproject.models.entity.Model;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,9 +20,15 @@ import java.util.stream.Collectors;
 public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
+    private final ModelMapper modelMapper;
+    private final ModelRepository modelRepository;
 
-    public BrandServiceImpl(BrandRepository brandRepository) {
+
+    public BrandServiceImpl(BrandRepository brandRepository, ModelMapper modelMapper,
+                            ModelRepository modelRepository) {
         this.brandRepository = brandRepository;
+        this.modelMapper = modelMapper;
+        this.modelRepository = modelRepository;
     }
 
     @Override
@@ -31,5 +43,28 @@ public class BrandServiceImpl implements BrandService {
                 ))
                 .sorted(Comparator.comparing(BrandDTO::getName))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean addBrand(AddBrandAndModelDTO addBrandAndModelDTO) {
+        LocalDateTime timeNow = LocalDateTime.now();
+
+        Brand nameBrand = brandRepository.findByName(addBrandAndModelDTO.getBrand());
+//        Model model = modelRepository.findByName(addBrandAndModelDTO.getName());
+
+
+        if (nameBrand == null) {
+            Brand newBrand = modelMapper.map(addBrandAndModelDTO, Brand.class);
+            newBrand.setCreated(timeNow);
+            newBrand.setName(addBrandAndModelDTO.getBrand());
+//            newBrand.setModels(List.of(model));
+
+            System.out.println();
+            brandRepository.save(newBrand);
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -2,7 +2,7 @@ package com.example.pcproject.Service.impl;
 
 import com.example.pcproject.AppConfiguration.ReCaptchaConfiguration;
 import com.example.pcproject.Service.ReCaptchaService;
-import com.example.pcproject.models.bindingModels.ReCaptchaResponseDTO;
+import com.example.pcproject.models.DTO.ReCaptchaResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

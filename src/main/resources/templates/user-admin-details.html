@@ -36,14 +36,14 @@
                 <p><b>Seller Username:</b> >123</p>
                 <div class="card-body" th:if="${adminDetails.getRoles().size() == 2}">
                     <form
-                            th:method="POST"
+                            th:method="PUT"
                             th:action="@{/admin/addAdmin/{id}(id = *{id})}">
                         <input type="submit"  value="ADD ADMIN" class="btn btn-warning" />
                     </form>
                 </div>
                 <div class="card-body" th:if="${adminDetails.getRoles().size() == 3}">
                     <form
-                            th:method="POST"
+                            th:method="PUT"
                             th:action="@{/admin/removeAdmin/{id}(id = *{id})}">
                         <input type="submit"  value="REMOVE ADMIN" class="btn btn-warning" />
                     </form>

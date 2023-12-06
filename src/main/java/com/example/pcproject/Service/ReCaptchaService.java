@@ -1,6 +1,6 @@
 package com.example.pcproject.Service;
 
-import com.example.pcproject.models.bindingModels.ReCaptchaResponseDTO;
+import com.example.pcproject.models.DTO.ReCaptchaResponseDTO;
 
 import java.util.Optional;
 

@@ -1,8 +1,7 @@
 package com.example.pcproject.Service;
 
-import com.example.pcproject.models.bindingModels.AdminDetailsDTO;
-import com.example.pcproject.models.bindingModels.AdminsAllInfoDTO;
-import com.example.pcproject.models.bindingModels.ProductDetailsDTO;
+import com.example.pcproject.models.DTO.AdminDetailsDTO;
+import com.example.pcproject.models.DTO.AdminsAllInfoDTO;
 
 import java.util.List;
 import java.util.Optional;

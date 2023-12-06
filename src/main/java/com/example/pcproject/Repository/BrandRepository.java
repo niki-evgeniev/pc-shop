@@ -9,6 +9,9 @@ import java.util.List;
 
 @Repository
 public interface BrandRepository extends JpaRepository<Brand, Long> {
+
     @Query("SELECT b FROM Brand b")
     List<Brand> getAllBrands();
+
+    Brand findByName(String name);
 }
