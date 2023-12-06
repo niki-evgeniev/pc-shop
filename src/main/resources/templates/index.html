@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/head}"></head>
+
+<body>
+<div class="hero_area">
+    <!-- header section strats -->
+    <div class="hero_bg_box">
+        <div class="img-box">
+            <img src="/images/hero-bg.jpg" alt="">
+        </div>
+    </div>
+
+    <header th:replace="~{fragments/header}"></header>
+    <!-- end header section -->
+
+    <!-- slider section -->
+    <section class=" slider_section ">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="detail-box">
+                                    <h1>
+                                        Welcome to pc-shop <br>
+                                        <span>
+                       used computer and laptop
+                      </span>
+                                    </h1>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod magna aliqua. Ut enim ad minim veniam
+                                    </p>
+                                    <div class="btn-box">
+                                        <!--                                        <a href="" class="btn-1"> Read more </a>-->
+                                        <!--                                        <a href="" class="btn-2">Get A Quote</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div sec:authorize="!isAuthenticated()" class="carousel-item ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="detail-box">
+                                    <h1>
+                                        Make Registration <br>
+                                        <span>
+                        Or login to see products
+                      </span>
+                                    </h1>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod magna aliqua. Ut enim ad minim veniam
+                                    </p>
+                                    <div  class="btn-box">
+                                        <a th:href="@{/users/register}" class="btn-1">Register</a>
+                                        <a th:href="@{/users/login}" class="btn-2">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="detail-box">
+                                    <h1>
+                                        See Product <br>
+                                        <span>
+                        Or Add Product
+                      </span>
+                                    </h1>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod magna aliqua. Ut enim ad minim veniam
+                                    </p>
+                                    <div class="btn-box">
+                                        <a th:href="@{/product/all}" class="btn-1"> All product </a>
+                                        <a sec:authorize="isAuthenticated()" th:href="@{/product/add}" class="btn-2">Add product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container idicator_container">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li sec:authorize="!isAuthenticated()" data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!-- end slider section -->
+</div>
+
+<!-- about section -->
+
+<section class="about_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 px-0">
+                <div class="img_container">
+                    <div class="img-box">
+                        <img src="images/about-img.jpg" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 px-0">
+                <div class="detail-box">
+                    <div class="heading_container ">
+                        <h2>
+                            Who Are We?
+                        </h2>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                        in reprehenderit in voluptate velit
+                    </p>
+                    <div class="btn-box">
+                        <a href="">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end about section -->
+
+<!-- info_section -->
+<div th:replace="~{fragments/info}"></div>
+<!-- end info_section -->
+
+
+<!-- footer section -->
+<footer th:replace="~{fragments/footer}"></footer>
+<!-- footer section -->
+
+<div th:replace="~{fragments/headerJs}"></div>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <div th:replace="~{fragments/head}"></div>
+  <link href="/css/StyleProductAll.css" rel="stylesheet"/>
+  <link href="/js/bootstrap.bundle.js" rel="stylesheet"/>
+
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<div class="container-fluid2">
+  <div class="row2">
+    <aside class="col-lg-9">
+      <div class="card">
+        <div th:each="user : ${admins}"
+             th:object="${user}"
+             class="table-responsive">
+          <table class="table table-borderless table-shopping-cart">
+            <thead class="text-muted">
+            <tr class="small text-uppercase">
+              <th scope="col">User</th>
+              <th scope="col" width="120">Role</th>
+              <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <figure class="itemside align-items-center">
+<!--                  <div class="aside"><img src="https://cdn-icons-png.flaticon.com/512/21/21104.png" class="img-sm" alt="Product img"></div>-->
+                  <figcaption class="info">
+                    <p class="text-muted small"></p>
+                    <p class=" medium" th:text="'Username: ' + ${user.username}">SIZE: L</p>
+                    <p class=" medium" th:text="'UserID: ' + ${user.id}">SIZE: L</p>
+                    <p class="text-muted medium" th:text="'Email: ' + ${user.email}">SIZE: L</p>
+                    <p class="text-muted medium" th:text="'Register: ' + ${user.createOn}">SIZE: L</p>
+                  </figcaption>
+                </figure>
+              </td>
+              <td>
+                <div th:each="role : ${user.roles}" class="price-wrap"><var class="price">
+                  <th:block th:text="${role.roles.name()}"></th:block>
+                </var>
+                </div>
+              </td>
+
+              <td class="text-right d-none d-md-block" sec:authorize="isAuthenticated()">
+                <a href="" class="btn btn-light" data-abc="true"
+                   th:href="@{/admin/{id}(id = *{id})}"> Details</a></td>
+              <td class="text-right d-none d-md-block" sec:authorize="!isAuthenticated()">
+                <a href="" class="btn btn-light" data-abc="true"
+                   th:href="@{/users/login}"> LoginToSeeDetails</a></td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <br>
+<!--  <nav aria-label="Page navigation" class="d-flex justify-content-center">-->
+<!--    <ul class="pagination">-->
+<!--      <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">-->
+<!--        <a class="page-link" th:if="${productAll.hasPrevious()}"-->
+<!--           th:href="@{/product/all(page=${productAll.previousPageable().pageNumber})}">Previous</a>-->
+<!--      </li>-->
+
+<!--      <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"-->
+<!--          th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">-->
+<!--        <a class="page-link" th:href="@{/product/all(page=${i})}" th:text="${i + 1}"></a>-->
+<!--      </li>-->
+
+<!--      <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">-->
+<!--        <a class="page-link" th:if="${productAll.hasNext()}"-->
+<!--           th:href="@{/product/all(page=${productAll.nextPageable().pageNumber})}">Next</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+</div>
+</body>
+<div>
+  <footer th:replace="~{fragments/footer}"></footer>
+</div>
+<div th:replace="~{fragments/headerJs}"></div>
+</html>
