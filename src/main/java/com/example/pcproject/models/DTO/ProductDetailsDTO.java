@@ -37,7 +37,6 @@ public class ProductDetailsDTO {
     private boolean isOwner;
 
 
-
     public ProductDetailsDTO() {
     }
 

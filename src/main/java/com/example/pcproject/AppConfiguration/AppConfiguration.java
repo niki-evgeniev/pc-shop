@@ -15,7 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class AppConfiguration {
 
     @Bean
-    public WebClient formPostWebClient(){
+    public WebClient formPostWebClient() {
         return WebClient.builder()
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
                 .build();

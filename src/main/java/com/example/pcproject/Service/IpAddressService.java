@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IpAddressService {
 
-   String getIp();
+    String getIp();
 
-   List<IpUser> getRegistrationIp();
+    List<IpUser> getRegistrationIp();
 }

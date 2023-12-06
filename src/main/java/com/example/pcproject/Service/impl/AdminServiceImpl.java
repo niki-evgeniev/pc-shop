@@ -78,7 +78,7 @@ public class AdminServiceImpl implements AdminService {
         User userRemoveAdmin = getUser(id);
         List<UserRole> allRole = getUserRoles();
 
-        if (userRemoveAdmin != null){
+        if (userRemoveAdmin != null) {
             userRemoveAdmin.setRoles(List.of(allRole.get(1), allRole.get(2)));
             userRepository.save(userRemoveAdmin);
             System.out.println(userRemoveAdmin.getUsername() + "success remove ADMIN role");
@@ -89,6 +89,7 @@ public class AdminServiceImpl implements AdminService {
         return userRepository.findById(id)
                 .orElse(null);
     }
+
     private List<UserRole> getUserRoles() {
         return userRoleRepository.findAll();
     }

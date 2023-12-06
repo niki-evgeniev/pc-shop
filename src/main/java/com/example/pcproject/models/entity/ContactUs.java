@@ -9,7 +9,9 @@ import jakarta.persistence.Table;
 public class ContactUs extends BaseEntity {
 
     private String fullName;
+
     private String email;
+
     private String phoneNumber;
 
     @Column(columnDefinition = "LONGTEXT")

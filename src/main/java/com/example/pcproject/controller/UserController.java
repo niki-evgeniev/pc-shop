@@ -37,7 +37,7 @@ public class UserController {
         boolean isRecaptchaCommit = !reCaptchaService.verify(reCaptchaResponse).map(ReCaptchaResponseDTO::isSuccess)
                 .orElse(false);
 
-        if (isRecaptchaCommit){
+        if (isRecaptchaCommit) {
             return new ModelAndView("redirect:/");
         }
 

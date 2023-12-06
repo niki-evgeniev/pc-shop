@@ -58,7 +58,7 @@ public class ProductController {
     public ModelAndView details(@PathVariable("id") Long id,
                                 @AuthenticationPrincipal UserDetails userDetails) {
 
-        ProductDetailsDTO productDetails = productService.getDetails(id , userDetails)
+        ProductDetailsDTO productDetails = productService.getDetails(id, userDetails)
                 .orElseThrow(() -> new ObjectNotFoundException("Offer details not found"));
         ModelAndView modelAndView = new ModelAndView("details");
         modelAndView.addObject("productDetails", productDetails);

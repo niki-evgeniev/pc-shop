@@ -37,11 +37,11 @@ public class SecurityConfiguration {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
                         .requestMatchers("/service/service").permitAll()
-                        .requestMatchers( "/product/all").permitAll()
-                        .requestMatchers( "/contact").permitAll()
-                        .requestMatchers( "/about").permitAll()
-                        .requestMatchers( "/api/send").permitAll()
-                        .requestMatchers( "/admin/user").hasRole(RoleType.ADMIN.name())
+                        .requestMatchers("/product/all").permitAll()
+                        .requestMatchers("/contact").permitAll()
+                        .requestMatchers("/about").permitAll()
+                        .requestMatchers("/api/send").permitAll()
+                        .requestMatchers("/admin/user").hasRole(RoleType.ADMIN.name())
                         .anyRequest().authenticated()
 
 
@@ -75,7 +75,6 @@ public class SecurityConfiguration {
                     csfr.ignoringRequestMatchers(new AntPathRequestMatcher("/api/send/**"));
                 }
         );
-
 
 
         return httpSecurity.build();

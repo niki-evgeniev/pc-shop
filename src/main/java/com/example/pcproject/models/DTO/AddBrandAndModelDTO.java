@@ -16,7 +16,6 @@ public class AddBrandAndModelDTO {
     private String brand;
 
     //model
-
     private ComputerType computerType;
     @NotNull
     @NotBlank

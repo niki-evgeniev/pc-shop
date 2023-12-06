@@ -29,7 +29,7 @@ public class ModelServiceImpl implements ModelService {
         Model nameModel = modelRepository.findByName(addBrandAndModelDTO.getName());
         Brand byName = brandRepository.findByName(addBrandAndModelDTO.getBrand());
 
-        if (nameModel == null){
+        if (nameModel == null) {
             Model newModel = modelMapper.map(addBrandAndModelDTO, Model.class);
             newModel.setCreated(LocalDateTime.now());
             newModel.setBrand(byName);

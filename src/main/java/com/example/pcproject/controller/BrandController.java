@@ -25,18 +25,18 @@ public class BrandController {
     }
 
     @GetMapping("/brandsAdd")
-    public ModelAndView addBrands(){
+    public ModelAndView addBrands() {
         return new ModelAndView("brandModelAdd");
     }
 
     @PostMapping("/brandsAdd")
-    public ModelAndView addBrands(@Valid AddBrandAndModelDTO addBrandAndModelDTO, BindingResult bindingResult){
+    public ModelAndView addBrands(@Valid AddBrandAndModelDTO addBrandAndModelDTO, BindingResult bindingResult) {
 
-        if (!bindingResult.hasErrors()){
+        if (!bindingResult.hasErrors()) {
             boolean brandIsAdded = brandService.addBrand(addBrandAndModelDTO);
             boolean modelIsAdded = modelService.addModel(addBrandAndModelDTO);
 
-            if (!brandIsAdded &&  !modelIsAdded) {
+            if (!brandIsAdded && !modelIsAdded) {
                 return new ModelAndView("brandModelAdd");
             }
         }
@@ -44,7 +44,8 @@ public class BrandController {
         return new ModelAndView("redirect:/admin/admin-panel");
     }
 
-    @ModelAttribute AddBrandAndModelDTO addBrandAndModelDTO(){
+    @ModelAttribute
+    AddBrandAndModelDTO addBrandAndModelDTO() {
         return new AddBrandAndModelDTO();
     }
 }

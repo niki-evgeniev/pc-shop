@@ -31,7 +31,7 @@ public class ProductDTO {
     private String phoneNumber;
 
     @NotNull
-    @Min(value = 2015 , message = "Year must be bigger then 2020")
+    @Min(value = 2015, message = "Year must be bigger then 2020")
     private Integer year;
 
     @NotEmpty

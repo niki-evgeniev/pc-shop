@@ -44,12 +44,14 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new IllegalArgumentException("Model not found"));
 
         newProduct.setModel(model);
+
         if (newProduct.getImageUrl().isBlank()) {
             newProduct.setImageUrl(model.getImageUrl());
         }
         newProduct.setComputerType(model.getComputerType());
         newProduct.setCreated(LocalDateTime.now());
         newProduct.setComputerType(model.getComputerType());
+
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         newProduct.setSeller(user);
