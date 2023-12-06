@@ -16,6 +16,7 @@ public class AddBrandAndModelDTO {
     private String brand;
 
     //model
+    @NotNull(message = "Please select type")
     private ComputerType computerType;
     @NotNull
     @NotBlank
@@ -24,11 +25,12 @@ public class AddBrandAndModelDTO {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 5, message = "The symbol min is 3 max is 5")
-    @Min(value = 2015, message = "Year must be bigger then 2020")
+    @Size(min = 3, max = 4, message = "The symbol min is 3 max is 4")
+    @Min(value = 2015, message = "Year must be bigger then 2015")
     private String startYear;
 
     @NotNull
+    @NotBlank(message = "Enter URL for model")
     private String imageUrl;
 
     public AddBrandAndModelDTO() {

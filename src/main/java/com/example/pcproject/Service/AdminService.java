@@ -15,4 +15,6 @@ public interface AdminService {
     void addRoleAdmin(Long id);
 
     void removeRoleAdmin(Long id);
+
+    void deleteUser(Long id);
 }

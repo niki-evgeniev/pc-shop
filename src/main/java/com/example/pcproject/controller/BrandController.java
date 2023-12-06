@@ -36,12 +36,12 @@ public class BrandController {
             boolean brandIsAdded = brandService.addBrand(addBrandAndModelDTO);
             boolean modelIsAdded = modelService.addModel(addBrandAndModelDTO);
 
-            if (!brandIsAdded && !modelIsAdded) {
-                return new ModelAndView("brandModelAdd");
+            if (modelIsAdded) {
+                return new ModelAndView("redirect:/admin/admin-panel");
             }
         }
 
-        return new ModelAndView("redirect:/admin/admin-panel");
+        return new ModelAndView("brandModelAdd");
     }
 
     @ModelAttribute

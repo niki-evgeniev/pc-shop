@@ -4,6 +4,7 @@ import com.example.pcproject.Service.AdminService;
 import com.example.pcproject.Service.exception.ObjectNotFoundException;
 import com.example.pcproject.models.DTO.AdminDetailsDTO;
 import com.example.pcproject.models.DTO.AdminsAllInfoDTO;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,7 +39,7 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView getAdminDetails(@PathVariable() Long id) {
+    public ModelAndView getAdminDetails(@PathVariable("id") Long id) {
 
         AdminDetailsDTO userDetails = adminService.getUserDetails(id)
                 .orElseThrow(() -> new ObjectNotFoundException("User details not found"));
@@ -61,6 +62,15 @@ public class AdminController {
     public ModelAndView removeAdminRole(@PathVariable("id") Long id) {
 
         adminService.removeRoleAdmin(id);
+
+        return new ModelAndView("redirect:/admin/user");
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ModelAndView deleteUser(@PathVariable("id") Long id) {
+
+        adminService.deleteUser(id);
 
         return new ModelAndView("redirect:/admin/user");
     }

@@ -23,7 +23,7 @@ public class ContactRestController {
         System.out.println("HEREEEEEEEEEEEEEEEEEE");
 
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("https://www.abv.bg/"))
+                .location(URI.create("http://localhost:8080"))
                 .build();
     }
 }

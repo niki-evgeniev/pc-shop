@@ -1,12 +1,14 @@
 package com.example.pcproject.Service.impl;
 
 import com.example.pcproject.Repository.IpUserRepository;
+import com.example.pcproject.Repository.ProductRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Repository.UserRoleRepository;
 import com.example.pcproject.Service.AdminService;
 import com.example.pcproject.models.DTO.AdminDetailsDTO;
 import com.example.pcproject.models.DTO.AdminsAllInfoDTO;
 import com.example.pcproject.models.entity.IpUser;
+import com.example.pcproject.models.entity.Product;
 import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.entity.UserRole;
 import org.modelmapper.ModelMapper;
@@ -23,14 +25,16 @@ public class AdminServiceImpl implements AdminService {
     private final ModelMapper modelMapper;
     private final IpUserRepository ipUserRepository;
     private final UserRoleRepository userRoleRepository;
+    private final ProductRepository productRepository;
 
     public AdminServiceImpl(UserRepository userRepository, ModelMapper modelMapper,
-                            IpUserRepository ipUserRepository, UserRoleRepository userRoleRepository) {
+                            IpUserRepository ipUserRepository, UserRoleRepository userRoleRepository,
+                            ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
-
         this.ipUserRepository = ipUserRepository;
         this.userRoleRepository = userRoleRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -83,6 +87,25 @@ public class AdminServiceImpl implements AdminService {
             userRepository.save(userRemoveAdmin);
             System.out.println(userRemoveAdmin.getUsername() + "success remove ADMIN role");
         }
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+    User user = userRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("User not exist"));
+
+        List<Product> allBySellerId = productRepository.findAllBySellerId(id);
+        if (!allBySellerId.isEmpty()) {
+            for (Product product : allBySellerId) {
+                productRepository.deleteById(product.getId());
+            }
+
+        }
+//        productRepository.deleteBySellerId(id);
+        userRepository.deleteById(id);
+        System.out.println();
+
+
+        System.out.println();
     }
 
     private User getUser(Long id) {

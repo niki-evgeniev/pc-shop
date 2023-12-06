@@ -28,6 +28,7 @@ public class ProductDetailsDTO {
     private String seller;
 
     private LocalDateTime created;
+
     private TracesOfUse tracesOfUse;
 
     private ComputerType computerType;
