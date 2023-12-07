@@ -40,7 +40,6 @@ public class BrandController {
                 return new ModelAndView("redirect:/admin/admin-panel");
             }
         }
-
         return new ModelAndView("brandModelAdd");
     }
 

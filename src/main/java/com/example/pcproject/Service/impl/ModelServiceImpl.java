@@ -33,12 +33,8 @@ public class ModelServiceImpl implements ModelService {
             Model newModel = modelMapper.map(addBrandAndModelDTO, Model.class);
             newModel.setCreated(LocalDateTime.now());
             newModel.setBrand(byName);
-
-            System.out.println();
             modelRepository.save(newModel);
-
         }
-
         return false;
     }
 }

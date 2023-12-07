@@ -16,16 +16,13 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView index() {
-
         String ip = ipAddressService.getIp();
         System.out.println("IP who visit site is : " + ip);
-
         return new ModelAndView("index");
     }
 
     @GetMapping("/contact")
     public String contact() {
-
         return "contact";
     }
 

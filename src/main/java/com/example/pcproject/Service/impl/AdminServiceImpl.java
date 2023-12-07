@@ -39,16 +39,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<AdminsAllInfoDTO> getAllUsers() {
-
         List<User> all = userRepository.findAll();
-
         List<AdminsAllInfoDTO> allUsers = new ArrayList<>();
-
         for (User user : all) {
             AdminsAllInfoDTO map = modelMapper.map(user, AdminsAllInfoDTO.class);
             allUsers.add(map);
         }
-
         return allUsers;
     }
 
@@ -57,11 +53,8 @@ public class AdminServiceImpl implements AdminService {
         Optional<User> userDetails = userRepository.findById(id);
         List<IpUser> byId = ipUserRepository.findAllById(id);
         userDetails.ifPresent(value -> value.setIpUser(byId));
-
         AdminDetailsDTO mapAdminDetailsDTO = modelMapper.map(userDetails, AdminDetailsDTO.class);
-
         return Optional.ofNullable(mapAdminDetailsDTO);
-
     }
 
     @Override
@@ -91,21 +84,15 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void deleteUser(Long id) {
-    User user = userRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("User not exist"));
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not exist"));
 
         List<Product> allBySellerId = productRepository.findAllBySellerId(id);
         if (!allBySellerId.isEmpty()) {
             for (Product product : allBySellerId) {
                 productRepository.deleteById(product.getId());
             }
-
         }
-//        productRepository.deleteBySellerId(id);
         userRepository.deleteById(id);
-        System.out.println();
-
-
-        System.out.println();
     }
 
     private User getUser(Long id) {

@@ -21,14 +21,10 @@ public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
     private final ModelMapper modelMapper;
-    private final ModelRepository modelRepository;
 
-
-    public BrandServiceImpl(BrandRepository brandRepository, ModelMapper modelMapper,
-                            ModelRepository modelRepository) {
+    public BrandServiceImpl(BrandRepository brandRepository, ModelMapper modelMapper) {
         this.brandRepository = brandRepository;
         this.modelMapper = modelMapper;
-        this.modelRepository = modelRepository;
     }
 
     @Override
@@ -50,21 +46,13 @@ public class BrandServiceImpl implements BrandService {
         LocalDateTime timeNow = LocalDateTime.now();
 
         Brand nameBrand = brandRepository.findByName(addBrandAndModelDTO.getBrand());
-//        Model model = modelRepository.findByName(addBrandAndModelDTO.getName());
-
-
         if (nameBrand == null) {
             Brand newBrand = modelMapper.map(addBrandAndModelDTO, Brand.class);
             newBrand.setCreated(timeNow);
             newBrand.setName(addBrandAndModelDTO.getBrand());
-//            newBrand.setModels(List.of(model));
-
-            System.out.println();
             brandRepository.save(newBrand);
-
             return true;
         }
-
         return false;
     }
 }
