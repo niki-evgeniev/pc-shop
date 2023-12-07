@@ -18,6 +18,7 @@ public class HomeController {
     public ModelAndView index() {
 
         String ip = ipAddressService.getIp();
+        System.out.println("IP who visit site is : " + ip);
 
         return new ModelAndView("index");
     }

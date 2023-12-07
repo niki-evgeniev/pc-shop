@@ -38,6 +38,12 @@ public class AdminController {
         return modelAndView;
     }
 
+
+    @GetMapping("/viewIp")
+    public ModelAndView viewIp(){
+        return new ModelAndView("viewIp");
+    }
+
     @GetMapping("/{id}")
     public ModelAndView getAdminDetails(@PathVariable("id") Long id) {
 

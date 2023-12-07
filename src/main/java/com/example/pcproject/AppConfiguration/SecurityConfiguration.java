@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/api/send").permitAll()
+                        .requestMatchers("/api/viewIp").permitAll()
                         .requestMatchers("/admin/user").hasRole(RoleType.ADMIN.name())
                         .anyRequest().authenticated()
 

@@ -18,9 +18,8 @@ public class IpAddressServiceImpl implements IpAddressService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.getDetails() instanceof WebAuthenticationDetails details) {
-            String ipAddress = details.getRemoteAddress();
-            System.out.println("IP who visit site is : " + ipAddress);
-            return ipAddress;
+
+            return details.getRemoteAddress();
         }
         return null;
     }

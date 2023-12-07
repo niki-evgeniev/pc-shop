@@ -40,9 +40,9 @@ pcproject:
 google.recaptcha:
   site: ${RECAPTCHA_SITE_KEY:none}
   secret: ${RECAPTCHA_SITE_SECRET:none}
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
+#logging:
+#  level:
+#    org.hibernate.SQL: DEBUG
 #    org.hibernate.orm.jdbc.bind: TRACE
 #    org.springframework.security: TRACE
 

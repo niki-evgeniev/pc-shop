@@ -25,7 +25,6 @@ public class ProductsController {
     public ModelAndView allProduct(
             @PageableDefault(size = 5, sort = "price")
             Pageable pageable) {
-
         ModelAndView modelAndView = new ModelAndView("productAll");
         Page<ProductAllDTO> allProduct = productService.getAllProduct(pageable);
         modelAndView.addObject("productAll", allProduct);
