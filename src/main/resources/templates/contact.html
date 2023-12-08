@@ -39,7 +39,7 @@
                         <div class="contact_form-container">
                             <div>
                                 <form th:method="POST"
-                                      th:action="@{/api/send}">
+                                      th:action="@{/contact}">
 
                                     <input type="text" id="fullName" placeholder="Full Name"/>
 
@@ -50,7 +50,12 @@
 
                                     <input type="text" id="message" placeholder="Message" class="message_input"/>
 
-                                    <button id="btn-send" type="button"  onclick="sendMessage()">
+                                    <button id="btn-send"
+                                            class="form-submit"
+                                            type="button"
+                                            data-callback='onSubmit'
+                                            data-action="submit"
+                                            onclick="sendMessage()">
                                         Send
                                     </button>
                                 </form>

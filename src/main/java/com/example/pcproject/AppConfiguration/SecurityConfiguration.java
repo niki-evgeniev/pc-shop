@@ -1,7 +1,7 @@
 package com.example.pcproject.AppConfiguration;
 
 import com.example.pcproject.Repository.UserRepository;
-import com.example.pcproject.Service.impl.pcShopUserService;
+import com.example.pcproject.Service.impl.PcShopUserService;
 import com.example.pcproject.models.eunums.RoleType;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -83,7 +82,7 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
-        return new pcShopUserService(userRepository);
+        return new PcShopUserService(userRepository);
     }
 
     @Bean

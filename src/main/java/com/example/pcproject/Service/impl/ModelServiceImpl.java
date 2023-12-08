@@ -34,6 +34,7 @@ public class ModelServiceImpl implements ModelService {
             newModel.setCreated(LocalDateTime.now());
             newModel.setBrand(byName);
             modelRepository.save(newModel);
+            return true;
         }
         return false;
     }

@@ -9,20 +9,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.Arrays;
-
-public class pcShopUserService implements UserDetailsService {
+public class PcShopUserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public pcShopUserService(UserRepository userRepository) {
+    public PcShopUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
-                .map(pcShopUserService::map)
+                .map(PcShopUserService::map)
                 .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
     }
 
@@ -30,7 +28,7 @@ public class pcShopUserService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
-                .authorities(user.getRoles().stream().map(pcShopUserService::map).toList())
+                .authorities(user.getRoles().stream().map(PcShopUserService::map).toList())
                 .build();
     }
 

@@ -19,12 +19,8 @@ public class ContactRestController {
 
     @PostMapping("/api/send")
     public ResponseEntity<String> sendMessage(@RequestBody MessageDTO messageDTO) {
-
         System.out.println("HEREEEEEEEEEEEEEEEEEE");
-
-        return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:8080"))
-                .build();
+        return ResponseEntity.ok("Message received successfully!");
     }
 }
 

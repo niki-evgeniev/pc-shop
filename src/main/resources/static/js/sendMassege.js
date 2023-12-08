@@ -22,7 +22,7 @@ function sendMessage() {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
+            window.location.href = 'http://localhost:8080/product/all'
         })
         .catch(error => console.log('error', error))
 }
-

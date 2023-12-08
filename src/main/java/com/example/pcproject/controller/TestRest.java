@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
-@RequestMapping("/api/viewIp")
+@RequestMapping("/api")
 public class TestRest {
 
     private final TestRestService testRestService;
@@ -19,7 +19,7 @@ public class TestRest {
 
     }
 
-    @GetMapping()
+    @GetMapping("/viewIp")
     public ResponseEntity<List<GetIp>> getIpAddress(){
         List<GetIp> allIp = testRestService.getAllIp();
         return ResponseEntity.ok(allIp);

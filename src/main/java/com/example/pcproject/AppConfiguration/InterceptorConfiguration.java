@@ -20,7 +20,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(bannedUserInterceptor);
-//        registry.addInterceptor(checkRequestInterceptor);
+        registry.addInterceptor(checkRequestInterceptor);
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 }

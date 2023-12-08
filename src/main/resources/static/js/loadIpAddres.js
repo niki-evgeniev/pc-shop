@@ -1,71 +1,31 @@
-// let reloadBooksButton = document.getElementById('reloadBooks');
-//
-// reloadBooksButton.addEventListener('click', reloadBooks)
-//
-// function reloadBooks() {
-//
-//     let booksContainer = document.getElementById('books-container');
-//     booksContainer.innerHTML = ''
-//
-//     fetch('http://localhost:8080/api/viewIp')
-//         .then(response => response.json())
-//         .then(json => json.forEach(ip => {
-//
-//             let bookRow = document.createElement('tr')
-//
-//             let titleCol = document.createElement('td')
-//             // let authorCol	= document.createElement('td')
-//             // let isbnCol	= document.createElement('td')
-//             // let actionCol= document.createElement('td')
-//
-//             titleCol.textContent = ip.title
-//             debugger;
-//
-//             let deleteBookBtn = document.createElement('button')
-//
-//             // actionCol.appendChild(deleteBookBtn)
-//
-//             bookRow.appendChild(titleCol)
-//             // bookRow.appendChild(authorCol)
-//             // bookRow.appendChild(isbnCol)
-//             // bookRow.appendChild(actionCol)
-//
-//             booksContainer.append(bookRow)
-//         }))
-//
-// }
-let reloadBooksButton = document.getElementById('reloadBooks');
+let reloadIpButton = document.getElementById('loadIpAddress');
+reloadIpButton.addEventListener('click', loadIp)
 
-reloadBooksButton.addEventListener('click', reloadBooks)
-
-function reloadBooks() {
-
-    let booksContainer = document.getElementById('books-container');
-    booksContainer.innerHTML = ''
+function loadIp() {
 
     fetch('http://localhost:8080/api/viewIp')
-        .then(response => response.json())
-        .then(json => json.forEach(ip => {
-            console.log(ip)
-
-            let bookRow = document.createElement('div')
-
-            let titleCol = document.createElement('h2')
-            // let authorCol	= document.createElement('td')
-            // let isbnCol	= document.createElement('td')
-            // let actionCol= document.createElement('td')
-
-            titleCol.textContent = ip.title
-
-            // actionCol.appendChild(deleteBookBtn)
-
-            bookRow.appendChild(titleCol)
-            // bookRow.appendChild(authorCol)
-            // bookRow.appendChild(isbnCol)
-            // bookRow.appendChild(actionCol)
-
-            booksContainer.append(bookRow)
-        }))
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error fetching IP addresses');
+            }
+        })
+        .then(json => {
+            let ipContainer = document.getElementById('ip-container');
+            ipContainer.innerHTML = '';
+            json.forEach(ip => {
+                console.log(ip);
+                let ipRow = document.createElement('tr');
+                let titleCol = document.createElement('td');
+                titleCol.textContent = ip.ip;
+                ipRow.appendChild(titleCol);
+                ipContainer.append(ipRow);
+            });
+        })
+        .catch(error => console.error('Error:', error));
 
 }
+
+
 
