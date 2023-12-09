@@ -17,9 +17,9 @@ VALUES (1, 'Asus', '2023-11-19'),
        (3, 'Apple', '2023-11-19'),
        (4, 'Dell', '2023-11-19');
 
-INSERT INTO `ip_users` (`id`, `ip`)
-VALUES (1, '0:0:0:0:0:0:0:1'),
-       (3, '212.50.79.137');
+INSERT INTO `ip_users` (`id`, `ip`, is_banned)
+VALUES (1, '0:0:0:0:0:0:0:1', false),
+       (2, '212.50.79.137', true);
 
 INSERT INTO `users_ip` (`user_id`, `ip_id`)
 VALUES (1, 1),

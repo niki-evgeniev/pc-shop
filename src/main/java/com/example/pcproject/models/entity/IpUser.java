@@ -12,6 +12,9 @@ public class IpUser extends BaseEntity {
     @Column(name = "ip", nullable = false)
     private String ip;
 
+    @Column
+    private boolean isBanned = false;
+
     public IpUser() {
     }
 
@@ -23,4 +26,11 @@ public class IpUser extends BaseEntity {
         this.ip = ip;
     }
 
+    public boolean isBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(boolean banned) {
+        isBanned = banned;
+    }
 }

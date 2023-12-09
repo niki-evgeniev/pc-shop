@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -79,16 +80,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void cleanExpiredProduct() {
-//        List<Product> allProduct = productRepository.findAll();
-//
-//        for (Product product : allProduct) {
-//            LocalDateTime created = product.getCreated();
-//            LocalDateTime afterDays = created.plusDays(30);
-//            if (LocalDateTime.now() > afterDays){
-//
-//            }
-        //TODO FINISH
-//        }
+        List<Product> allProduct = productRepository.findAll();
+
+        for (Product product : allProduct) {
+            LocalDateTime created = product.getCreated();
+            LocalDateTime expirationDays = created.plusDays(30);
+            if (created.isAfter(expirationDays)){
+                productRepository.deleteById(product.getId());
+
+            }
+        }
     }
 
     @Override
