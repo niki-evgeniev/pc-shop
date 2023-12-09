@@ -89,6 +89,4 @@ public class Model extends BaseEntity {
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
-
-
 }

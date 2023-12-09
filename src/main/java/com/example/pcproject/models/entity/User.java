@@ -23,7 +23,7 @@ public class User extends BaseEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "create_on", nullable = false)
+    @Column(name = "create_on")
     private LocalDate createOn;
 
 

@@ -21,8 +21,8 @@ pcproject:
   remember.me.key: :12345
 
 google.recaptcha:
-  site: none
-  secret: none
+  site: ${RECAPTCHA_SITE_KEY:none}
+  secret: ${RECAPTCHA_SITE_SECRET:none}
 logging:
   level:
     org.hibernate.SQL: DEBUG

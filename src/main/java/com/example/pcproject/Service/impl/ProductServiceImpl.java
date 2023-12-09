@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
         }
         newProduct.setComputerType(model.getComputerType());
         newProduct.setCreated(LocalDateTime.now());
-        newProduct.setComputerType(model.getComputerType());
+//        newProduct.setComputerType(model.getComputerType());
 
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
@@ -72,8 +72,9 @@ public class ProductServiceImpl implements ProductService {
     @ExecutionTime(time = 1000L)
     @Override
     public Optional<ProductDetailsDTO> getDetails(Long id, UserDetails userDetails) {
-        return productRepository.findById(id)
+        Optional<ProductDetailsDTO> productDetailsDTO = productRepository.findById(id)
                 .map(p -> this.mapAsDetails(p, userDetails));
+        return productDetailsDTO;
     }
 
     @Override

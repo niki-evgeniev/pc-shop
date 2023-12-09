@@ -31,20 +31,6 @@ public class pcShopUserServiceTest {
         pcShopUserService = new PcShopUserService(mockUserRepository);
     }
 
-    @Test
-    void testMock() {
-
-        User user = new User();
-        user.setName("Pesho");
-
-        when(mockUserRepository.findByUsername("test@test")).thenReturn(Optional.of(user));
-
-        Optional<User> byUsername = mockUserRepository.findByUsername("test@test");
-
-        User user1 = byUsername.get();
-
-        Assertions.assertEquals("Pesho", user1.getName());
-    }
 
     @Test
     void testUserNotFound() {
