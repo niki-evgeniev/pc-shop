@@ -36,9 +36,4 @@ public class PcShopUserService implements UserDetailsService {
         return new SimpleGrantedAuthority("ROLE_" + userRole.getRoles().name());
 
     }
-
-    //test messegages
-    //test messegages
-    //test messegages
-    //test messegages
 }
