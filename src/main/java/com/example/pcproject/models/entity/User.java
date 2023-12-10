@@ -41,6 +41,9 @@ public class User extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "ip_id"))
     private List<IpUser> ipUser = new ArrayList<>();
 
+    @ManyToOne
+    private ContactUs contactUs;
+
     public User() {
     }
 
@@ -100,5 +103,11 @@ public class User extends BaseEntity {
         this.ipUser = ipUser;
     }
 
+    public ContactUs getContactUs() {
+        return contactUs;
+    }
 
+    public void setContactUs(ContactUs contactUs) {
+        this.contactUs = contactUs;
+    }
 }

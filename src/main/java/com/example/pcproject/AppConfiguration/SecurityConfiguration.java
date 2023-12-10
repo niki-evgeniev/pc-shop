@@ -41,7 +41,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/api/send").permitAll()
                         .requestMatchers("/api/viewIp").permitAll()
-                        .requestMatchers("/admin/user").hasRole(RoleType.ADMIN.name())
+                        .requestMatchers("/admin/user", "/admin/admin-panel", "/admin/viewIp",
+                                "/admin/brandsAdd").hasRole(RoleType.ADMIN.name())
                         .anyRequest().authenticated()
 
 

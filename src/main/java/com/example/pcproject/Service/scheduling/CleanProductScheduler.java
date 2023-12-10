@@ -14,8 +14,10 @@ public class CleanProductScheduler {
         this.productService = productService;
     }
 
-    @Scheduled(cron = "*/10 * * * * *")
-    public void cleanUp(){
+    //    every 6h  to check
+    @Scheduled(cron = "0 0 */6 * * *")
+//    @Scheduled(cron = "*/10 * * * * *")
+    public void cleanUp() {
         productService.cleanExpiredProduct();
         System.out.println("CLEAR PRODUCT THAT HAVE MORE THEN 30 DAYS");
     }
