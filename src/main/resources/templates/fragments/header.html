@@ -70,9 +70,16 @@
                                 <a class="nav-link" th:href="@{/users/register}">Register</a>
                             </li>
                         </th:block>
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link" th:href="@{/service/service}"> Services </a>-->
-<!--                        </li>-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/brands">Add brand</a>
+                                <a class="dropdown-item" href="/brands">new brand</a>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/product/all}"> All product </a>
                         </li>
