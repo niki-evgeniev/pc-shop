@@ -9,12 +9,14 @@ import com.example.pcproject.models.DTO.ProductAllDTO;
 import com.example.pcproject.models.DTO.ProductDTO;
 import com.example.pcproject.models.DTO.ProductDetailsDTO;
 import com.example.pcproject.models.entity.*;
+import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.RoleType;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -69,6 +71,13 @@ public class ProductServiceImpl implements ProductService {
                 .map(ProductServiceImpl::mapAsSummary);
     }
 
+    @Override
+    public Page<ProductAllDTO> getAllLaptop(Pageable pageable) {
+        Page<ProductAllDTO> allByComputerType =
+                productRepository.findAllByComputerType(ComputerType.LAPTOP, pageable)
+                        .map(ProductServiceImpl::mapAsSummary);
+        return allByComputerType;
+    }
 
     @ExecutionTime(time = 1000L)
     @Override
@@ -85,7 +94,7 @@ public class ProductServiceImpl implements ProductService {
         for (Product product : allProduct) {
             LocalDateTime created = product.getCreated();
             LocalDateTime expirationDays = created.plusDays(30);
-            if (created.isAfter(expirationDays)){
+            if (created.isAfter(expirationDays)) {
                 productRepository.deleteById(product.getId());
 
             }
@@ -98,7 +107,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
-
         ProductDetailsDTO productDetailsDTO = new ProductDetailsDTO();
         productDetailsDTO.setId(product.getId());
         productDetailsDTO.setBrand(product.getModel().getBrand().getName());
@@ -117,7 +125,6 @@ public class ProductServiceImpl implements ProductService {
         return productDetailsDTO;
     }
 
-
     private boolean isOwner(Product product, UserDetails userDetails) {
         if (userDetails == null) {
             return false;
@@ -130,7 +137,6 @@ public class ProductServiceImpl implements ProductService {
         }
         return Objects.equals(product.getSeller().getId(), users.getId());
     }
-
 
     private boolean isAdmin(User user) {
         return user.getRoles()

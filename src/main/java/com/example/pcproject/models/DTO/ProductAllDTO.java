@@ -15,6 +15,7 @@ public record ProductAllDTO(
         ComputerType computer,
         TypeToUse typeToUse
 ) {
+
     public String summary() {
         return brand + " " + model + " " + year;
     }

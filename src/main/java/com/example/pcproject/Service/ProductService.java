@@ -20,4 +20,6 @@ public interface ProductService {
     void cleanExpiredProduct();
 
     void soldProduct(Long id);
+
+    Page<ProductAllDTO> getAllLaptop(Pageable pageable);
 }
