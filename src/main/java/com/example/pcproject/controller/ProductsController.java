@@ -15,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("product")
 public class ProductsController {
 
+    private static final String ALL_PRODUCTS = "ALL";
+    private static final String ALL_LAPTOPS = "LAPTOP";
+    private static final String ALL_COMPUTER = "COMPUTER";
+
     private final ProductService productService;
 
     public ProductsController(ProductService productService) {
@@ -29,6 +33,7 @@ public class ProductsController {
         ModelAndView modelAndView = new ModelAndView("productAll");
         Page<ProductAllDTO> allProduct = productService.getAllProduct(pageable);
         modelAndView.addObject("productAll", allProduct);
+        modelAndView.addObject("viewName", ALL_PRODUCTS);
         return modelAndView;
     }
 
@@ -39,6 +44,7 @@ public class ProductsController {
         ModelAndView modelAndView = new ModelAndView("productAll");
         Page<ProductAllDTO> allLaptop = productService.getAllLaptop(pageable);
         modelAndView.addObject("productAll", allLaptop);
+        modelAndView.addObject("viewName", ALL_LAPTOPS);
         return modelAndView;
     }
 //

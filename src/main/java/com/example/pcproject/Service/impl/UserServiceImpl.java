@@ -58,8 +58,8 @@ public class UserServiceImpl implements UserService {
             userRegistration.setIpUser(List.of(ipUser));
 
             userRepository.save(userRegistration);
+            System.out.println("Successful register user " + userRegistration.getUsername());
             return true;
-
         }
         return false;
     }
@@ -69,10 +69,8 @@ public class UserServiceImpl implements UserService {
 
         if (userRepository.count() == 0) {
             user.setRoles(all);
-
         } else {
             user.setRoles(List.of(all.get(1), all.get(2)));
-
         }
     }
 

@@ -64,47 +64,18 @@
     </div>
     <br>
     <nav aria-label="Page navigation" class="d-flex justify-content-center">
-        <ul th:method="GET"
-            th:action="@{/product/all}"
-            class="pagination">
-            <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:if="${productAll.hasPrevious()}"
-                   th:href="@{/product/all(page=${productAll.previousPageable().pageNumber})}">Previous</a>
-            </li>
-
-            <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"
-                th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
-                <a class="page-link" th:href="@{/product/all(page=${i})}" th:text="${i + 1}"></a>
-            </li>
-
-            <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:if="${productAll.hasNext()}"
-                   th:href="@{/product/all(page=${productAll.nextPageable().pageNumber})}">Next</a>
-            </li>
-        </ul>
-        <ul th:method="GET"
-            th:action="@{/product/laptop}"
-            class="pagination">
-            <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:if="${productAll.hasPrevious()}"
-                   th:href="@{/product/laptop(page=${productAll.previousPageable().pageNumber})}">Previous</a>
-            </li>
-
-            <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"
-                th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
-                <a class="page-link" th:href="@{/product/laptop(page=${i})}" th:text="${i + 1}"></a>
-            </li>
-
-            <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:if="${productAll.hasNext()}"
-                   th:href="@{/product/laptop(page=${productAll.nextPageable().pageNumber})}">Next</a>
-            </li>
-        </ul>
+        <th:block
+                th:if="${viewName == 'LAPTOP'}">
+            <div th:replace="~{fragments/pagination::LAPTOP}">></div>
+        </th:block>
+        <th:block
+                th:if="${viewName == 'ALL'}">
+            <div th:replace="~{fragments/pagination::ALL}"></div>
+        </th:block>
     </nav>
 </div>
 </body>
 <div>
-    <div th:replace="~{fragments/info}"></div>
     <footer th:replace="~{fragments/footer}"></footer>
 </div>
 <div th:replace="~{fragments/headerJs}"></div>

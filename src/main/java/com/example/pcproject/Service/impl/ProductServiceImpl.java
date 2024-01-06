@@ -45,7 +45,6 @@ public class ProductServiceImpl implements ProductService {
         Product newProduct = modelMapper.map(productDTO, Product.class);
         Model model = modelRepository.findById(productDTO.getModelId())
                 .orElseThrow(() -> new IllegalArgumentException("Model not found"));
-
         newProduct.setModel(model);
 
         if (newProduct.getImageUrl().isBlank()) {
@@ -53,12 +52,10 @@ public class ProductServiceImpl implements ProductService {
         }
         newProduct.setComputerType(model.getComputerType());
         newProduct.setCreated(LocalDateTime.now());
-//        newProduct.setComputerType(model.getComputerType());
 
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         newProduct.setSeller(user);
-
         productRepository.save(newProduct);
 
         return true;

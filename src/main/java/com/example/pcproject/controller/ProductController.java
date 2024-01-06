@@ -3,6 +3,7 @@ package com.example.pcproject.controller;
 import com.example.pcproject.Service.BrandService;
 import com.example.pcproject.Service.ProductService;
 import com.example.pcproject.Service.exception.ObjectNotFoundException;
+import com.example.pcproject.models.DTO.BrandDTO;
 import com.example.pcproject.models.DTO.ProductDTO;
 import com.example.pcproject.models.DTO.ProductDetailsDTO;
 import jakarta.validation.Valid;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -27,10 +30,10 @@ public class ProductController {
 
     @GetMapping("/add")
     public ModelAndView add() {
+        List<BrandDTO> allBrand = brandService.getAllBrand();
 
         ModelAndView modelAndView = new ModelAndView("productAdd");
-        modelAndView.addObject("brands", brandService.getAllBrand());
-
+        modelAndView.addObject("brands", allBrand);
         return modelAndView;
     }
 

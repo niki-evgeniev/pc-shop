@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul th:fragment="LAPTOP" class="pagination">
+        <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:if="${productAll.hasPrevious()}"
+               th:href="@{/product/laptop(page=${productAll.previousPageable().pageNumber})}">Previous</a>
+        </li>
+
+        <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"
+            th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
+            <a class="page-link" th:href="@{/product/laptop(page=${i})}" th:text="${i + 1}"></a>
+        </li>
+
+        <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:if="${productAll.hasNext()}"
+               th:href="@{/product/laptop(page=${productAll.nextPageable().pageNumber})}">Next</a>
+        </li>
+    </ul>
+
+    <ul th:fragment="ALL" class="pagination">
+        <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:if="${productAll.hasPrevious()}"
+               th:href="@{/product/all(page=${productAll.previousPageable().pageNumber})}">Previous</a>
+        </li>
+
+        <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"
+            th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
+            <a class="page-link" th:href="@{/product/all(page=${i})}" th:text="${i + 1}"></a>
+        </li>
+
+        <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:if="${productAll.hasNext()}"
+               th:href="@{/product/all(page=${productAll.nextPageable().pageNumber})}">Next</a>
+        </li>
+    </ul>
+
+</body>
+</html>
