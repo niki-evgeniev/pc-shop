@@ -39,5 +39,21 @@
         </li>
     </ul>
 
+    <ul th:fragment="COMPUTER" class="pagination">
+        <li th:class="${!productAll.hasPrevious()} ? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:if="${productAll.hasPrevious()}"
+               th:href="@{/product/computer(page=${productAll.previousPageable().pageNumber})}">Previous</a>
+        </li>
+
+        <li th:each="i : ${#numbers.sequence(0, productAll.totalPages - 1)}"
+            th:class="${i == productAll.number} ? 'page-item active' : 'page-item'">
+            <a class="page-link" th:href="@{/product/computer(page=${i})}" th:text="${i + 1}"></a>
+        </li>
+
+        <li th:class="${!productAll.hasNext()} ? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:if="${productAll.hasNext()}"
+               th:href="@{/product/computer(page=${productAll.nextPageable().pageNumber})}">Next</a>
+        </li>
+    </ul>
 </body>
 </html>

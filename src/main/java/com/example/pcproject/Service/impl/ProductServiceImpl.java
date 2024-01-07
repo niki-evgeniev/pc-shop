@@ -70,10 +70,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<ProductAllDTO> getAllLaptop(Pageable pageable) {
-        Page<ProductAllDTO> allByComputerType =
+        Page<ProductAllDTO> allLapTop =
                 productRepository.findAllByComputerType(ComputerType.LAPTOP, pageable)
                         .map(ProductServiceImpl::mapAsSummary);
-        return allByComputerType;
+        return allLapTop;
+    }
+
+    @Override
+    public Page<ProductAllDTO> getAllComputer(Pageable pageable) {
+        Page<ProductAllDTO> allComputer =
+                productRepository.findAllByComputerType(ComputerType.COMPUTER, pageable)
+                        .map(ProductServiceImpl::mapAsSummary);
+        return allComputer;
     }
 
     @ExecutionTime(time = 1000L)

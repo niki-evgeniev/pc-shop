@@ -47,9 +47,16 @@ public class ProductsController {
         modelAndView.addObject("viewName", ALL_LAPTOPS);
         return modelAndView;
     }
-//
-//    @ModelAttribute
-//    ProductAllDTO productAllDTO() {
-//        return new ProductAllDTO();
-//    }
+    @GetMapping("/computer")
+    public ModelAndView allComputer(
+            @PageableDefault(size = 5, sort = "price")
+            Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("productAll");
+        Page<ProductAllDTO> allComputer = productService.getAllComputer(pageable);
+        modelAndView.addObject("productAll", allComputer);
+        modelAndView.addObject("viewName", ALL_COMPUTER);
+        return modelAndView;
+    }
+
+
 }

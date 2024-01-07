@@ -72,6 +72,10 @@
                 th:if="${viewName == 'ALL'}">
             <div th:replace="~{fragments/pagination::ALL}"></div>
         </th:block>
+        <th:block
+                th:if="${viewName == 'COMPUTER'}">
+            <div th:replace="~{fragments/pagination::COMPUTER}"></div>
+        </th:block>
     </nav>
 </div>
 </body>

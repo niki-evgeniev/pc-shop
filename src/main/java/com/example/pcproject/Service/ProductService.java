@@ -22,4 +22,7 @@ public interface ProductService {
     void soldProduct(Long id);
 
     Page<ProductAllDTO> getAllLaptop(Pageable pageable);
+
+    Page<ProductAllDTO> getAllComputer(Pageable pageable);
+
 }
