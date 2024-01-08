@@ -91,7 +91,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Optional<ProductDetailsDTO> getDetails(Long id, UserDetails userDetails) {
         Optional<ProductDetailsDTO> productDetailsDTO = productRepository.findById(id)
-                .map(p -> this.mapAsDetails1(p, userDetails));
+                .map(p -> this.mapAsDetails(p, userDetails));
         return productDetailsDTO;
     }
 
@@ -114,26 +114,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-//    private ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
-//        ProductDetailsDTO productDetailsDTO = new ProductDetailsDTO();
-//        productDetailsDTO.setId(product.getId());
-//        productDetailsDTO.setBrand(product.getModel().getBrand().getName());
-//        productDetailsDTO.setModel(product.getModel().getName());
-//        productDetailsDTO.setYear(product.getYear());
-//        productDetailsDTO.setPrice(product.getPrice());
-//        productDetailsDTO.setImageUrl(product.getImageUrl());
-//        productDetailsDTO.setPhoneNumber(product.getPhoneNumber());
-//        productDetailsDTO.setDescription(product.getDescription());
-//        productDetailsDTO.setComputerType(product.getComputerType());
-//        productDetailsDTO.setTypeToUse(product.getTypeToUse());
-//        productDetailsDTO.setSeller(product.getSeller().getUsername());
-//        productDetailsDTO.setTracesOfUse(product.getTracesOfUse());
-//        productDetailsDTO.setCreated(product.getCreated());
-//        productDetailsDTO.setOwner(isOwner(product, userDetails));
-//        return productDetailsDTO;
-//    }
-
-    private ProductDetailsDTO mapAsDetails1(Product product, UserDetails userDetails) {
+    private ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
         ProductDetailsDTO map = modelMapper.map(product, ProductDetailsDTO.class);
         map.setBrand(product.getModel().getBrand().getName());
         map.setModel(product.getModel().getName());
