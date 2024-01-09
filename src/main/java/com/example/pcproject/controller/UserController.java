@@ -34,7 +34,8 @@ public class UserController {
     public ModelAndView register(@Valid RegisterUserDTO registerUserDTO, BindingResult bindingResult,
                                  @RequestParam("g-recaptcha-response") String reCaptchaResponse) {
 
-        boolean isRecaptchaCommit = !reCaptchaService.verify(reCaptchaResponse).map(ReCaptchaResponseDTO::isSuccess)
+        boolean isRecaptchaCommit = !reCaptchaService.verify(reCaptchaResponse)
+                .map(ReCaptchaResponseDTO::isSuccess)
                 .orElse(false);
 
         if (isRecaptchaCommit) {
@@ -53,7 +54,6 @@ public class UserController {
 
     @GetMapping("/login")
     public ModelAndView login() {
-//        System.out.println("LOGIN");
         return new ModelAndView("login");
     }
 
@@ -62,6 +62,7 @@ public class UserController {
 
         ModelAndView modelAndView = new ModelAndView("login");
         modelAndView.addObject("bad_credentials", true);
+        System.out.println("ERROR LOGIN");
 
         return modelAndView;
     }

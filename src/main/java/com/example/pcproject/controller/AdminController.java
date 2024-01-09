@@ -38,7 +38,6 @@ public class AdminController {
         return modelAndView;
     }
 
-
     @GetMapping("/viewIp")
     public ModelAndView viewIp(){
         return new ModelAndView("viewIp");
@@ -80,5 +79,4 @@ public class AdminController {
 
         return new ModelAndView("redirect:/admin/user");
     }
-
 }

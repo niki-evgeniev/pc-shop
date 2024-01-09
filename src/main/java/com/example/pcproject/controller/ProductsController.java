@@ -57,6 +57,4 @@ public class ProductsController {
         modelAndView.addObject("viewName", ALL_COMPUTER);
         return modelAndView;
     }
-
-
 }

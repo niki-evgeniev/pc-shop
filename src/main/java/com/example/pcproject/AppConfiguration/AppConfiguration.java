@@ -33,5 +33,4 @@ public class AppConfiguration {
         });
         return modelMapper;
     }
-
 }

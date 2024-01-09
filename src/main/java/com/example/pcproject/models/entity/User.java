@@ -26,7 +26,6 @@ public class User extends BaseEntity {
     @Column(name = "create_on")
     private LocalDate createOn;
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
