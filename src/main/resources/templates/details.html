@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SoftUni Project Details</title>
-<!--    <link rel='stylesheet' href='/css/bootstrapDetails.css'>-->
+    <!--    <link rel='stylesheet' href='/css/bootstrapDetails.css'>-->
     <link rel="stylesheet" type="text/css" href="/css/StyleDetails.css"/>
     <div th:replace="~{fragments/head}"></div>
 </head>
@@ -13,7 +13,7 @@
 <header th:replace="~{fragments/header}"></header>
 
 <div class="container">
-    <div class="row" th:object="${productDetails}" >
+    <div class="row" th:object="${productDetails}">
         <div class="col-md-5">
             <div class="project-info-box mt-0">
                 <h5 th:text="*{summary()}">PROJECT DETAILS</h5>
@@ -21,30 +21,47 @@
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
-                <p><b>Type:</b>  <th:block th:text="*{computerType}">123</th:block></p>
-                <p><b>Best for:</b> <th:block th:text="*{typeToUse}">123</th:block></p>
-                <p><b>Year:</b> <th:block th:text="*{year}">123</th:block></p>
-                <p><b>Traces of use:</b> <th:block th:text="*{tracesOfUse}">123</th:block></p>
-                <p><b>Created:</b>  <th:block th:text="*{created}"> date </th:block> </p>
-                <p class="mb-0"><b>Price:</b> <th:block th:text="*{price} + ' $' ">123</th:block></p>
-            </div><!-- / project-info-box -->
+                <p><b>Type:</b>
+                    <th:block th:text="*{computerType}">123</th:block>
+                </p>
+                <p><b>Best for:</b>
+                    <th:block th:text="*{typeToUse}">123</th:block>
+                </p>
+                <p><b>Year:</b>
+                    <th:block th:text="*{year}">123</th:block>
+                </p>
+                <p><b>Traces of use:</b>
+                    <th:block th:text="*{tracesOfUse}">123</th:block>
+                </p>
+                <p><b>Created:</b>
+                    <th:block th:text="*{created}"> date</th:block>
+                </p>
+                <p class="mb-0"><b>Price:</b>
+                    <th:block th:text="*{price} + ' $' ">123</th:block>
+                </p>
+            </div>
 
-
+            <div class="project-info-box">
+                <p><b>Seller Username:</b>
+                    <th:block th:text="*{seller}">123</th:block>
+                </p>
+                <p><b>Contact Number:</b>
+                    <th:block th:text="*{phoneNumber}">123</th:block>
+                </p>
+                <div class="card-body">
+                    <form th:if="*{isOwner()}"
+                          th:method="DELETE"
+                          th:action="@{/product/{id}(id = *{id})}">
+                        <input type="submit" value="SOLD" class="btn btn-light"/>
+                    </form>
+                </div>
+            </div>
+            <!-- / project-info-box -->
         </div><!-- / column -->
 
         <div class="col-md-7">
             <img th:src="*{imageUrl}" alt="project-image" class="rounded">
-            <div class="project-info-box">
-                <p><b>Seller Username:</b> <th:block th:text="*{seller}">123</th:block></p>
-                <p><b>Contact Number:</b> <th:block th:text="*{phoneNumber}">123</th:block></p>
-                <div class="card-body" >
-                    <form th:if="*{isOwner()}"
-                          th:method="DELETE"
-                          th:action="@{/product/{id}(id = *{id})}">
-                        <input type="submit"  value="SOLD" class="btn btn-light" />
-                    </form>
-                </div>
-            </div><!-- / project-info-box -->
+            <!-- / project-info-box -->
         </div><!-- / column -->
     </div>
 </div>

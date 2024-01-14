@@ -957,3 +957,12 @@ a:focus {
 .container-fluidErr {
     margin-bottom: 136px;
 }
+
+.search {
+    /*padding-top: 25px;*/
+    padding: 25px 15px 10px 15px;
+}
+
+/*#search {*/
+/*    padding-top: 25px;*/
+/*}*/
