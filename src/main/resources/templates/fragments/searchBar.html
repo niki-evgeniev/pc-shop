@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="header_bottom">
+    <li class="nav-item">
+        <form th:method="POST"
+              th:action="@{/search}"
+              th:object="${searchDTO}"
+              id="input-group search" class="input-group search">
+            <input type="text"
+                   name="model"
+                   id="model"
+                   class="form-control rounded"
+                   placeholder="Search Model"
+                   aria-label="Search"
+                   aria-describedby="search-addon"/>
+            <input type="submit"
+                   class="btn btn-outline-primary" value="Search"/>
+
+        </form>
+    </li>
+</div>
+
+</body>
+</html>
