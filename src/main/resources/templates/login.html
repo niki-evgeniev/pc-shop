@@ -35,14 +35,6 @@
                         th:method="POST"
                         th:action="@{/users/login}"
                         class="register-form" id="login-form">
-
-                    <!--                            <div th:if="${isLoginError}" class="text-danger font-weight-bold">Error messages</div>-->
-                    <!--                            <div th:if="${isLoginError}" class="text-danger font-weight-bold">Incorrect username or password!</div>-->
-
-                    <!--                            <div th:if="${#fields.hasErrors('username')}"-->
-                    <!--                                 th:errors="*{username}" class="text-danger"></div>-->
-                    <!--                            <div th:if="${#fields.hasErrors('password')}"-->
-                    <!--                                 th:errors="*{password}" class="text-danger"></div>-->
                     <p th:if="${bad_credentials}" class="errors alert alert-danger">
                         Invalid username or password.
                     </p>
@@ -74,14 +66,6 @@
                         <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                     </div>
                 </form>
-                <!--                        <div class="social-login">-->
-                <!--                            <span class="social-label">Or login with</span>-->
-                <!--                            <ul class="socials">-->
-                <!--                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>-->
-                <!--                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>-->
-                <!--                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>-->
-                <!--                            </ul>-->
-                <!--                        </div>-->
             </div>
         </div>
     </div>
