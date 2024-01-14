@@ -56,7 +56,6 @@ public class ProductController {
         return new ProductDTO();
     }
 
-
     @GetMapping("/{id}")
     public ModelAndView details(@PathVariable("id") Long id,
                                 @AuthenticationPrincipal UserDetails userDetails) {

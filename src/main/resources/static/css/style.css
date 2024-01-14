@@ -958,11 +958,11 @@ a:focus {
     margin-bottom: 136px;
 }
 
-.search {
-    /*padding-top: 25px;*/
-    padding: 25px 15px 10px 15px;
+.button-logout {
+    padding: 20px 15px 10px 15px;
 }
-
-/*#search {*/
-/*    padding-top: 25px;*/
-/*}*/
+.search {
+    padding: 25px 15px 10px 15px;
+    width: 22%;
+    margin-left: auto;
+}

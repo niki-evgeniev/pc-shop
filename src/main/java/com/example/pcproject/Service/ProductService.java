@@ -3,6 +3,7 @@ package com.example.pcproject.Service;
 import com.example.pcproject.models.DTO.ProductAllDTO;
 import com.example.pcproject.models.DTO.ProductDTO;
 import com.example.pcproject.models.DTO.ProductDetailsDTO;
+import com.example.pcproject.models.DTO.SearchDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,4 +26,5 @@ public interface ProductService {
 
     Page<ProductAllDTO> getAllComputer(Pageable pageable);
 
+    Page<ProductAllDTO> searchModel(Pageable pageable, String model);
 }

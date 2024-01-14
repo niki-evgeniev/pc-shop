@@ -20,9 +20,7 @@ public class BlackListServiceImpl implements BlackListService {
     public boolean isBannedIp(String ip) {
         Optional<IpUser> visitorIp = ipUserRepository.findByIp(ip);
         if (visitorIp.isPresent()) {
-            if (visitorIp.get().isBanned()) {
-                return true;
-            }
+            return visitorIp.get().isBanned();
         }
         return false;
     }

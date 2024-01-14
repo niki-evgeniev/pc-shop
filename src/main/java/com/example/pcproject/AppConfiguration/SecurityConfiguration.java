@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/service/service").permitAll()
                         .requestMatchers("/product/all", "/product/laptop", "/product/computer").permitAll()
                         .requestMatchers("/contact").permitAll()
-                        .requestMatchers("/about").permitAll()
+                        .requestMatchers("/about", "/search").permitAll()
                         .requestMatchers("/api/send").permitAll()
                         .requestMatchers("/api/viewIp").permitAll()
                         .requestMatchers("/admin/user", "/admin/admin-panel", "/admin/viewIp",

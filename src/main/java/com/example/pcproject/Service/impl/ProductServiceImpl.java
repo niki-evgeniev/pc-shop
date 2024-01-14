@@ -8,6 +8,7 @@ import com.example.pcproject.Service.aop.ExecutionTime;
 import com.example.pcproject.models.DTO.ProductAllDTO;
 import com.example.pcproject.models.DTO.ProductDTO;
 import com.example.pcproject.models.DTO.ProductDetailsDTO;
+import com.example.pcproject.models.DTO.SearchDTO;
 import com.example.pcproject.models.entity.*;
 import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.RoleType;
@@ -78,6 +79,17 @@ public class ProductServiceImpl implements ProductService {
     public Page<ProductAllDTO> getAllComputer(Pageable pageable) {
         Page<ProductAllDTO> allComputer = getProductByComputerType(ComputerType.COMPUTER, pageable);
         return allComputer;
+    }
+
+    @Override
+    public Page<ProductAllDTO> searchModel(Pageable pageable, String model) {
+        Page<ProductAllDTO> searchModels = productRepository.findAllByModelName(model, pageable)
+                 .map(ProductServiceImpl::mapAsSummary);
+        if (searchModels.isEmpty()){
+            Page<ProductAllDTO> getAll = getAllProduct(pageable);
+            return getAll;
+        }
+        return searchModels;
     }
 
     private Page<ProductAllDTO> getProductByComputerType(ComputerType computerType, Pageable pageable) {
