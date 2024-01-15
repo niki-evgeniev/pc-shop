@@ -18,7 +18,6 @@ public class ViewIpRestController {
         this.viewService = viewService;
     }
 
-
     @GetMapping("/viewIp")
     public ResponseEntity<List<GetIp>> getIpAddress(){
         List<GetIp> allIp = viewService.getAllIp();

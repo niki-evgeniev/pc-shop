@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.example.pcproject.Common.Constants.ALL_PRODUCTS;
+
 @Controller
 public class SearchController {
 
@@ -31,7 +33,7 @@ public class SearchController {
         ModelAndView modelAndView = new ModelAndView("productAll");
         Page<ProductAllDTO> searchingModels = productService.searchModel(pageable, searchDTO.getModel());
         modelAndView.addObject("productAll", searchingModels);
-        modelAndView.addObject("viewName", "ALL");
+        modelAndView.addObject("viewName", ALL_PRODUCTS);
 
         return modelAndView;
     }

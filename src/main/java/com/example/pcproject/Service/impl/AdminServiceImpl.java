@@ -53,7 +53,8 @@ public class AdminServiceImpl implements AdminService {
         Optional<User> userDetails = userRepository.findById(id);
         List<IpUser> byId = ipUserRepository.findAllById(id);
         userDetails.ifPresent(value -> value.setIpUser(byId));
-        AdminDetailsDTO mapAdminDetailsDTO = modelMapper.map(userDetails, AdminDetailsDTO.class);
+        AdminDetailsDTO mapAdminDetailsDTO =
+                modelMapper.map(userDetails, AdminDetailsDTO.class);
         return Optional.ofNullable(mapAdminDetailsDTO);
     }
 

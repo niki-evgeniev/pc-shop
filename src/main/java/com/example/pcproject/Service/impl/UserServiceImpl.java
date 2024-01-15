@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
     private final IpAddressService ipAddressService;
     private final IpUserRepository ipUserRepository;
 
-
     public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository,
                            ModelMapper modelMapper, PasswordEncoder passwordEncoder,
                            IpAddressService ipAddressService, IpUserRepository ipUserRepository) {

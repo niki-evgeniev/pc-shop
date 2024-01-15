@@ -11,20 +11,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.example.pcproject.Common.Constants.*;
+
 @Controller
 @RequestMapping("product")
 public class ProductsController {
-
-    private static final String ALL_PRODUCTS = "ALL";
-    private static final String ALL_LAPTOPS = "LAPTOP";
-    private static final String ALL_COMPUTER = "COMPUTER";
 
     private final ProductService productService;
 
     public ProductsController(ProductService productService) {
         this.productService = productService;
     }
-
 
     @GetMapping("/all")
     public ModelAndView allProduct(
