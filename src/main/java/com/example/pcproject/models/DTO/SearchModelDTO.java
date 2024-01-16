@@ -1,10 +1,13 @@
 package com.example.pcproject.models.DTO;
 
-public class SearchDTO {
+import jakarta.validation.constraints.NotNull;
 
+public class SearchModelDTO {
+
+    @NotNull
     private String model;
 
-    public SearchDTO() {
+    public SearchModelDTO() {
     }
 
     public String getModel() {

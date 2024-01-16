@@ -8,7 +8,6 @@ import com.example.pcproject.Service.aop.ExecutionTime;
 import com.example.pcproject.models.DTO.ProductAllDTO;
 import com.example.pcproject.models.DTO.ProductDTO;
 import com.example.pcproject.models.DTO.ProductDetailsDTO;
-import com.example.pcproject.models.DTO.SearchDTO;
 import com.example.pcproject.models.entity.*;
 import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.RoleType;
@@ -17,7 +16,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.time.LocalDateTime;
 import java.util.List;

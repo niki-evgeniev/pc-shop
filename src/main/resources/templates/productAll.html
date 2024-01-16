@@ -5,10 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <div th:replace="~{fragments/head}"></div>
+
+
     <link href="/css/StyleProductAll.css" rel="stylesheet"/>
-    <!--    <link href="/css/css_bootstrapPALL.css" rel="stylesheet"/>-->
     <link href="/js/bootstrap.bundle.js" rel="stylesheet"/>
+    <th:block th:replace="~{fragments/head}"></th:block>
 
 
 </head>
@@ -16,6 +17,8 @@
 <header th:replace="~{fragments/header}"></header>
 <div class="container-fluid2">
     <div class="row2">
+        <h1 class="text-center text-secondary font-weight-bold productsInfo"
+            th:text="${viewName.toUpperCase()} + ' PRODUCTS'"> </h1>
         <aside class="col-lg-9">
             <div class="card">
                 <div th:each="product : ${productAll.getContent()}"
@@ -55,7 +58,6 @@
                             <td class="text-right d-none d-md-block" sec:authorize="!isAuthenticated()">
                                 <a href="" class="btn btn-light" data-abc="true"
                                    th:href="@{/users/login}"> Details</a></td>
-
                         </tr>
                         </tbody>
                     </table>

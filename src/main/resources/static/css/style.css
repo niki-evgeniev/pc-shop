@@ -169,7 +169,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .header_top .contact_link-container a i {
@@ -194,8 +194,8 @@ body {
 }
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
-    padding: 0;
-    padding: 35px 15px 10px 15px;
+    /*padding: 0;*/
+    /*padding: 35px 15px 10px 15px;*/
     color: #ffffff;
     text-align: center;
     text-transform: uppercase;
@@ -947,7 +947,7 @@ a:focus {
 }
 
 .header_top .contact_link-container a {
-    color: red;
+    color: black;
 }
 
 .slider_section .detail-box h1 span {
@@ -973,4 +973,14 @@ a:focus {
 
 #navbarSupportedContent > ul > li:nth-child(6) > div > form{
     padding-top: 24px;
+}
+
+.productsInfo {
+    padding-right: 25%;
+}
+
+.contact_link {
+    color: black;
+    margin-left: 90%;
+    text-shadow: 2px 2px red;
 }

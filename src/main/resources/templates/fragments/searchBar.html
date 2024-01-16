@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Search</title>
 </head>
 <body>
 <div class="header_bottom">
-    <li class="nav-item">
-        <form th:method="POST"
-              th:action="@{/search}"
-              th:object="${searchDTO}"
-              id="input-group search" class="input-group search">
-            <input type="text"
-                   name="model"
-                   id="model"
-                   class="form-control rounded"
-                   placeholder="Search Model"
-                   aria-label="Search"
-                   aria-describedby="search-addon"/>
-            <input type="submit"
-                   class="btn btn-outline-primary" value="Search"/>
-
-        </form>
-    </li>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <form th:method="POST"
+                  th:action="@{/search}"
+                  th:object="${searchModelDTO}"
+                  id="input-group search" class="input-group search">
+                <input type="text"
+                       name="model"
+                       id="model"
+                       class="form-control rounded"
+                       placeholder="Search Model"
+                       aria-label="Search"
+                       aria-describedby="search-addon"/>
+                <input type="submit"
+                       class="btn btn-outline-primary" value="Search"/>
+            </form>
+        </li>
+    </ul>
 </div>
-
 </body>
 </html>

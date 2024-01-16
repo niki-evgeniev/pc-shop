@@ -20,7 +20,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableMethodSecurity
-public class SecurityConfiguration {
+public class  SecurityConfiguration {
     private final String rememberMeKey;
 
     public SecurityConfiguration(@Value("${pcproject.remember.me.key}")
