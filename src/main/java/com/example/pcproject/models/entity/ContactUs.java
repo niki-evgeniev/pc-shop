@@ -9,12 +9,12 @@ import jakarta.persistence.Table;
 public class ContactUs extends BaseEntity {
     @Column(name = "full_name")
     private String fullName;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "message")
+    @Column(name = "message", nullable = false)
     private String messages;
 
     public ContactUs() {
