@@ -149,7 +149,7 @@ body {
 
 .header_top {
     background-color: #1c1c1c;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
 .header_top .contact_link-container {
@@ -169,7 +169,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     color: #ffffff;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .header_top .contact_link-container a i {
@@ -194,8 +194,8 @@ body {
 }
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
-    /*padding: 0;*/
-    /*padding: 35px 15px 10px 15px;*/
+    padding: 0;
+    padding: 35px 15px 10px 15px;
     color: #ffffff;
     text-align: center;
     text-transform: uppercase;
@@ -981,6 +981,6 @@ a:focus {
 
 .contact_link {
     color: black;
-    margin-left: 90%;
+    margin-left: 80%;
     text-shadow: 2px 2px red;
 }
