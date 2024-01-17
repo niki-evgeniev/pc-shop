@@ -38,7 +38,7 @@
                                 <figure class="itemside align-items-center">
                                     <div class="aside"><img th:src="*{imageUrl}" class="img-sm" alt="Product img"></div>
                                     <figcaption class="info">
-                                        <a href="#" class="title text-dark" data-abc="true" th:text="*{summary()}">Tshirt
+                                        <a th:href="@{/product/{id}(id = *{id})}" class="title text-dark" data-abc="true" th:text="*{summary()}">Tshirt
                                             with round nect</a>
                                         <p class="text-muted small"></p>
                                         <p class="text-muted small" th:text="*{computer}">SIZE: L</p>

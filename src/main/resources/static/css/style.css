@@ -962,8 +962,8 @@ a:focus {
     padding: 20px 15px 10px 15px;
 }
 .search {
-    padding: 25px 15px 10px 15px;
-    width: 22%;
+    padding: 15px 15px 10px 15px;
+    width: 25%;
     margin-left: auto;
 }
 
@@ -981,6 +981,7 @@ a:focus {
 
 .contact_link {
     color: black;
-    margin-left: 80%;
+    /*margin-left: 80%;*/
+    margin-left: auto;
     text-shadow: 2px 2px red;
 }
