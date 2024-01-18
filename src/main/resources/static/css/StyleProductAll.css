@@ -122,3 +122,16 @@ a {
     margin-right: 1px;
     margin-left: 15%;
 }
+
+@media (max-width: 810px) {
+    /*.body > div.container-fluid2 > div > aside > div > div:nth-child(1) > table > tbody > tr > td.text-right.d-none.d-md-block > a {*/
+    /*    display: block;*/
+    /*}*/
+    .d-none {
+        display: block;
+    }
+
+    .card {
+        margin-left: auto;
+    }
+}
