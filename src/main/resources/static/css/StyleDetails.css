@@ -408,4 +408,11 @@ p {
 b, strong {
     font-weight: 700 !important;
 }
+.container {
+    margin-top: 50px;
+}
+
+body > div > div > div.col-md-5 > div > div {
+    padding: 0.25rem;
+}
 
