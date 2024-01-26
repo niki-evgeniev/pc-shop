@@ -971,7 +971,7 @@ a:focus {
     padding-top: 24px;
 }
 
-#navbarSupportedContent > ul > li:nth-child(6) > div > form{
+#navbarSupportedContent > ul > li> div > form{
     padding-top: 24px;
 }
 
