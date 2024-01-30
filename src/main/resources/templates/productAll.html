@@ -43,8 +43,10 @@
                                 </figure>
                             </td>
                             <td>
-                                <div class="price-wrap"><var class="price">$
-                                    <th:block th:text="*{price}"></th:block>
+                                <div class="price-wrap"><var class="price">
+                                    <th:block th:text="PRICE"></th:block>
+                                    <br>
+                                    <th:block th:text="*{price} + '$'"></th:block>
                                 </var>
                                 </div>
                             </td>
