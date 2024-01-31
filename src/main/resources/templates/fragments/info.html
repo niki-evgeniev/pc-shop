@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Info</title>
@@ -16,9 +17,9 @@
                 niki.evgeniev
               </span>
                     </a>
-<!--                    <p>-->
-<!--                        dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r-->
-<!--                    </p>-->
+                    <!--                    <p>-->
+                    <!--                        dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r-->
+                    <!--                    </p>-->
                 </div>
             </div>
             <div class="col-md-3">
@@ -27,16 +28,25 @@
                         Useful Link
                     </h5>
                     <ul>
-                        <li>
-                            <a th:href="@{/users/register}">
-                                REGISTER
-                            </a>
-                        </li>
-                        <li>
-                            <a th:href="@{/users/login}">
-                                LOGIN
-                            </a>
-                        </li>
+                        <th:block sec:authorize="!isAuthenticated()">
+                            <li>
+                                <a th:href="@{/users/register}">
+                                    REGISTER
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/users/login}">
+                                    LOGIN
+                                </a>
+                            </li>
+                        </th:block>
+                        <th:block sec:authorize="isAuthenticated()">
+                            <li>
+                                <a th:href="@{/users/profile}">
+                                    PROFILE
+                                </a>
+                            </li>
+                        </th:block>
                         <li>
                             <a th:href="@{/product/all}">
                                 ALL PRODUCT

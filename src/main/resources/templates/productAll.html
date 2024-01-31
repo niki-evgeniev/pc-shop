@@ -53,7 +53,7 @@
                             <td class="text-right  d-md-block" sec:authorize="isAuthenticated()">
                                 <a href="" class="btn btn-light" data-abc="true"
                                    th:href="@{/product/{id}(id = *{id})}"> Details</a></td>
-                            <td class="text-right  d-md-block" sec:authorize="!isAuthenticated()">
+                             <td class="text-right  d-md-block" sec:authorize="!isAuthenticated()">
                                 <a href="" class="btn btn-light" data-abc="true"
                                    th:href="@{/users/login}"> Details</a></td>
                         </tr>
@@ -83,5 +83,11 @@
 <div>
     <footer th:replace="~{fragments/footer}"></footer>
 </div>
+<!--<footer>-->
+<!--    <div>-->
+<!--        <footer th:replace="~{fragments/footer}"></footer>-->
+<!--    </div>-->
+<!--</footer>-->
+
 <div th:replace="~{fragments/headerJs}"></div>
 </html>
