@@ -23,6 +23,11 @@ public class UserController {
         this.reCaptchaService = reCaptchaService;
     }
 
+    @GetMapping("/profile")
+    public ModelAndView profile(){
+        return new ModelAndView("profile");
+    }
+
 
     @GetMapping("/register")
     public ModelAndView contact() {
