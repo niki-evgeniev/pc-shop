@@ -20,7 +20,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableMethodSecurity
-public class  SecurityConfiguration {
+public class SecurityConfiguration {
     private final String rememberMeKey;
 
     public SecurityConfiguration(@Value("${pcproject.remember.me.key}")
@@ -34,7 +34,7 @@ public class  SecurityConfiguration {
         httpSecurity.authorizeHttpRequests(
                 authorizeRequest -> authorizeRequest
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
+                        .requestMatchers("/", "/users/login", "/users/register", "/users/profile", "/users/login-error").permitAll()
                         .requestMatchers("/service/service").permitAll()
                         .requestMatchers("/product/all", "/product/laptop", "/product/computer").permitAll()
                         .requestMatchers("/contact").permitAll()
