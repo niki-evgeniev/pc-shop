@@ -28,20 +28,37 @@
                         th:object="${registerUserDTO}"
                         class="register-form" id="register-form">
                     <div class="form-group">
-                        <label for="name">
-                            <i th:unless="${#fields.hasErrors('name')}"
+                        <label for="firstName">
+                            <i th:unless="${#fields.hasErrors('firstName')}"
                                class="zmdi zmdi-account material-icons-name"></i></label>
                         <input
-                                th:field="*{name}"
+                                th:field="*{firstName}"
                                 th:errorclass="bg-danger"
                                 class="text-left"
                                 type="text"
                                 name="firstName"
-                                id="name"
-                                placeholder="Your Name"/>
+                                id="firstName"
+                                placeholder="First name"/>
                         <small
-                                th:if="${#fields.hasErrors('name')}"
-                                th:errors="*{name}"
+                                th:if="${#fields.hasErrors('firstName')}"
+                                th:errors="*{firstName}"
+                                class="text-danger font-weight-bold">Name error message</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">
+                            <i th:unless="${#fields.hasErrors('lastName')}"
+                               class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input
+                                th:field="*{lastName}"
+                                th:errorclass="bg-danger"
+                                class="text-left"
+                                type="text"
+                                name="lastName"
+                                id="lastName"
+                                placeholder="Last name"/>
+                        <small
+                                th:if="${#fields.hasErrors('lastName')}"
+                                th:errors="*{lastName}"
                                 class="text-danger font-weight-bold">Name error message</small>
                     </div>
 
@@ -56,7 +73,7 @@
                                 type="username"
                                 name="username"
                                 id="username"
-                                placeholder="Your Nickname"/>
+                                placeholder="Nickname"/>
                         <small
                                 th:if="${#fields.hasErrors('username')}"
                                 th:errors="*{username}"
@@ -74,7 +91,7 @@
                                 type="email"
                                 name="email"
                                 id="email"
-                                placeholder="Your Email"/>
+                                placeholder="Email"/>
                         <small
                                 th:if="${#fields.hasErrors('email')}"
                                 th:errors="*{email}"

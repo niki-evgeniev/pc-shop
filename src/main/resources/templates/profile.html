@@ -13,17 +13,19 @@
 <body>
 <header th:replace="~{fragments/header}"></header>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdeys">
+<div th:object="${viewProfileInfoDTO}"
+        class="container bootstrap snippets bootdeys">
     <div class="row" id="user-profile">
         <div class="col-lg-3 col-md-4 col-sm-4">
             <div class="main-box clearfix">
-                <h2>John Doe </h2>
+                <h2 th:text="*{firstName} + ' ' + *{lastName}">
+                    John Doe</h2>
                 <div class="profile-status">
                     <i class="fa fa-check-circle"></i> Online
                 </div>
                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt class="profile-img img-responsive center-block">
                 <div class="profile-label">
-                    <span class="label label-danger">Admin</span>
+                    <span class="label label-danger" th:text="*{userRole}">Admin</span>
                 </div>
                 <div class="profile-stars">
                     <i class="fa fa-star"></i>
@@ -33,12 +35,12 @@
                     <i class="fa fa-star-o"></i>
                     <span>Super User</span>
                 </div>
-                <div class="profile-since">
+                <div class="profile-since" th:text="' Member since: ' + *{createOn}">
                     Member since: Jan 2012
                 </div>
                 <div class="profile-details">
                     <ul class="fa-ul">
-                        <li><i class="fa-li fa fa-truck"></i>Orders: <span>456</span></li>
+                        <li><i class="fa-li fa fa-truck"></i>Orders: <span th:text="*{numberOfProducts}">456</span></li>
                         <li><i class="fa-li fa fa-comment"></i>Posts: <span>828</span></li>
                         <li><i class="fa-li fa fa-tasks"></i>Tasks done: <span>1024</span></li>
                     </ul>
@@ -135,4 +137,3 @@
     </div>
 </footer>
 <div th:replace="~{fragments/headerJs}"></div>
-</html>

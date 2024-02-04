@@ -5,7 +5,10 @@ import com.example.pcproject.Service.UserService;
 import com.example.pcproject.models.DTO.LoginUserDTO;
 import com.example.pcproject.models.DTO.ReCaptchaResponseDTO;
 import com.example.pcproject.models.DTO.RegisterUserDTO;
+import com.example.pcproject.models.DTO.ViewProfileInfoDTO;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +27,18 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public ModelAndView profile(){
-        return new ModelAndView("profile");
+    public ModelAndView profile(@AuthenticationPrincipal UserDetails userDetails) {
+
+        ViewProfileInfoDTO viewProfileInfoDTO = userService.getProfileDetails(userDetails.getUsername());
+        ModelAndView modelAndView = new ModelAndView("profile");
+        modelAndView.addObject("viewProfileInfoDTO", viewProfileInfoDTO);
+
+        return modelAndView;
+    }
+
+    @ModelAttribute
+    ViewProfileInfoDTO viewProfileInfoDTO(){
+        return new ViewProfileInfoDTO();
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.pcproject.service.impl;
 
 import com.example.pcproject.Repository.IpUserRepository;
+import com.example.pcproject.Repository.ProductRepository;
 import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Repository.UserRoleRepository;
 import com.example.pcproject.Service.IpAddressService;
@@ -48,11 +49,13 @@ public class UserControllerTEST {
 
     @Mock
     private UserRoleRepository userRoleRepository;
+    @Mock
+    private ProductRepository productRepository;
 
     @BeforeEach
     void setUp() {
         UserServiceImpl userService = new UserServiceImpl(userRepository, userRoleRepository, modelMapper,
-                passwordEncoder, ipAddressService, ipUserRepository);
+                passwordEncoder, ipAddressService, ipUserRepository, productRepository);
     }
 
 
@@ -83,7 +86,7 @@ public class UserControllerTEST {
         when(ipUserRepository.findByIp(ipAddressService.getIp())).thenReturn(Optional.of(ipUser));
         ipUser.setIp(ipAddress);
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository, userRoleRepository, modelMapper, passwordEncoder, ipAddressService, ipUserRepository);
+        UserServiceImpl userService = new UserServiceImpl(userRepository, userRoleRepository, modelMapper, passwordEncoder, ipAddressService, ipUserRepository, productRepository);
         boolean isRegistered = userService.registerUser(registerUserDTO);
         assertTrue(isRegistered);
     }
@@ -91,7 +94,8 @@ public class UserControllerTEST {
 
     private static User createTestUser() {
         User user = new User();
-        user.setName("name");
+        user.setFirstName("name");
+        user.setLastName("namev");
         user.setEmail("email@email");
         user.setUsername("username");
         user.setPassword("12345");
@@ -114,7 +118,7 @@ public class UserControllerTEST {
         existingUser.setUsername("existingUsername");
         when(userRepository.findByUsername(registerUserDTO.getUsername())).thenReturn(Optional.of(existingUser));
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository, userRoleRepository, modelMapper, passwordEncoder, ipAddressService, ipUserRepository);
+        UserServiceImpl userService = new UserServiceImpl(userRepository, userRoleRepository, modelMapper, passwordEncoder, ipAddressService, ipUserRepository, productRepository);
         boolean isRegistered = userService.registerUser(registerUserDTO);
         verify(userRepository, never()).save(ArgumentMatchers.any(User.class));
 

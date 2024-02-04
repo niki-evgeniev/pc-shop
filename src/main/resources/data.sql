@@ -3,12 +3,12 @@ VALUES (1, 'ADMIN'),
        (2, 'MODERATOR'),
        (3, 'USER');
 
-INSERT INTO users (id, create_on, email, name, password, username)
-VALUES (1, '2023-11-19', 'admin@admin', 'adminov',
+INSERT INTO users (id, create_on, email, first_name, last_name, password, username)
+VALUES (1, '2023-11-19', 'admin@admin', 'admin', 'adminov',
         'dd6b70ba154d881d01f35d22a1fdc91003c02debb45d92eec4f87f9898b9d6478555ba9ce0304487d0c814455470bc05', 'admin'),
-       (2, '2023-11-19', 'test@test', 'testov',
+       (2, '2023-11-19', 'test@test', 'test', 'testov',
         'dd6b70ba154d881d01f35d22a1fdc91003c02debb45d92eec4f87f9898b9d6478555ba9ce0304487d0c814455470bc05', 'test'),
-       (3, '2023-11-19', 'user@user', 'userov',
+       (3, '2023-11-19', 'user@user', 'user', 'userov',
         'dd6b70ba154d881d01f35d22a1fdc91003c02debb45d92eec4f87f9898b9d6478555ba9ce0304487d0c814455470bc05', 'user');
 
 INSERT INTO `brands` (`id`, `name`, created)
@@ -43,17 +43,21 @@ VALUES (1, 'LAPTOP', 1, 'TUF-laptop', '2023-11-19',
        (3, 'COMPUTER', 1, 'ROG-PC', '2023-11-19',
         'https://desktop.bg/system/images/383033/normal/asus_rog_strix_g15cfwb7636.jpg', '2022'),
        (4, 'COMPUTER', 2, 'AORUS-PC', '2023-11-19',
-        'https://cdn.mdcomputers.in/image/cache/catalog/custom-desktop/gigabyte/aorus-for-elite-2.0/aorus-for-elite-2.0-image-main-600x600.jpg', '2022'),
+        'https://cdn.mdcomputers.in/image/cache/catalog/custom-desktop/gigabyte/aorus-for-elite-2.0/aorus-for-elite-2.0-image-main-600x600.jpg',
+        '2022'),
        (5, 'LAPTOP', 2, 'AORUS-laptop', '2023-11-19',
         'https://www.gigabyte.com/Laptop/gamer/images/product/AORUS15PVC.png', '2022'),
        (6, 'LAPTOP', 3, 'MacBook-laptop', '2023-11-19',
-        'https://www.investor.bg/media/files/resized/article/1600x/11e/0bf4f0034def62df1a0afd07e7f3d11e-apple-macbook-pro-m2-pro-and-m2-max-hero-230117-full-bleed-imagejpglarge.jpg', '2022'),
+        'https://www.investor.bg/media/files/resized/article/1600x/11e/0bf4f0034def62df1a0afd07e7f3d11e-apple-macbook-pro-m2-pro-and-m2-max-hero-230117-full-bleed-imagejpglarge.jpg',
+        '2022'),
        (7, 'COMPUTER', 3, 'iMac-PC', '2023-11-19',
         'https://4.img-dpreview.com/files/p/E~TS590x0~articles/9294369869/DLCS5227-Edit.jpeg', '2022'),
        (8, 'LAPTOP', 4, 'Inspiron-laptop', '2023-11-19',
-        'https://s13emagst.akamaized.net/products/44413/44412491/images/res_134ba9d019e16765b36cdc68da24dcf2.jpg', '2022'),
+        'https://s13emagst.akamaized.net/products/44413/44412491/images/res_134ba9d019e16765b36cdc68da24dcf2.jpg',
+        '2022'),
        (9, 'COMPUTER', 4, 'Vostro-PC', '2023-11-19',
-        'https://technome.bg/image/cache/catalog/pc-import/0006301183441/0006301239018/00063038831951-446x446.jpg', '2022');
+        'https://technome.bg/image/cache/catalog/pc-import/0006301183441/0006301239018/00063038831951-446x446.jpg',
+        '2022');
 
 INSERT INTO `products` (id, created, description, computer_type, image_url, phone_number, price, type_to_use, year,
                         model_id, seller_id, traces_to_use)

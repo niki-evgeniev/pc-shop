@@ -10,7 +10,9 @@ import jakarta.validation.constraints.Size;
 public class RegisterUserDTO {
 
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 character!")
-    private String name;
+    private String firstName;
+    @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 character!")
+    private String lastName;
 
     @Size(min = 3, max = 20, message = "Username length must be between 3 and 20 character!")
     @NotNull
@@ -31,12 +33,20 @@ public class RegisterUserDTO {
     public RegisterUserDTO() {
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getUsername() {

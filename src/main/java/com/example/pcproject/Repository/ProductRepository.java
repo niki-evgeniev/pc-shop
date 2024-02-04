@@ -2,6 +2,7 @@ package com.example.pcproject.Repository;
 
 import com.example.pcproject.models.entity.Model;
 import com.example.pcproject.models.entity.Product;
+import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.eunums.ComputerType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,4 +21,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findAllByComputerType(ComputerType computerType, Pageable pageable);
 
     Page<Product> findAllByModelName(String modelName, Pageable pageable);
+
+    Long countBySellerId(Long seller_id);
 }
