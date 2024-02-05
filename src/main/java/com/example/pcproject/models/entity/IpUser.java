@@ -16,7 +16,7 @@ public class IpUser extends BaseEntity {
     private boolean isBanned = false;
 
     @ManyToMany(mappedBy = "ipUser")
-    List<User> ipUser;
+    List<User> users;
 
     public IpUser() {
     }
@@ -38,10 +38,10 @@ public class IpUser extends BaseEntity {
     }
 
     public List<User> getIpUser() {
-        return ipUser;
+        return users;
     }
 
     public void setIpUser(List<User> ipUser) {
-        this.ipUser = ipUser;
+        this.users = ipUser;
     }
 }

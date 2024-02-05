@@ -23,16 +23,13 @@ public class AdminServiceImpl implements AdminService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    private final IpUserRepository ipUserRepository;
     private final UserRoleRepository userRoleRepository;
     private final ProductRepository productRepository;
 
     public AdminServiceImpl(UserRepository userRepository, ModelMapper modelMapper,
-                            IpUserRepository ipUserRepository, UserRoleRepository userRoleRepository,
-                            ProductRepository productRepository) {
+                             UserRoleRepository userRoleRepository,ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
-        this.ipUserRepository = ipUserRepository;
         this.userRoleRepository = userRoleRepository;
         this.productRepository = productRepository;
     }
@@ -50,14 +47,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Optional<AdminDetailsDTO> getAdminUserDetails(Long id) {
-        Optional<User> userDetails = userRepository.findById(id);
-        List<IpUser> byId = ipUserRepository.findAllById(id);
-        userDetails.ifPresent(value -> value.setIpUser(byId));
 
-
+        Optional<User> userAndIpById = userRepository.findUserAndIpById(id);
 
         AdminDetailsDTO mapAdminDetailsDTO =
-                modelMapper.map(userDetails, AdminDetailsDTO.class);
+                modelMapper.map(userAndIpById, AdminDetailsDTO.class);
+
         return Optional.ofNullable(mapAdminDetailsDTO);
     }
 

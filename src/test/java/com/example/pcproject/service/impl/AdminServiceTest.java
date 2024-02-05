@@ -44,7 +44,7 @@ public class AdminServiceTest {
     @BeforeEach
     void setUp() {
         AdminServiceImpl adminService = new AdminServiceImpl(
-                userRepository, modelMapper, ipUserRepository, userRoleRepository, productRepository);
+                userRepository, modelMapper, userRoleRepository, productRepository);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class AdminServiceTest {
         when(userRepository.findAll()).thenReturn(List.of(user));
         when(modelMapper.map(user, AdminsAllInfoDTO.class)).thenReturn(adminsAllInfoDTO);
 
-        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, modelMapper, ipUserRepository, userRoleRepository, productRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, modelMapper, userRoleRepository, productRepository);
         List<AdminsAllInfoDTO> allUsers = adminService.getAllUsers();
 
         Assertions.assertEquals(1, allUsers.size());
@@ -111,7 +111,7 @@ public class AdminServiceTest {
         when(userRepository.findById(id)).thenReturn(Optional.of(testUserNoAdmin));
         when(userRoleRepository.findAll()).thenReturn(listRole);
 
-        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, modelMapper, ipUserRepository, userRoleRepository, productRepository);
+        AdminServiceImpl adminService = new AdminServiceImpl(userRepository, modelMapper, userRoleRepository, productRepository);
         adminService.addRoleAdmin(id);
         Assertions.assertEquals(3, testUserNoAdmin.getRoles().size());
 

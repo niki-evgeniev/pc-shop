@@ -15,4 +15,5 @@ public interface IpUserRepository extends JpaRepository<IpUser, Long> {
 
     List<IpUser> findAllById(Long id);
 
+
 }
