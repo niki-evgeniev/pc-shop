@@ -46,7 +46,7 @@ public class AdminController {
     @GetMapping("/{id}")
     public ModelAndView getAdminDetails(@PathVariable("id") Long id) {
 
-        AdminDetailsDTO userDetails = adminService.getUserDetails(id)
+        AdminDetailsDTO userDetails = adminService.getAdminUserDetails(id)
                 .orElseThrow(() -> new ObjectNotFoundException("User details not found"));
 
         ModelAndView modelAndView = new ModelAndView("user-admin-details");

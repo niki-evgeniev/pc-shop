@@ -39,7 +39,8 @@ public class TestDataUtil {
 
         List<UserRole> roles = userRoleRepository.findAllByRolesIn(List.of(RoleType.USER, RoleType.MODERATOR));
         User user = new User();
-        user.setName("name");
+        user.setFirstName("name");
+        user.setLastName("namev");
         user.setEmail("email@email");
         user.setUsername(username);
         user.setPassword("12345");
@@ -54,7 +55,8 @@ public class TestDataUtil {
 
         List<UserRole> roles = userRoleRepository.findAll();
         User user = new User();
-        user.setName("name");
+        user.setFirstName("name");
+        user.setLastName("namev");
         user.setEmail("email@email");
         user.setUsername(username);
         user.setPassword("12345");

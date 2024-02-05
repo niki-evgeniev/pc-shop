@@ -10,7 +10,7 @@ public interface AdminService {
 
     List<AdminsAllInfoDTO> getAllUsers();
 
-    Optional<AdminDetailsDTO> getUserDetails(Long id);
+    Optional<AdminDetailsDTO> getAdminUserDetails(Long id);
 
     void addRoleAdmin(Long id);
 

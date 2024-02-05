@@ -1,9 +1,9 @@
 package com.example.pcproject.models.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "ip_users")
@@ -14,6 +14,9 @@ public class IpUser extends BaseEntity {
 
     @Column
     private boolean isBanned = false;
+
+    @ManyToMany(mappedBy = "ipUser")
+    List<User> ipUser;
 
     public IpUser() {
     }
@@ -32,5 +35,13 @@ public class IpUser extends BaseEntity {
 
     public void setBanned(boolean banned) {
         isBanned = banned;
+    }
+
+    public List<User> getIpUser() {
+        return ipUser;
+    }
+
+    public void setIpUser(List<User> ipUser) {
+        this.ipUser = ipUser;
     }
 }

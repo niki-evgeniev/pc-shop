@@ -29,7 +29,7 @@ public class UserController {
     @GetMapping("/profile")
     public ModelAndView profile(@AuthenticationPrincipal UserDetails userDetails) {
 
-        ViewProfileInfoDTO viewProfileInfoDTO = userService.getProfileDetails(userDetails.getUsername());
+        ViewProfileInfoDTO viewProfileInfoDTO = userService.getUserDetails(userDetails.getUsername());
         ModelAndView modelAndView = new ModelAndView("profile");
         modelAndView.addObject("viewProfileInfoDTO", viewProfileInfoDTO);
 

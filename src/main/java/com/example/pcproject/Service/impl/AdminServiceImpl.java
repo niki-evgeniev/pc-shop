@@ -49,10 +49,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Optional<AdminDetailsDTO> getUserDetails(Long id) {
+    public Optional<AdminDetailsDTO> getAdminUserDetails(Long id) {
         Optional<User> userDetails = userRepository.findById(id);
         List<IpUser> byId = ipUserRepository.findAllById(id);
         userDetails.ifPresent(value -> value.setIpUser(byId));
+
+
+
         AdminDetailsDTO mapAdminDetailsDTO =
                 modelMapper.map(userDetails, AdminDetailsDTO.class);
         return Optional.ofNullable(mapAdminDetailsDTO);

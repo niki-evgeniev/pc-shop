@@ -120,7 +120,8 @@ public class AdminServiceTest {
 
     private static User createTestUser() {
         User user = new User();
-        user.setName("name");
+        user.setFirstName("name");
+        user.setLastName("namev");
         user.setEmail("email@email");
         user.setUsername("username");
         user.setPassword("12345");
@@ -134,7 +135,8 @@ public class AdminServiceTest {
 
     private static User createTestUserNoAdmin() {
         User user = new User();
-        user.setName("name");
+        user.setFirstName("name");
+        user.setLastName("namev");
         user.setEmail("email@email");
         user.setUsername("username");
         user.setPassword("12345");

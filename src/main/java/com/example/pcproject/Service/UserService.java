@@ -7,5 +7,5 @@ public interface UserService {
 
     boolean registerUser(RegisterUserDTO registerUserDTO);
 
-    ViewProfileInfoDTO getProfileDetails(String username);
+    ViewProfileInfoDTO getUserDetails(String username);
 }

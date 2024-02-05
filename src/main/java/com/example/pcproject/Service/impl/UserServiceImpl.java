@@ -71,15 +71,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ViewProfileInfoDTO getProfileDetails(String username) {
+    public ViewProfileInfoDTO getUserDetails(String username) {
         Optional<User> userDetails = userRepository.findByUsername(username);
         ViewProfileInfoDTO map = modelMapper.map(userDetails, ViewProfileInfoDTO.class);
         if (userDetails.isPresent()) {
             List<UserRole> roles = userDetails.get().getRoles();
             map.setUserRole(roles.get(0).getRoles().name());
-            List<Product> allBySellerId = productRepository.findAllBySellerId(userDetails.get().getId());
-            Long l = productRepository.countBySellerId(userDetails.get().getId());
-            map.setNumberOfProducts(allBySellerId.size());
+            Long countAllProductForSell = productRepository.countBySellerId(userDetails.get().getId());
+            map.setNumberOfProducts(countAllProductForSell);
             System.out.println();
         }
 

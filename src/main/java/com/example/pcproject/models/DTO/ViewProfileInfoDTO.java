@@ -16,7 +16,7 @@ public class ViewProfileInfoDTO {
 
     private String userRole;
 
-    private Integer numberOfProducts;
+    private Long numberOfProducts;
 
     public ViewProfileInfoDTO() {
     }
@@ -69,11 +69,11 @@ public class ViewProfileInfoDTO {
         this.userRole = userRole;
     }
 
-    public Integer getNumberOfProducts() {
+    public Long getNumberOfProducts() {
         return numberOfProducts;
     }
 
-    public void setNumberOfProducts(Integer numberOfProducts) {
+    public void setNumberOfProducts(Long numberOfProducts) {
         this.numberOfProducts = numberOfProducts;
     }
 }
