@@ -42,7 +42,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/api/send").permitAll()
                         .requestMatchers("/api/viewIp").permitAll()
                         .requestMatchers("/admin/user", "/admin/admin-panel", "/admin/viewIp",
-                                "/admin/brandsAdd").hasRole(RoleType.ADMIN.name())
+                                "/admin/brandsAdd").hasRole(RoleType.MODERATOR.name())
                         .anyRequest().authenticated()
 
 

@@ -39,7 +39,8 @@
 
         <div class="col-md-7">
             <img src="https://logowik.com/content/uploads/images/asus-rog.jpg" alt="project-image" class="rounded">
-            <div class="project-info-box">
+            <div  sec:authorize="hasRole('ADMIN')"
+                    class="project-info-box">
                 <p><b>Seller Username:</b> >123</p>
                 <p> Set Role</p>
                 <div class="card-body" th:if="${adminDetails.getRoles().size() == 1}">
