@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "products")
 public class Product extends BaseEntity {
-
-    @Column(name = "description", nullable = false)
+    @Lob
+    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "computer_type", nullable = false)

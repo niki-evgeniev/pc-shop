@@ -14,11 +14,11 @@ body {
     margin-right: auto;
 }
 
-.card-body {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.40rem
-}
+/*.card-body {*/
+/*    -ms-flex: 1 1 auto;*/
+/*    flex: 1 1 auto;*/
+/*    padding: 1.40rem*/
+/*}*/
 
 .img-sm {
     width: 150px;
@@ -68,41 +68,42 @@ a {
     display: -ms-flexbox;
     display: flex;
     width: 100%
+
 }
 
-.dlist-align {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex
-}
+/*.dlist-align {*/
+/*    display: -webkit-box;*/
+/*    display: -ms-flexbox;*/
+/*    display: flex*/
+/*}*/
 
 [class*="dlist-"] {
     margin-bottom: 5px
 }
 
-.coupon {
-    border-radius: 1px
-}
+/*.coupon {*/
+/*    border-radius: 1px*/
+/*}*/
 
 .price {
     font-weight: 600;
     color: #212529
 }
 
-.btn.btn-out {
-    outline: 1px solid #fff;
-    outline-offset: -5px
-}
+/*.btn.btn-out {*/
+/*    outline: 1px solid #fff;*/
+/*    outline-offset: -5px*/
+/*}*/
 
-.btn-main {
-    border-radius: 2px;
-    text-transform: capitalize;
-    font-size: 15px;
-    padding: 10px 19px;
-    cursor: pointer;
-    color: #fff;
-    width: 100%
-}
+/*.btn-main {*/
+/*    border-radius: 2px;*/
+/*    text-transform: capitalize;*/
+/*    font-size: 15px;*/
+/*    padding: 10px 19px;*/
+/*    cursor: pointer;*/
+/*    color: #fff;*/
+/*    width: 100%*/
+/*}*/
 
 .btn-light {
     color: #ffffff;
@@ -117,9 +118,9 @@ a {
     border-color: #F44336
 }
 
-.btn-apply {
-    font-size: 11px
-}
+/*.btn-apply {*/
+/*    font-size: 11px*/
+/*}*/
 
 .row2 {
     margin-left: auto;

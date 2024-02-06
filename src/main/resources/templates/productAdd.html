@@ -147,7 +147,9 @@
 			                        SDD : 512gb Intel
 			                        HDD : None
 			                        PSU : 750W Seasonic"></textarea>
-            <p class="invalid-feedback errors alert alert-danger">
+            <p th:if="${#fields.hasErrors('description')}"
+               th:errors="*{description}"
+                    class="invalid-feedback errors alert alert-danger">
                 Description is required.
             </p>
         </div>

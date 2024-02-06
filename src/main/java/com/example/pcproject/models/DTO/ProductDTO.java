@@ -35,7 +35,7 @@ public class ProductDTO {
     private Integer year;
 
     @NotEmpty
-    @Size(min = 5, max = 512)
+    @Size(min = 5, max = 512, message = "Max symbol is 512")
     private String description;
 
     public ProductDTO() {

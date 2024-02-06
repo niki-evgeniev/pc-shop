@@ -21,7 +21,6 @@ import static com.example.pcproject.Common.AdminRole.*;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final UserRoleRepository userRoleRepository;
@@ -59,23 +58,23 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void addRoleAdmin(Long id) {
-        User userAddAdmin = getUser(id);
+        User userAddRoleAdmin = getUser(id);
 
-        if (userAddAdmin != null) {
-            addRole(userAddAdmin, ROLE_ADMIN);
-            userRepository.save(userAddAdmin);
-            System.out.println(userAddAdmin.getUsername() + " success added ADMIN role");
+        if (userAddRoleAdmin != null) {
+            addRole(userAddRoleAdmin, ROLE_ADMIN);
+            userRepository.save(userAddRoleAdmin);
+            System.out.println(userAddRoleAdmin.getUsername() + " success added ADMIN role");
         }
     }
 
     @Override
     public void addRoleModerator(Long id) {
-        User userAddModerator = getUser(id);
+        User userAddRoleModerator = getUser(id);
 
-        if (userAddModerator != null) {
-            addRole(userAddModerator, ROLE_MODERATOR);
-            userRepository.save(userAddModerator);
-            System.out.println(userAddModerator.getUsername() + " success added MODERATOR role");
+        if (userAddRoleModerator != null) {
+            addRole(userAddRoleModerator, ROLE_MODERATOR);
+            userRepository.save(userAddRoleModerator);
+            System.out.println(userAddRoleModerator.getUsername() + " success added MODERATOR role");
         }
     }
 
@@ -92,23 +91,23 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void removeRoleAdmin(Long id) {
-        User userRemoveAdmin = getUser(id);
+        User userRemoveRoleAdmin = getUser(id);
 
-        if (userRemoveAdmin != null) {
-            removeRole(userRemoveAdmin, ROLE_ADMIN);
-            userRepository.save(userRemoveAdmin);
-            System.out.println(userRemoveAdmin.getUsername() + " success remove ADMIN role");
+        if (userRemoveRoleAdmin != null) {
+            removeRole(userRemoveRoleAdmin, ROLE_ADMIN);
+            userRepository.save(userRemoveRoleAdmin);
+            System.out.println(userRemoveRoleAdmin.getUsername() + " success remove ADMIN role");
         }
     }
 
     @Override
     public void removeRoleModerator(Long id) {
-        User userRemoveModerator = getUser(id);
+        User userRemoveRoleModerator = getUser(id);
 
-        if (userRemoveModerator != null) {
-            removeRole(userRemoveModerator, ROLE_MODERATOR);
-            userRepository.save(userRemoveModerator);
-            System.out.println(userRemoveModerator.getUsername() + " success remove MODERATOR role");
+        if (userRemoveRoleModerator != null) {
+            removeRole(userRemoveRoleModerator, ROLE_MODERATOR);
+            userRepository.save(userRemoveRoleModerator);
+            System.out.println(userRemoveRoleModerator.getUsername() + " success remove MODERATOR role");
         }
     }
 
