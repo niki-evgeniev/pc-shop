@@ -46,11 +46,11 @@ public class AdminController {
     @GetMapping("/{id}")
     public ModelAndView getAdminDetails(@PathVariable("id") Long id) {
 
-        AdminDetailsDTO userDetails = adminService.getAdminUserDetails(id)
+        AdminDetailsDTO adminDetailsDTO = adminService.getAdminUserDetails(id)
                 .orElseThrow(() -> new ObjectNotFoundException("User details not found"));
 
         ModelAndView modelAndView = new ModelAndView("user-admin-details");
-        modelAndView.addObject("adminDetails", userDetails);
+        modelAndView.addObject("adminDetails", adminDetailsDTO);
 
         return modelAndView;
     }
@@ -62,11 +62,25 @@ public class AdminController {
 
         return new ModelAndView("redirect:/admin/user");
     }
+    @PutMapping("/addModerator/{id}")
+    public ModelAndView addModeratorRole(@PathVariable("id") Long id) {
+
+        adminService.addRoleModerator(id);
+
+        return new ModelAndView("redirect:/admin/user");
+    }
 
     @PutMapping("/removeAdmin/{id}")
     public ModelAndView removeAdminRole(@PathVariable("id") Long id) {
 
         adminService.removeRoleAdmin(id);
+
+        return new ModelAndView("redirect:/admin/user");
+    }
+    @PutMapping("/removeModerator/{id}")
+    public ModelAndView removeModeratorRole(@PathVariable("id") Long id) {
+
+        adminService.removeRoleModerator(id);
 
         return new ModelAndView("redirect:/admin/user");
     }
