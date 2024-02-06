@@ -62,7 +62,7 @@ public class AdminServiceImpl implements AdminService {
         User userAddAdmin = getUser(id);
 
         if (userAddAdmin != null) {
-            addRole(userAddAdmin, ADD_ROLE_ADMIN);
+            addRole(userAddAdmin, ROLE_ADMIN);
             userRepository.save(userAddAdmin);
             System.out.println(userAddAdmin.getUsername() + " success added ADMIN role");
         }
@@ -73,7 +73,7 @@ public class AdminServiceImpl implements AdminService {
         User userAddModerator = getUser(id);
 
         if (userAddModerator != null) {
-            addRole(userAddModerator, ADD_ROLE_MODERATOR);
+            addRole(userAddModerator, ROLE_MODERATOR);
             userRepository.save(userAddModerator);
             System.out.println(userAddModerator.getUsername() + " success added MODERATOR role");
         }
@@ -82,10 +82,10 @@ public class AdminServiceImpl implements AdminService {
     private void addRole(User userToAddRole, String addRole) {
         List<UserRole> allRole = getUserRoles();
 
-        if (addRole.equals(ADD_ROLE_MODERATOR)) {
+        if (addRole.equals(ROLE_MODERATOR)) {
             userToAddRole.setRoles(List.of(allRole.get(1), allRole.get(2)));
 
-        } else if (addRole.equals(ADD_ROLE_ADMIN)) {
+        } else if (addRole.equals(ROLE_ADMIN)) {
             userToAddRole.setRoles(allRole);
         }
     }
@@ -95,7 +95,7 @@ public class AdminServiceImpl implements AdminService {
         User userRemoveAdmin = getUser(id);
 
         if (userRemoveAdmin != null) {
-            removeRole(userRemoveAdmin, REMOVE_ROLE_ADMIN);
+            removeRole(userRemoveAdmin, ROLE_ADMIN);
             userRepository.save(userRemoveAdmin);
             System.out.println(userRemoveAdmin.getUsername() + " success remove ADMIN role");
         }
@@ -106,7 +106,7 @@ public class AdminServiceImpl implements AdminService {
         User userRemoveModerator = getUser(id);
 
         if (userRemoveModerator != null) {
-            removeRole(userRemoveModerator, REMOVE_ROLE_MODERATOR);
+            removeRole(userRemoveModerator, ROLE_MODERATOR);
             userRepository.save(userRemoveModerator);
             System.out.println(userRemoveModerator.getUsername() + " success remove MODERATOR role");
         }
@@ -116,10 +116,10 @@ public class AdminServiceImpl implements AdminService {
     private void removeRole(User userRemoveRole, String removeRole) {
         List<UserRole> allRole = getUserRoles();
 
-        if (removeRole.equals(REMOVE_ROLE_ADMIN)) {
+        if (removeRole.equals(ROLE_ADMIN)) {
             userRemoveRole.setRoles(List.of(allRole.get(1), allRole.get(2)));
 
-        } else if (removeRole.equals(REMOVE_ROLE_MODERATOR)) {
+        } else if (removeRole.equals(ROLE_MODERATOR)) {
             userRemoveRole.setRoles(List.of(allRole.get(2)));
         }
     }
