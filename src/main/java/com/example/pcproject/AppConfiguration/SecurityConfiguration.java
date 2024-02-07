@@ -75,6 +75,11 @@ public class SecurityConfiguration {
                     csfr.ignoringRequestMatchers("/fonts/poppins/poppins-v5-latin-italic.ttf");
                     csfr.ignoringRequestMatchers(new AntPathRequestMatcher("/api/send/**"));
                 }
+        ).portMapper(
+                httpSecurityHTTPS -> {
+                    httpSecurityHTTPS
+                            .http(8080).mapsTo(443);
+                }
         );
 
 

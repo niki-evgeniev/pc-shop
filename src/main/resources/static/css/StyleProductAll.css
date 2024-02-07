@@ -125,8 +125,12 @@ a {
 .row2 {
     margin-left: auto;
 }
-.text-secondary{
+
+.text-secondary {
     margin-bottom: 20px
+}
+.table th, .table td {
+    width: 50%;
 }
 
 @media (max-width: 810px) {
@@ -136,6 +140,7 @@ a {
     .container-fluid2 {
         max-width: 100%;
     }
+
     .d-none {
         display: block;
     }
@@ -149,6 +154,10 @@ a {
         /*margin-right: -4%;*/
         margin-left: auto;
     }
+    .table th, .table td {
+        width: 100%;
+        max-width: 100%;
+    }
 
     body > div.container-fluid2 > div > aside > div > div > table > tbody > tr {
         display: flex;
@@ -159,8 +168,13 @@ a {
         display: none;
     }
 }
+
 @media (min-width: 992px) {
     body > div.container-fluid2 > div > aside {
         max-width: 100%;
     }
 }
+
+/*body > div.container-fluid2 > div > aside > div > div:nth-child(1) > table > tbody > tr > td:nth-child(1){*/
+/*    width: 500px;*/
+/*}*/
