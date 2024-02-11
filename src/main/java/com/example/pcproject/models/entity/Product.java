@@ -37,6 +37,9 @@ public class Product extends BaseEntity {
     @Column(name = "modified")
     private LocalDateTime modified;
 
+    @Column(name = "is_sold")
+    private Boolean isSold = false;
+
     @ManyToOne
     private Model model;
 
@@ -148,5 +151,13 @@ public class Product extends BaseEntity {
 
     public void setTracesOfUse(TracesOfUse tracesOfUse) {
         this.tracesOfUse = tracesOfUse;
+    }
+
+    public Boolean getSold() {
+        return isSold;
+    }
+
+    public void setSold(Boolean sold) {
+        isSold = sold;
     }
 }

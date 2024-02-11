@@ -18,7 +18,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllBySellerId(Long seller_id);
 
-    Page<Product> findAllByComputerType(ComputerType computerType, Pageable pageable);
+    Page<Product> findAllByComputerTypeAndIsSoldIsFalse(ComputerType computerType, Pageable pageable);
+
+
 
     Page<Product> findAllByModelName(String modelName, Pageable pageable);
 

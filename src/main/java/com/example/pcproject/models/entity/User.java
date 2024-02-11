@@ -4,6 +4,7 @@ import com.example.pcproject.models.eunums.RoleType;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class User extends BaseEntity {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
@@ -27,6 +34,9 @@ public class User extends BaseEntity {
 
     @Column(name = "create_on")
     private LocalDate createOn;
+
+    @Column(name = "modified")
+    private LocalDateTime modified;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -94,6 +104,14 @@ public class User extends BaseEntity {
 
     public void setCreateOn(LocalDate createOn) {
         this.createOn = createOn;
+    }
+
+    public LocalDateTime getModified() {
+        return modified;
+    }
+
+    public void setModified(LocalDateTime modified) {
+        this.modified = modified;
     }
 
     public List<UserRole> getRoles() {

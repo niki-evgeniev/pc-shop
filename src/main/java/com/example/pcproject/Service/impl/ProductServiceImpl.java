@@ -91,8 +91,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private Page<ProductAllDTO> getProductByComputerType(ComputerType computerType, Pageable pageable) {
+//        Page<ProductAllDTO> allInfo =
+//                productRepository.findAllByComputerType(computerType, pageable)
+//                        .map(ProductServiceImpl::mapAsSummary);
         Page<ProductAllDTO> allInfo =
-                productRepository.findAllByComputerType(computerType, pageable)
+                productRepository.findAllByComputerTypeAndIsSoldIsFalse(computerType, pageable)
                         .map(ProductServiceImpl::mapAsSummary);
         return allInfo;
     }
@@ -121,7 +124,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void soldProduct(Long id) {
-        productRepository.deleteById(id);
+//        productRepository.deleteById(id);
+
+//       change delete to PRODUCT IS_SOLD = TURE
+
+        Optional<Product> byId = productRepository.findById(id);
+        Product map = modelMapper.map(byId, Product.class);
+        map.setSold(true);
+
+        System.out.println();
+
+        productRepository.save(map);
+
     }
 
     private ProductDetailsDTO mapAsDetails(Product product, UserDetails userDetails) {
