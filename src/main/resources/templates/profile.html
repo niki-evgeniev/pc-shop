@@ -6,13 +6,13 @@
     <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/Profile.css" rel="stylesheet"/>
     <th:block th:replace="~{fragments/head}"></th:block>
 </head>
 <body>
 <header th:replace="~{fragments/header}"></header>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
 <div th:object="${viewProfileInfoDTO}"
         class="container bootstrap snippets bootdeys">
     <div class="row" id="user-profile">
@@ -56,7 +56,7 @@
             <div class="main-box clearfix">
                 <div class="profile-header">
                     <h3><span>User info</span></h3>
-                    <a href="#" class="btn btn-primary edit-profile">
+                    <a th:href="@{/users/profile/edit}" class="btn btn-primary edit-profile">
                         <i class="fa fa-pencil-square fa-lg"></i> Edit profile
                     </a>
                 </div>
@@ -66,7 +66,7 @@
                             <div class="profile-user-details-label">
                                 First Name
                             </div>
-                            <div class="profile-user-details-value">
+                            <div class="profile-user-details-value" th:text="*{firstName}">
                                 John
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             <div class="profile-user-details-label">
                                 Last Name
                             </div>
-                            <div class="profile-user-details-value">
+                            <div class="profile-user-details-value" th:text="*{lastName}">
                                 Doe
                             </div>
                         </div>
@@ -92,7 +92,10 @@
                                 Email
                             </div>
                             <div class="profile-user-details-value">
-                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85efeaedebe1eae0c5e7eaeaf1e1e0fcabe6eae8">[email&#160;protected]</a>
+                                <a href="/cdn-cgi/l/email-protection"
+                                   class="__cf_email__"
+                                   data-cfemail="85efeaedebe1eae0c5e7eaeaf1e1e0fcabe6eae8"
+                                   th:text="*{email}">[email&#160;protected]</a>
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">

@@ -36,6 +36,11 @@ public class UserController {
         return modelAndView;
     }
 
+    @GetMapping ("/profile/edit")
+    public ModelAndView profileEdit (){
+        return new ModelAndView("profileEdit");
+    }
+
     @ModelAttribute
     ViewProfileInfoDTO viewProfileInfoDTO(){
         return new ViewProfileInfoDTO();
