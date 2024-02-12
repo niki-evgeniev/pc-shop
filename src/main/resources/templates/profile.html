@@ -65,32 +65,42 @@
                     <div class="col-sm-8">
                         <div class="profile-user-details clearfix">
                             <div class="profile-user-details-label">
-                                First Name
+                                Username:
                             </div>
-                            <div class="profile-user-details-value" th:text="*{firstName}">
+                            <div class="profile-user-details-value"
+                                 th:text="*{username}">
+                                username
+                            </div>
+                        </div>
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                First Name:
+                            </div>
+                            <div class="profile-user-details-value"
+                                 th:text="*{firstName}">
                                 John
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">
                             <div class="profile-user-details-label">
-                                Last Name
+                                Last Name:
                             </div>
-                            <div class="profile-user-details-value" th:text="*{lastName}">
+                            <div class="profile-user-details-value"
+                                 th:text="*{lastName}">
                                 Doe
                             </div>
                         </div>
-                        <div class="profile-user-details clearfix">
-                            <div class="profile-user-details-label">
-                                Address
+                        <div class="profile-user-details clearfix" >
+                            <div class="profile-user-details-label" >
+                                Address:
                             </div>
-                            <div class="profile-user-details-value">
-                                10880 Malibu Point,
-                                <br> Malibu, Calif., 90265
+                            <div class="profile-user-details-value"
+                                 th:text="*{country + ', ' + city} ">
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">
                             <div class="profile-user-details-label">
-                                Email
+                                Email:
                             </div>
                             <div class="profile-user-details-value">
                                 <a href="/cdn-cgi/l/email-protection"
@@ -101,10 +111,19 @@
                         </div>
                         <div class="profile-user-details clearfix">
                             <div class="profile-user-details-label">
-                                Phone number
+                                Organization:
                             </div>
-                            <div class="profile-user-details-value">
-                                011 223 344 556 677
+                            <div class="profile-user-details-value"
+                                 th:text="*{organization}">
+                                SoftUni project
+                            </div>
+                        </div>
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Phone Number:
+                            </div>
+                            <div class="profile-user-details-value"
+                                 th:text="*{phoneNumber}">
                             </div>
                         </div>
                     </div>
