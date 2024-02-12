@@ -41,8 +41,8 @@
                 <div class="profile-details">
                     <ul class="fa-ul">
                         <li><i class="fa-li fa fa-truck"></i>Orders: <span th:text="*{numberOfProducts}">456</span></li>
-                        <li><i class="fa-li fa fa-comment"></i>Posts: <span>828</span></li>
-                        <li><i class="fa-li fa fa-tasks"></i>Tasks done: <span>1024</span></li>
+                        <li><i class="fa-li fa fa-comment"></i>Sold: <span th:text="*{numberOfSoldProduct}">828</span></li>
+                        <li><i class="fa-li fa fa-tasks"></i>Tasks done: <span th:text="*{allSoldAndCurrentProduct}">1024</span></li>
                     </ul>
                 </div>
                 <div class="profile-message-btn center-block text-center">

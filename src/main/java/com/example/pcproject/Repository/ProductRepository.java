@@ -1,5 +1,6 @@
 package com.example.pcproject.Repository;
 
+import com.example.pcproject.models.DTO.ProductAllDTO;
 import com.example.pcproject.models.entity.Model;
 import com.example.pcproject.models.entity.Product;
 import com.example.pcproject.models.entity.User;
@@ -18,11 +19,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllBySellerId(Long seller_id);
 
-    Page<Product> findAllByComputerTypeAndIsSoldIsFalse(ComputerType computerType, Pageable pageable);
+    Page<Product> findAllByIsSoldIsFalse(Pageable pageable);
 
+    Page<Product> findAllByComputerTypeAndIsSoldIsFalse(ComputerType computerType, Pageable pageable);
 
 
     Page<Product> findAllByModelName(String modelName, Pageable pageable);
 
-    Long countBySellerId(Long seller_id);
+    Long countBySellerIdAndIsSoldIsFalse(Long seller_id);
+
+    Long countBySellerIdAndIsSoldIsTrue(Long id);
 }

@@ -18,6 +18,10 @@ public class ViewProfileInfoDTO {
 
     private Long numberOfProducts;
 
+    private Long numberOfSoldProduct;
+
+    private Long allSoldAndCurrentProduct;
+
     public ViewProfileInfoDTO() {
     }
 
@@ -75,5 +79,21 @@ public class ViewProfileInfoDTO {
 
     public void setNumberOfProducts(Long numberOfProducts) {
         this.numberOfProducts = numberOfProducts;
+    }
+
+    public Long getNumberOfSoldProduct() {
+        return numberOfSoldProduct;
+    }
+
+    public void setNumberOfSoldProduct(Long numberOfSoldProduct) {
+        this.numberOfSoldProduct = numberOfSoldProduct;
+    }
+
+    public Long getAllSoldAndCurrentProduct() {
+        return allSoldAndCurrentProduct;
+    }
+
+    public void setAllSoldAndCurrentProduct(Long allSoldAndCurrentProduct) {
+        this.allSoldAndCurrentProduct = allSoldAndCurrentProduct;
     }
 }

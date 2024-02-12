@@ -37,6 +37,8 @@ public class ProductDetailsDTO {
 
     private boolean isOwner;
 
+    private boolean isSold;
+
 
     public ProductDetailsDTO() {
     }
@@ -153,7 +155,16 @@ public class ProductDetailsDTO {
         isOwner = owner;
     }
 
+    public boolean isSold() {
+        return isSold;
+    }
+
+    public void setSold(boolean sold) {
+        isSold = sold;
+    }
+
     public String summary() {
         return brand + " " + model + " ";
     }
+
 }

@@ -13,6 +13,7 @@ import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.RoleType;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -63,8 +64,10 @@ public class ProductServiceImpl implements ProductService {
     @ExecutionTime(time = 2000L)
     @Override
     public Page<ProductAllDTO> getAllProduct(Pageable pageable) {
-        return productRepository.findAll(pageable)
+        Page<ProductAllDTO> allProduct = productRepository.findAllByIsSoldIsFalse(pageable)
                 .map(ProductServiceImpl::mapAsSummary);
+
+        return allProduct;
     }
 
     @Override

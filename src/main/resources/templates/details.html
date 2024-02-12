@@ -50,11 +50,13 @@
                 </p>
                 <div class="card-body">
                     <form th:if="*{isOwner()}"
+                          th:unless="*{isSold == true}"
                           th:method="DELETE"
                           th:action="@{/product/{id}(id = *{id})}">
                         <input type="submit" value="SOLD" class="btn btn-light"/>
                     </form>
                 </div>
+                <h2 class="text-danger font-weight-bold" th:if="*{isSold == true}">IS NOT AVAILABLE</h2>
             </div>
             <!-- / project-info-box -->
         </div><!-- / column -->
