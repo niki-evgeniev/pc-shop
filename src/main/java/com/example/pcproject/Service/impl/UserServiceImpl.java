@@ -7,6 +7,7 @@ import com.example.pcproject.Repository.UserRepository;
 import com.example.pcproject.Repository.UserRoleRepository;
 import com.example.pcproject.Service.IpAddressService;
 import com.example.pcproject.Service.UserService;
+import com.example.pcproject.models.DTO.EditViewProfileDTO;
 import com.example.pcproject.models.DTO.RegisterUserDTO;
 import com.example.pcproject.models.DTO.ViewProfileInfoDTO;
 import com.example.pcproject.models.entity.IpUser;
@@ -91,6 +92,15 @@ public class UserServiceImpl implements UserService {
         }
 
         return viewProfileInfo;
+    }
+
+    @Override
+    public EditViewProfileDTO getUserEditDetails(Long id) {
+
+        Optional<User> userEdinDetails = userRepository.findById(id);
+        EditViewProfileDTO map = modelMapper.map(userEdinDetails, EditViewProfileDTO.class);
+
+        return map;
     }
 
     private void getRoles(User user) {

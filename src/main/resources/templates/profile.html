@@ -56,7 +56,8 @@
             <div class="main-box clearfix">
                 <div class="profile-header">
                     <h3><span>User info</span></h3>
-                    <a th:href="@{/users/profile/edit}" class="btn btn-primary edit-profile">
+                    <a th:href="@{/profile/edit/{id}(id = *{id})}"
+                       class="btn btn-primary edit-profile">
                         <i class="fa fa-pencil-square fa-lg"></i> Edit profile
                     </a>
                 </div>

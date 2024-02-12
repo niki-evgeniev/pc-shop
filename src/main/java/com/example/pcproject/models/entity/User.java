@@ -14,14 +14,21 @@ public class User extends BaseEntity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "organization")
+    private String organization;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -136,5 +143,37 @@ public class User extends BaseEntity {
 
     public void setContactUs(ContactUs contactUs) {
         this.contactUs = contactUs;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

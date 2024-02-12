@@ -2,10 +2,7 @@ package com.example.pcproject.controller;
 
 import com.example.pcproject.Service.ReCaptchaService;
 import com.example.pcproject.Service.UserService;
-import com.example.pcproject.models.DTO.LoginUserDTO;
-import com.example.pcproject.models.DTO.ReCaptchaResponseDTO;
-import com.example.pcproject.models.DTO.RegisterUserDTO;
-import com.example.pcproject.models.DTO.ViewProfileInfoDTO;
+import com.example.pcproject.models.DTO.*;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,25 +23,6 @@ public class UserController {
         this.reCaptchaService = reCaptchaService;
     }
 
-    @GetMapping("/profile")
-    public ModelAndView profile(@AuthenticationPrincipal UserDetails userDetails) {
-
-        ViewProfileInfoDTO viewProfileInfoDTO = userService.getUserDetails(userDetails.getUsername());
-        ModelAndView modelAndView = new ModelAndView("profile");
-        modelAndView.addObject("viewProfileInfoDTO", viewProfileInfoDTO);
-
-        return modelAndView;
-    }
-
-    @GetMapping ("/profile/edit")
-    public ModelAndView profileEdit (){
-        return new ModelAndView("profileEdit");
-    }
-
-    @ModelAttribute
-    ViewProfileInfoDTO viewProfileInfoDTO(){
-        return new ViewProfileInfoDTO();
-    }
 
 
     @GetMapping("/register")
