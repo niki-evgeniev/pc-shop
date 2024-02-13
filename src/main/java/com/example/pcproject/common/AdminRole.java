@@ -1,4 +1,4 @@
-package com.example.pcproject.Common;
+package com.example.pcproject.common;
 
 public class AdminRole {
 

@@ -1,6 +1,6 @@
 package com.example.pcproject.Service.impl;
 
-import com.example.pcproject.AppConfiguration.ReCaptchaConfiguration;
+import com.example.pcproject.appConfiguration.ReCaptchaConfiguration;
 import com.example.pcproject.Service.ReCaptchaService;
 import com.example.pcproject.models.DTO.ReCaptchaResponseDTO;
 import org.slf4j.Logger;

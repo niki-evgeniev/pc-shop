@@ -1,4 +1,4 @@
-package com.example.pcproject.AppConfiguration;
+package com.example.pcproject.appConfiguration;
 
 import com.example.pcproject.Service.interceptor.BannedUserInterceptor;
 import com.example.pcproject.Service.interceptor.CheckRequestInterceptor;

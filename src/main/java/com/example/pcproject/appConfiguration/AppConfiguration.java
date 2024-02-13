@@ -1,4 +1,4 @@
-package com.example.pcproject.AppConfiguration;
+package com.example.pcproject.appConfiguration;
 
 import com.example.pcproject.models.DTO.product.ProductDTO;
 import com.example.pcproject.models.entity.Product;

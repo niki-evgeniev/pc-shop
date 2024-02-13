@@ -1,8 +1,6 @@
-package com.example.pcproject.models.DTO.Profile;
+package com.example.pcproject.models.DTO.profile;
 
-import java.time.LocalDate;
-
-public class ViewProfileInfoDTO {
+public class EditViewProfileDTO {
 
     private Long id;
 
@@ -22,17 +20,9 @@ public class ViewProfileInfoDTO {
 
     private String phoneNumber;
 
-    private LocalDate createOn;
 
-    private String userRole;
 
-    private Long numberOfProducts;
-
-    private Long numberOfSoldProduct;
-
-    private Long allSoldAndCurrentProduct;
-
-    public ViewProfileInfoDTO() {
+    public EditViewProfileDTO() {
     }
 
     public Long getId() {
@@ -105,45 +95,5 @@ public class ViewProfileInfoDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public LocalDate getCreateOn() {
-        return createOn;
-    }
-
-    public void setCreateOn(LocalDate createOn) {
-        this.createOn = createOn;
-    }
-
-    public String getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
-    }
-
-    public Long getNumberOfProducts() {
-        return numberOfProducts;
-    }
-
-    public void setNumberOfProducts(Long numberOfProducts) {
-        this.numberOfProducts = numberOfProducts;
-    }
-
-    public Long getNumberOfSoldProduct() {
-        return numberOfSoldProduct;
-    }
-
-    public void setNumberOfSoldProduct(Long numberOfSoldProduct) {
-        this.numberOfSoldProduct = numberOfSoldProduct;
-    }
-
-    public Long getAllSoldAndCurrentProduct() {
-        return allSoldAndCurrentProduct;
-    }
-
-    public void setAllSoldAndCurrentProduct(Long allSoldAndCurrentProduct) {
-        this.allSoldAndCurrentProduct = allSoldAndCurrentProduct;
     }
 }

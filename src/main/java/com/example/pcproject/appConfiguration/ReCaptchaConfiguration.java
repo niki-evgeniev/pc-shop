@@ -1,4 +1,4 @@
-package com.example.pcproject.AppConfiguration;
+package com.example.pcproject.appConfiguration;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import static com.example.pcproject.Common.Constants.ALL_PRODUCTS;
+import static com.example.pcproject.common.Constants.ALL_PRODUCTS;
 
 @Controller
 public class SearchController {
