@@ -11,6 +11,7 @@ public class RegisterUserDTO {
 
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 character!")
     private String firstName;
+
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 character!")
     private String lastName;
 

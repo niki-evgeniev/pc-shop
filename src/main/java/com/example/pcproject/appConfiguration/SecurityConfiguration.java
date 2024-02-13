@@ -34,7 +34,8 @@ public class SecurityConfiguration {
         httpSecurity.authorizeHttpRequests(
                 authorizeRequest -> authorizeRequest
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/users/login", "/users/register", "/users/profile", "/users/login-error").permitAll()
+                        .requestMatchers("/", "/users/login", "/users/register", "/users/profile",
+                                "/users/login-error").permitAll()
                         .requestMatchers("/service/service").permitAll()
                         .requestMatchers("/product/all", "/product/laptop", "/product/computer").permitAll()
                         .requestMatchers("/contact").permitAll()
@@ -44,8 +45,6 @@ public class SecurityConfiguration {
                         .requestMatchers("/admin/user", "/admin/admin-panel", "/admin/viewIp",
                                 "/admin/brandsAdd").hasRole(RoleType.MODERATOR.name())
                         .anyRequest().authenticated()
-
-
         ).formLogin(
                 formLogin -> {
                     formLogin
@@ -81,8 +80,6 @@ public class SecurityConfiguration {
                             .http(8080).mapsTo(443);
                 }
         );
-
-
         return httpSecurity.build();
     }
 
