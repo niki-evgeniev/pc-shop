@@ -1,11 +1,10 @@
 package com.example.pcproject.service.impl;
 
-import com.example.pcproject.Repository.IpUserRepository;
-import com.example.pcproject.Repository.ProductRepository;
-import com.example.pcproject.Repository.UserRepository;
-import com.example.pcproject.Repository.UserRoleRepository;
-import com.example.pcproject.Service.IpAddressService;
-import com.example.pcproject.Service.impl.UserServiceImpl;
+import com.example.pcproject.repository.IpUserRepository;
+import com.example.pcproject.repository.ProductRepository;
+import com.example.pcproject.repository.UserRepository;
+import com.example.pcproject.repository.UserRoleRepository;
+import com.example.pcproject.service.IpAddressService;
 import com.example.pcproject.models.DTO.user.RegisterUserDTO;
 import com.example.pcproject.models.entity.IpUser;
 import com.example.pcproject.models.entity.User;

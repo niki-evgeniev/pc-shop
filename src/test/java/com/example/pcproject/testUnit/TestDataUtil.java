@@ -1,6 +1,6 @@
 package com.example.pcproject.testUnit;
 
-import com.example.pcproject.Repository.*;
+import com.example.pcproject.repository.*;
 import com.example.pcproject.models.entity.*;
 import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.RoleType;

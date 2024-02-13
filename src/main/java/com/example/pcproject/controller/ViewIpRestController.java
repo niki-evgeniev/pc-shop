@@ -1,6 +1,6 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.ViewService;
+import com.example.pcproject.service.ViewService;
 import com.example.pcproject.models.DTO.ip.GetIp;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,8 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.BrandService;
-import com.example.pcproject.Service.ProductService;
-import com.example.pcproject.Service.exception.ObjectNotFoundException;
+import com.example.pcproject.service.BrandService;
+import com.example.pcproject.service.ProductService;
+import com.example.pcproject.service.exception.ObjectNotFoundException;
 import com.example.pcproject.models.DTO.brand.BrandDTO;
 import com.example.pcproject.models.DTO.product.ProductDTO;
 import com.example.pcproject.models.DTO.product.ProductDetailsDTO;

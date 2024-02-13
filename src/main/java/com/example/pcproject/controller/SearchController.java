@@ -1,7 +1,7 @@
 package com.example.pcproject.controller;
 
 
-import com.example.pcproject.Service.ProductService;
+import com.example.pcproject.service.ProductService;
 import com.example.pcproject.models.DTO.product.ProductAllDTO;
 import com.example.pcproject.models.DTO.SearchModelDTO;
 import jakarta.validation.Valid;

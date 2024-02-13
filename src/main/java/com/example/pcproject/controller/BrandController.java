@@ -1,7 +1,7 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.BrandService;
-import com.example.pcproject.Service.ModelService;
+import com.example.pcproject.service.BrandService;
+import com.example.pcproject.service.ModelService;
 import com.example.pcproject.models.DTO.brand.AddBrandAndModelDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;

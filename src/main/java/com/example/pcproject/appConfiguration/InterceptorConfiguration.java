@@ -1,7 +1,7 @@
 package com.example.pcproject.appConfiguration;
 
-import com.example.pcproject.Service.interceptor.BannedUserInterceptor;
-import com.example.pcproject.Service.interceptor.CheckRequestInterceptor;
+import com.example.pcproject.service.interceptor.BannedUserInterceptor;
+import com.example.pcproject.service.interceptor.CheckRequestInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

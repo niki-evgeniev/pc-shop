@@ -1,11 +1,10 @@
 package com.example.pcproject.service.impl;
 
 
-import com.example.pcproject.Repository.IpUserRepository;
-import com.example.pcproject.Repository.ProductRepository;
-import com.example.pcproject.Repository.UserRepository;
-import com.example.pcproject.Repository.UserRoleRepository;
-import com.example.pcproject.Service.impl.AdminServiceImpl;
+import com.example.pcproject.repository.IpUserRepository;
+import com.example.pcproject.repository.ProductRepository;
+import com.example.pcproject.repository.UserRepository;
+import com.example.pcproject.repository.UserRoleRepository;
 import com.example.pcproject.models.DTO.admin.AdminsAllInfoDTO;
 import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.entity.UserRole;

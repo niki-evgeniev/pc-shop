@@ -1,6 +1,6 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.UserService;
+import com.example.pcproject.service.UserService;
 import com.example.pcproject.models.DTO.profile.EditViewProfileDTO;
 import com.example.pcproject.models.DTO.profile.ViewProfileInfoDTO;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

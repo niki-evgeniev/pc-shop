@@ -1,6 +1,6 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.ContactUsService;
+import com.example.pcproject.service.ContactUsService;
 import com.example.pcproject.models.DTO.MessageDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

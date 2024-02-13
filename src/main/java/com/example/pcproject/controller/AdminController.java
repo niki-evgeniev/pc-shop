@@ -1,7 +1,7 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.AdminService;
-import com.example.pcproject.Service.exception.ObjectNotFoundException;
+import com.example.pcproject.service.AdminService;
+import com.example.pcproject.service.exception.ObjectNotFoundException;
 import com.example.pcproject.models.DTO.admin.AdminDetailsDTO;
 import com.example.pcproject.models.DTO.admin.AdminsAllInfoDTO;
 import jakarta.transaction.Transactional;

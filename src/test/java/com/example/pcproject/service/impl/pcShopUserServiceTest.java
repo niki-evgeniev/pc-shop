@@ -1,7 +1,6 @@
 package com.example.pcproject.service.impl;
 
-import com.example.pcproject.Repository.UserRepository;
-import com.example.pcproject.Service.impl.PcShopUserService;
+import com.example.pcproject.repository.UserRepository;
 import com.example.pcproject.models.entity.User;
 import com.example.pcproject.models.entity.UserRole;
 import com.example.pcproject.models.eunums.RoleType;

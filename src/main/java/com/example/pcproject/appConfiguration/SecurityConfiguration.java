@@ -1,7 +1,7 @@
 package com.example.pcproject.appConfiguration;
 
-import com.example.pcproject.Repository.UserRepository;
-import com.example.pcproject.Service.impl.PcShopUserService;
+import com.example.pcproject.repository.UserRepository;
+import com.example.pcproject.service.impl.PcShopUserService;
 import com.example.pcproject.models.eunums.RoleType;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;

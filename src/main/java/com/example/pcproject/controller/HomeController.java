@@ -1,6 +1,6 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.IpAddressService;
+import com.example.pcproject.service.IpAddressService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,6 +1,6 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.ProductService;
+import com.example.pcproject.service.ProductService;
 import com.example.pcproject.models.DTO.product.ProductAllDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

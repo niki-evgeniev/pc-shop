@@ -1,9 +1,8 @@
 package com.example.pcproject.service.impl;
 
-import com.example.pcproject.Repository.ModelRepository;
-import com.example.pcproject.Repository.ProductRepository;
-import com.example.pcproject.Repository.UserRepository;
-import com.example.pcproject.Service.impl.ProductServiceImpl;
+import com.example.pcproject.repository.ModelRepository;
+import com.example.pcproject.repository.ProductRepository;
+import com.example.pcproject.repository.UserRepository;
 import com.example.pcproject.models.DTO.product.ProductDTO;
 import com.example.pcproject.models.DTO.product.ProductDetailsDTO;
 import com.example.pcproject.models.entity.*;

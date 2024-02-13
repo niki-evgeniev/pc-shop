@@ -1,7 +1,7 @@
 package com.example.pcproject.controller;
 
-import com.example.pcproject.Service.ReCaptchaService;
-import com.example.pcproject.Service.UserService;
+import com.example.pcproject.service.ReCaptchaService;
+import com.example.pcproject.service.UserService;
 import com.example.pcproject.models.DTO.*;
 import com.example.pcproject.models.DTO.user.LoginUserDTO;
 import com.example.pcproject.models.DTO.user.RegisterUserDTO;
