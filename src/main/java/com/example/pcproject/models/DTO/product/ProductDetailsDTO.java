@@ -1,4 +1,4 @@
-package com.example.pcproject.models.DTO;
+package com.example.pcproject.models.DTO.product;
 
 import com.example.pcproject.models.eunums.ComputerType;
 import com.example.pcproject.models.eunums.TracesOfUse;

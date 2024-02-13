@@ -1,4 +1,4 @@
-package com.example.pcproject.models.DTO;
+package com.example.pcproject.models.DTO.brand;
 
 import java.util.ArrayList;
 import java.util.List;

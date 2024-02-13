@@ -1,6 +1,6 @@
 package com.example.pcproject.AppConfiguration;
 
-import com.example.pcproject.models.DTO.ProductDTO;
+import com.example.pcproject.models.DTO.product.ProductDTO;
 import com.example.pcproject.models.entity.Product;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

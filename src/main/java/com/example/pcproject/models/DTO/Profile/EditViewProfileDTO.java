@@ -1,4 +1,4 @@
-package com.example.pcproject.models.DTO;
+package com.example.pcproject.models.DTO.Profile;
 
 public class EditViewProfileDTO {
 

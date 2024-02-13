@@ -1,4 +1,4 @@
-package com.example.pcproject.models.DTO;
+package com.example.pcproject.models.DTO.admin;
 
 import com.example.pcproject.models.entity.IpUser;
 import com.example.pcproject.models.entity.UserRole;

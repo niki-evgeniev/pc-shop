@@ -1,4 +1,4 @@
-package com.example.pcproject.models.DTO;
+package com.example.pcproject.models.DTO.ip;
 
 public class GetIp {
 

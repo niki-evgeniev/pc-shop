@@ -1,4 +1,4 @@
-package com.example.pcproject.models.DTO;
+package com.example.pcproject.models.DTO.brand;
 
 import com.example.pcproject.models.eunums.ComputerType;
 import jakarta.validation.constraints.Min;

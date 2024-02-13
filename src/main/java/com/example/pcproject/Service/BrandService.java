@@ -1,7 +1,7 @@
 package com.example.pcproject.Service;
 
-import com.example.pcproject.models.DTO.AddBrandAndModelDTO;
-import com.example.pcproject.models.DTO.BrandDTO;
+import com.example.pcproject.models.DTO.brand.AddBrandAndModelDTO;
+import com.example.pcproject.models.DTO.brand.BrandDTO;
 
 import java.util.List;
 

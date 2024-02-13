@@ -2,7 +2,7 @@ package com.example.pcproject.Service.impl;
 
 import com.example.pcproject.Repository.IpUserRepository;
 import com.example.pcproject.Service.ViewService;
-import com.example.pcproject.models.DTO.GetIp;
+import com.example.pcproject.models.DTO.ip.GetIp;
 import com.example.pcproject.models.entity.IpUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

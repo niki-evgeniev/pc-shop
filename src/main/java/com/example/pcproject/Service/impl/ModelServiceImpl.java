@@ -3,7 +3,7 @@ package com.example.pcproject.Service.impl;
 import com.example.pcproject.Repository.BrandRepository;
 import com.example.pcproject.Repository.ModelRepository;
 import com.example.pcproject.Service.ModelService;
-import com.example.pcproject.models.DTO.AddBrandAndModelDTO;
+import com.example.pcproject.models.DTO.brand.AddBrandAndModelDTO;
 import com.example.pcproject.models.entity.Brand;
 import com.example.pcproject.models.entity.Model;
 import org.modelmapper.ModelMapper;

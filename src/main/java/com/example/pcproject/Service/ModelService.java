@@ -1,6 +1,6 @@
 package com.example.pcproject.Service;
 
-import com.example.pcproject.models.DTO.AddBrandAndModelDTO;
+import com.example.pcproject.models.DTO.brand.AddBrandAndModelDTO;
 
 public interface ModelService {
 

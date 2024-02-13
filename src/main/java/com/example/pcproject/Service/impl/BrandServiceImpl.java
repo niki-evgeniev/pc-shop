@@ -1,13 +1,11 @@
 package com.example.pcproject.Service.impl;
 
 import com.example.pcproject.Repository.BrandRepository;
-import com.example.pcproject.Repository.ModelRepository;
 import com.example.pcproject.Service.BrandService;
-import com.example.pcproject.models.DTO.AddBrandAndModelDTO;
-import com.example.pcproject.models.DTO.BrandDTO;
-import com.example.pcproject.models.DTO.ModelDTO;
+import com.example.pcproject.models.DTO.brand.AddBrandAndModelDTO;
+import com.example.pcproject.models.DTO.brand.BrandDTO;
+import com.example.pcproject.models.DTO.brand.ModelDTO;
 import com.example.pcproject.models.entity.Brand;
-import com.example.pcproject.models.entity.Model;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
