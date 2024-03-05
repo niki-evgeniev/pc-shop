@@ -1,0 +1,45 @@
+asus PC https://desktop.bg/system/images/383033/normal/asus_rog_strix_g15cfwb7636.jpg
+
+asus laptop https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg
+
+
+
+gbtc1nv87d6re2k9vtudkjguz5pr2076jhk0geac0xdgpnsw57ckg7l0s0z4c3k
+
+IDEA - > when add product to see product details and affter that add product **********
+FIX SEARCH  ***** TESTING FIRST -> add more seach aobut model
+
+FIX DELETE == BOOLEAN AND PRODUCT THO SHOW WHERE BOOLEAN IS DELETE = FALSE
+
+add profile
+	https://www.bootdey.com/snippets/view/User-profile-porlet-with-tabs
+	https://www.bootdey.com/snippets/view/User-profile-with-friends-and-chat
+	https://www.bootdey.com/snippets/view/Update-user-profile
+		added templete -> add all active ad
+add edit profile
+add bg 
+
+
+add forgoten password
+add favourite
+
+add cloud
+
+
+		more link 
+			https://www.bootdey.com/snippets/tagged/detail/page/2
+			https://www.bootdey.com/snippets/view/project-details#html
+			https://www.bootdey.com/snippets/view/project-details
+			https://bootstrapmade.com/append-bootstrap-website-template/
+			https://bootstrapmade.com/demo/Append/
+			https://plugins.jetbrains.com/plugin/17718-github-copilot
+			
+			
+		IP VISIT 
+			IP who visit site is : 176.111.174.31
+			IP who visit site is : 94.230.142.174
+			IP who visit site is : 205.210.31.230
+			IP who visit site is : 198.235.24.95
+			IP who visit site is : 146.19.24.23
+			IP who visit site is : 198.235.24.80
+
