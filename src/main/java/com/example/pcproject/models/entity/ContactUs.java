@@ -8,9 +8,11 @@ import jakarta.persistence.Table;
 @Table(name = "contact_us")
 public class ContactUs extends BaseEntity {
     @Column(name = "full_name")
+
     private String fullName;
     @Column(name = "email", nullable = false)
     private String email;
+
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 

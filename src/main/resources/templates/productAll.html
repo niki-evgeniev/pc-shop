@@ -14,7 +14,7 @@
 <div class="container-fluid2">
     <div class="row2">
         <h1 class="text-center text-secondary font-weight-bold productsInfo"
-            th:text="${viewName.toUpperCase()} + ' PRODUCTS'"> </h1>
+            th:text="${viewName.toUpperCase()} + ' PRODUCTS'"></h1>
         <aside class="col-lg-9">
             <div class="card">
                 <div th:each="product : ${productAll.getContent()}"
@@ -34,7 +34,8 @@
                                 <figure class="itemside align-items-center">
                                     <div class="aside"><img th:src="*{imageUrl}" class="img-sm" alt="Product img"></div>
                                     <figcaption class="info">
-                                        <a th:href="@{/product/{id}(id = *{id})}" class="title text-dark" data-abc="true" th:text="*{summary()}">Tshirt
+                                        <a th:href="@{/product/{id}(id = *{id})}" class="title text-dark"
+                                           data-abc="true" th:text="*{summary()}">Tshirt
                                             with round nect</a>
                                         <p class="text-muted small"></p>
                                         <p class="text-muted small" th:text="*{computer}">SIZE: L</p>
@@ -43,13 +44,13 @@
                                     </figcaption>
                                 </figure>
                             </td>
-<!--                            <td> <select class="form-control">-->
-<!--                                <option>1</option>-->
-<!--                                <option>2</option>-->
-<!--                                <option>3</option>-->
-<!--                                <option>4</option>-->
-<!--                            </select>-->
-<!--                            </td>-->
+                            <!--                            <td> <select class="form-control">-->
+                            <!--                                <option>1</option>-->
+                            <!--                                <option>2</option>-->
+                            <!--                                <option>3</option>-->
+                            <!--                                <option>4</option>-->
+                            <!--                            </select>-->
+                            <!--                            </td>-->
                             <td>
                                 <div class="price-wrap"><var class="price">
                                     <th:block th:text="PRICE"></th:block>
@@ -61,7 +62,7 @@
                             <td class="text-right  d-md-block" sec:authorize="isAuthenticated()">
                                 <a href="" class="btn btn-light" data-abc="true"
                                    th:href="@{/product/{id}(id = *{id})}"> Details</a></td>
-                             <td class="text-right  d-md-block" sec:authorize="!isAuthenticated()">
+                            <td class="text-right  d-md-block" sec:authorize="!isAuthenticated()">
                                 <a href="" class="btn btn-light" data-abc="true"
                                    th:href="@{/users/login}"> Details</a></td>
                         </tr>

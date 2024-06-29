@@ -34,6 +34,5 @@ public class PcShopUserService implements UserDetailsService {
 
     private static GrantedAuthority map(UserRole userRole) {
         return new SimpleGrantedAuthority("ROLE_" + userRole.getRoles().name());
-
     }
 }
