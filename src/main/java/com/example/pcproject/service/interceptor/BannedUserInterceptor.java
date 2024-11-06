@@ -21,7 +21,8 @@ public class BannedUserInterceptor implements HandlerInterceptor {
     private final ThymeleafViewResolver thymeleafViewResolver;
     private final IpAddressService ipAddressService;
 
-    public BannedUserInterceptor(BlackListService blackListService, ThymeleafViewResolver thymeleafViewResolver, IpAddressService ipAddressService) {
+    public BannedUserInterceptor(BlackListService blackListService, ThymeleafViewResolver thymeleafViewResolver,
+                                 IpAddressService ipAddressService) {
         this.blackListService = blackListService;
         this.thymeleafViewResolver = thymeleafViewResolver;
         this.ipAddressService = ipAddressService;

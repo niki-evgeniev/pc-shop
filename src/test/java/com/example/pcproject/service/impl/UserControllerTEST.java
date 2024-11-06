@@ -66,7 +66,8 @@ public class UserControllerTEST {
         registerUserDTO.setConfirmPassword("testPassword");
 
         User user = null;
-        when(userRepository.findByUsername(registerUserDTO.getUsername())).thenReturn(Optional.empty());
+        when(userRepository.findByUsername(registerUserDTO.getUsername()))
+                .thenReturn(Optional.empty());
 
         User user1 = new User();
         user1.setUsername(registerUserDTO.getUsername());
